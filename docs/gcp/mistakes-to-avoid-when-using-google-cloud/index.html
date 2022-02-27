@@ -1,0 +1,366 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Mistakes to avoid when using Google Cloud #  Google Cloud Platform is a suite of public cloud computing services offered by Google. The platform includes a range of hosted services for compute, storage and application development that run on Google hardware. Google Cloud Platform services can be used by software developers, cloud administrators and other enterprise IT professionals.
+Avoid excessive use of default service accounts and primitive roles #  IAM stands for identity and Access management[1], and it allows you to manage access control by defining who (identity) has what access (role) to which resources.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="Mistakes to avoid when using Google Cloud #  Google Cloud Platform is a suite of public cloud computing services offered by Google. The platform includes a range of hosted services for compute, storage and application development that run on Google hardware. Google Cloud Platform services can be used by software developers, cloud administrators and other enterprise IT professionals.
+Avoid excessive use of default service accounts and primitive roles #  IAM stands for identity and Access management[1], and it allows you to manage access control by defining who (identity) has what access (role) to which resources.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://docs.cuong-dev.ml/docs/gcp/mistakes-to-avoid-when-using-google-cloud/"><meta property="article:section" content="docs">
+<title>Mistakes to Avoid When Using Google Cloud | Cuong Blogs</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.b005cff9113c07f7a3e9b382e502a1d9a53f4b137955f56f357f8ea8253a29fd.js integrity="sha256-sAXP+RE8B/ej6bOC5QKh2aU/SxN5VfVvNX+OqCU6Kf0=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>Cuong Blogs</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<span>Aws</span>
+<ul>
+<li>
+<a href=/docs/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
+</li>
+<li>
+<a href=/docs/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
+</li>
+<li>
+<a href=/docs/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a>
+</li>
+<li>
+<a href=/docs/aws/setting-swap-ec2/>Setting Swap Ec2</a>
+</li>
+<li>
+<a href=/docs/aws/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Azure</span>
+<ul>
+<li>
+<a href=/docs/azure/azure-2/>Azure 2</a>
+</li>
+<li>
+<a href=/docs/azure/azure-new-service-update/>Azure New Service Update</a>
+</li>
+<li>
+<a href=/docs/azure/untitled-3/>Untitled 3</a>
+</li>
+<li>
+<a href=/docs/azure/untitled-copy/>Untitled Copy</a>
+</li>
+<li>
+<a href=/docs/azure/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Cheatsheet</span>
+<ul>
+<li>
+<a href=/docs/cheatsheet/bash/>Bash</a>
+</li>
+<li>
+<a href=/docs/cheatsheet/docker-cheatsheet/>Docker Cheatsheet</a>
+</li>
+<li>
+<a href=/docs/cheatsheet/grep/>Grep</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Databases</span>
+<ul>
+<li>
+<a href=/docs/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a>
+</li>
+<li>
+<a href=/docs/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Docker</span>
+<ul>
+<li>
+<a href=/docs/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
+</li>
+<li>
+<a href=/docs/docker/disstroless-docker-image/>Disstroless Docker Image</a>
+</li>
+<li>
+<a href=/docs/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
+</li>
+<li>
+<a href=/docs/docker/quick-install-docker/>Quick Install Docker</a>
+</li>
+<li>
+<a href=/docs/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
+</li>
+<li>
+<a href=/docs/docker/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Gcp</span>
+<ul>
+<li>
+<a href=/docs/gcp/mistakes-to-avoid-when-using-google-cloud/ class=active>Mistakes to Avoid When Using Google Cloud</a>
+</li>
+<li>
+<a href=/docs/gcp/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Jenkins</span>
+<ul>
+<li>
+<a href=/docs/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a>
+</li>
+<li>
+<a href=/docs/jenkins/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>K8s</span>
+<ul>
+<li>
+<a href=/docs/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
+</li>
+<li>
+<a href=/docs/k8s/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Linux</span>
+<ul>
+<li>
+<a href=/docs/linux/check-ssl-certificate-expiration-date-s/>Check Ssl Certificate Expiration Date S</a>
+</li>
+<li>
+<a href=/docs/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a>
+</li>
+<li>
+<a href=/docs/linux/print-all-duplicated/>Print All Duplicated</a>
+</li>
+<li>
+<a href=/docs/linux/quick-load-.env-file/>Quick Load .Env File</a>
+</li>
+<li>
+<a href=/docs/linux/writing-bash-shell-scripts-best-practice/>Writing Bash Shell Scripts Best Practice</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Monitoring</span>
+<ul>
+<li>
+<a href=/docs/monitoring/alert-manager/>Alert Manager</a>
+</li>
+<li>
+<a href=/docs/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Others</span>
+<ul>
+<li>
+<a href=/docs/others/alert-slack-by-hook/>Alert Slack by Hook</a>
+</li>
+<li>
+<a href=/docs/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=/docs/about-me/>Introduction</a>
+<ul>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href=/posts/>
+Blog
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Mistakes to Avoid When Using Google Cloud</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#avoid-excessive-use-of-default-service-accounts-and-primitive-roles>Avoid excessive use of default service accounts and primitive roles</a></li>
+<li><a href=#flawed-vpc-design>Flawed VPC design</a></li>
+<li><a href=#neglecting-network-features>Neglecting network features</a></li>
+<li><a href=#conclusion---what-to-do>Conclusion - what to do?</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=mistakes-to-avoid-when-using-google-cloud>
+Mistakes to avoid when using Google Cloud
+<a class=anchor href=#mistakes-to-avoid-when-using-google-cloud>#</a>
+</h1>
+<p>Google Cloud Platform is a suite of public cloud computing services offered by Google. The platform includes a range of hosted services for compute, storage and application development that run on Google hardware. Google Cloud Platform services can be used by software developers, cloud administrators and other enterprise IT professionals.</p>
+<h3 id=avoid-excessive-use-of-default-service-accounts-and-primitive-roles>
+Avoid excessive use of default service accounts and primitive roles
+<a class=anchor href=#avoid-excessive-use-of-default-service-accounts-and-primitive-roles>#</a>
+</h3>
+<p><strong>IAM</strong> stands for <strong>identity and Access management</strong><a href=https://cloud.google.com/iam/docs/overview>[1]</a>, and it allows you to manage access control by defining who (identity) has what access (role) to which resources. Cloud IAM has many predefined roles. Most of these roles provide appropriate access to suit your needs and the most common use cases. Well, not always.</p>
+<p>When you enable or use some Google Cloud services, they create user-managed service accounts that allow them to deploy jobs, that access other Google Cloud resources. These accounts are known as default service accounts. Convenient, right? Unfortunately, it is not as bright as you&rsquo;d imagine, the default service account practically always use primitive roles that has too extensive rights, i.e. Editor.<br>
+<img src=https://storage.googleapis.com/gweb-cloudblog-publish/images/zGbQytQs1Ez.max-700x700.png alt></p>
+<p>Permissions matrix</p>
+<p>Source: <a href=https://storage.googleapis.com/gweb-cloudblog-publish/images/zGbQytQs1Ez.max-700x700.png>https://storage.googleapis.com/gweb-cloudblog-publish/images/zGbQytQs1Ez.max-700x700.png</a></p>
+<p>&ldquo;Primitive roles&rdquo; like Owner and Editor grant wide-ranging access to all project resources. Your newly launched service now has access to all resources in your project. This is totally safe, right? (No, no it&rsquo;s not).<img src=https://sysdogs.com/static/6b91b4ad2f058a2e43d2d3e69beb5f49/4b401/thisisfine.jpg alt="Is it?"></p>
+<p>Is it?</p>
+<p><strong>Always use the minimum required, limit permissions to only those you need:</strong></p>
+<ul>
+<li>As a first step, we strongly suggest disabling the automatic addition of permissions for the default service accounts<a href=https://cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants>[2]</a></li>
+<li>Use a custom service account. Create a separate service account for each logical element in your infrastructure, such as an instance group or application. This will reduce the risk of abuse of rights, and will give you greater control over the rights of individual component.</li>
+<li>Granulation will allow precise adjustment of entitlements to a specific service - the minimum required.</li>
+<li>Use custom roles. Create a role that contains only the required permissions. Your application usually has to read something from the bucket, it doesn&rsquo;t need to manage all the buckets in the project. Permissions allow users to perform specific actions on Google Cloud resources<a href=https://cloud.google.com/iam/docs/custom-roles-permissions-support>[3]</a>, and usually look like this:</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>service.resource.verb
+---
+
+compute.instances.list
+compute instances.stop
+storage.objects.get
+storage.objects.list
+</code></pre></div><p>A basic example of a custom role could look like this:<img src=https://sysdogs.com/static/6b91b4ad2f058a2e43d2d3e69beb5f49/4b401/thisisfine.jpg alt="Is it?"></p>
+<p>Is it?</p>
+<p>Additional tip - Searching for the appropriate permissions can often be inconvenient, when working with legacy code. The recommendations engine may be helpful. Using separate accounts, Recommender will check which roles have been used for the last 90 days and propose an appropriate set of permissions. <a href=https://cloud.google.com/iam/docs/recommender-overview>[4]</a></p>
+<h3 id=flawed-vpc-design>
+Flawed VPC design
+<a class=anchor href=#flawed-vpc-design>#</a>
+</h3>
+<p><strong>VPC</strong> - Virtual Private Cloud. You can think of a VPC network the same way you&rsquo;d think of a physical network, except that it is virtualized within Google Cloud. Within a VPC you create and manage typical network resources such as subnets, firewall rules, routes and more.</p>
+<p>As with the previous point, when creating a project, GCP generates a default setup, with basic settings and a few firewall rules. Unfortunately, the pre-populated rules in the default network allow for a wide range of insecurities:</p>
+<blockquote>
+<ul>
+<li><strong>default-allow-internal</strong> - Allows ingress connections for all protocols and ports among instances in the network. This rule has the second-to-lowest priority of 65534, and it effectively permits incoming connections to VM instances from others in the same network. This rule allows traffic in 10.128.0.0/9 (from 10.128.0.1 to 10.255.255.254), a range that covers all subnets in the network.</li>
+<li><strong>default-allow-ssh</strong> - Allows ingress connections on TCP destination port 22 from any source to any instance in the network. This rule has a priority of 65534.</li>
+<li><strong>default-allow-rdp</strong> - Allows ingress connections on TCP destination port 3389 from any source to any instance in the network. This rule has a priority of 65534, and it enables connections to instances running the Microsoft Remote Desktop Protocol (RDP).</li>
+<li><strong>default-allow-icmp</strong> - Allows ingress ICMP traffic from any source to any instance in the network. This rule has a priority of 65534, and it enables tools such as ping.</li>
+</ul>
+</blockquote>
+<p>These defaults are predictable, permissive, and inflict unnecessary risk towards your environment. For your safety, we suggest deleting these rules and making your own, depending on your needs. Follow the minimum required rule.</p>
+<p><strong>Subnets</strong> are also created automatically, in each region, with predefined IP ranges. It is neither necessary nor convenient. You don&rsquo;t have to use every region in the world, you don&rsquo;t want to have the same IP ranges in every VPC. Why? If you plan to connect multiple VPC using for example VPC Network Peering or VPN, you may encounter a problem with overlapping IP addresses.</p>
+<p>Consider VPC network design early. In many cases, the project grows very quickly and you can forget about such things&mldr; Unfortunately, this approach in network configuration causes more problems than you can imagine. Sometimes needed changes will require resource recreation in a different region or an entirely different implementation. It&rsquo;s worth rethinking your network architecture beforehand, there are some good rules for it:</p>
+<ul>
+<li>Naming convention - make your network resource names understandable and maintainable.</li>
+<li>Group services into separate subnets.</li>
+<li>Think about allocation/reservation of IP scopes for multiple VPCs - to prevent overlapping.</li>
+<li>Consider advantages and disadvantages of different connection or routing propagation methods<a href=https://cloud.google.com/solutions/best-practices-vpc-design#choose-method>[5]</a>, in some cases this can have a huge impact on the network architecture.</li>
+</ul>
+<p><img src=https://cloud.google.com/architecture/images/vpc-bps-single-project-single-vpc.svg alt></p>
+<p>Single project, single VPC network</p>
+<p>Source: <a href=https://cloud.google.com/architecture/images/vpc-bps-single-project-single-vpc.svg>https://cloud.google.com/architecture/images/vpc-bps-single-project-single-vpc.svg</a></p>
+<h3 id=neglecting-network-features>
+Neglecting network features
+<a class=anchor href=#neglecting-network-features>#</a>
+</h3>
+<p>By default, all VMs in GCP are assigned a public IP address and are therefore accessible directly from the internet if there are firewall rules that allows it (such as the default ones). External IP address also allows external communication - access to internet, depending on the environment it is required or not. A safe and convenient approach is to use a NAT gateway, in this case <strong>Cloud NAT</strong> service. There are several benefits associated with it, especially in production environments:</p>
+<ul>
+<li>Security - You easily mitigate the problem of exposing services publicly.</li>
+<li>Availability - Cloud NAT is a distributed, software-defined managed service. It doesn&rsquo;t depend on any VMs in your project or a single physical gateway device.</li>
+<li>Scalabillity - You can scale the number of NAT IP addresses that it uses.</li>
+<li>Fixed external IP addresses - An example of why you might need fixed outbound IP addresses is the case in which a third party allows requests from specific external IP addresses.</li>
+</ul>
+<p>OK, we have abandoned external IP addresses in favor of the NAT service, but how do we get to communicate with the instance that has no external IP address? In this configuration, we can only use another instance on the same network or VPN connection<a href=https://cloud.google.com/solutions/connecting-securely#vpn>[6]</a></p>
+<p><strong>Bastion host</strong></p>
+<p>Another secure setup proposal is commonly called <code>bastion host</code> - an external endpoint that allows your clients to SSH from the public internet. With this set-up, your application can be safely kept away from public eyes. You can use the bastion in several ways, the most common one is called &ldquo;Jump server&rdquo;. By using <code>ssh</code> forwarding you can get to the target machine. <a href=https://cloud.google.com/compute/docs/instances/connecting-advanced#bastion_host>[7]</a>. Remember that you should also secure the bastion&rsquo;s <code>ssh</code>, to avoid trouble - our article about Shell security should prove itself useful here.<a href=https://sysdogs.com/articles/how-to-secure-ssh>[8]</a></p>
+<p><img src=https://cloud.google.com/solutions/images/bastion.png alt></p>
+<p>Bastion</p>
+<p>Source: <a href=https://cloud.google.com/solutions/images/bastion.png>https://cloud.google.com/solutions/images/bastion.png</a></p>
+<p>The second approach that is often used, is to set up a VPN server such as OpenVPN/Pritunl on the bastion. This allows the configuration and adaptation of access through these services, for example:</p>
+<ul>
+<li>External auth integration</li>
+<li>2FA - Two-factor authentication</li>
+<li>Roles/polices to access specific subnets</li>
+</ul>
+<h3 id=conclusion---what-to-do>
+Conclusion - what to do?
+<a class=anchor href=#conclusion---what-to-do>#</a>
+</h3>
+<ul>
+<li>Apply the principle of least privilege to service accounts.</li>
+<li>Remove the insecure defaults of VPCs.</li>
+<li>Consider VPC network design early.</li>
+<li>You can provision your VMs without public IPs, reducing the attack surface.</li>
+<li>Use NAT GW for outbound traffic.</li>
+<li>Securely connect to VM instances using bastion.</li>
+</ul>
+<p>REF: <a href=https://sysdogs.com/articles/common-mistakes-to-avoid-gcp>https://sysdogs.com/articles/common-mistakes-to-avoid-gcp</a></p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#avoid-excessive-use-of-default-service-accounts-and-primitive-roles>Avoid excessive use of default service accounts and primitive roles</a></li>
+<li><a href=#flawed-vpc-design>Flawed VPC design</a></li>
+<li><a href=#neglecting-network-features>Neglecting network features</a></li>
+<li><a href=#conclusion---what-to-do>Conclusion - what to do?</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

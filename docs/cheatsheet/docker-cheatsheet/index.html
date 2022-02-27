@@ -1,0 +1,655 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="This is a quick reference cheat sheet for Docker. And you can find the most common Docker commands here.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="This is a quick reference cheat sheet for Docker. And you can find the most common Docker commands here.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://docs.cuong-dev.ml/docs/cheatsheet/docker-cheatsheet/"><meta property="article:section" content="docs">
+<title>Docker Cheatsheet | Cuong Blogs</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.b005cff9113c07f7a3e9b382e502a1d9a53f4b137955f56f357f8ea8253a29fd.js integrity="sha256-sAXP+RE8B/ej6bOC5QKh2aU/SxN5VfVvNX+OqCU6Kf0=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>Cuong Blogs</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<span>Aws</span>
+<ul>
+<li>
+<a href=/docs/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
+</li>
+<li>
+<a href=/docs/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
+</li>
+<li>
+<a href=/docs/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a>
+</li>
+<li>
+<a href=/docs/aws/setting-swap-ec2/>Setting Swap Ec2</a>
+</li>
+<li>
+<a href=/docs/aws/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Azure</span>
+<ul>
+<li>
+<a href=/docs/azure/azure-2/>Azure 2</a>
+</li>
+<li>
+<a href=/docs/azure/azure-new-service-update/>Azure New Service Update</a>
+</li>
+<li>
+<a href=/docs/azure/untitled-3/>Untitled 3</a>
+</li>
+<li>
+<a href=/docs/azure/untitled-copy/>Untitled Copy</a>
+</li>
+<li>
+<a href=/docs/azure/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Cheatsheet</span>
+<ul>
+<li>
+<a href=/docs/cheatsheet/bash/>Bash</a>
+</li>
+<li>
+<a href=/docs/cheatsheet/docker-cheatsheet/ class=active>Docker Cheatsheet</a>
+</li>
+<li>
+<a href=/docs/cheatsheet/grep/>Grep</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Databases</span>
+<ul>
+<li>
+<a href=/docs/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a>
+</li>
+<li>
+<a href=/docs/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Docker</span>
+<ul>
+<li>
+<a href=/docs/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
+</li>
+<li>
+<a href=/docs/docker/disstroless-docker-image/>Disstroless Docker Image</a>
+</li>
+<li>
+<a href=/docs/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
+</li>
+<li>
+<a href=/docs/docker/quick-install-docker/>Quick Install Docker</a>
+</li>
+<li>
+<a href=/docs/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
+</li>
+<li>
+<a href=/docs/docker/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Gcp</span>
+<ul>
+<li>
+<a href=/docs/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a>
+</li>
+<li>
+<a href=/docs/gcp/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Jenkins</span>
+<ul>
+<li>
+<a href=/docs/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a>
+</li>
+<li>
+<a href=/docs/jenkins/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>K8s</span>
+<ul>
+<li>
+<a href=/docs/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
+</li>
+<li>
+<a href=/docs/k8s/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Linux</span>
+<ul>
+<li>
+<a href=/docs/linux/check-ssl-certificate-expiration-date-s/>Check Ssl Certificate Expiration Date S</a>
+</li>
+<li>
+<a href=/docs/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a>
+</li>
+<li>
+<a href=/docs/linux/print-all-duplicated/>Print All Duplicated</a>
+</li>
+<li>
+<a href=/docs/linux/quick-load-.env-file/>Quick Load .Env File</a>
+</li>
+<li>
+<a href=/docs/linux/writing-bash-shell-scripts-best-practice/>Writing Bash Shell Scripts Best Practice</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Monitoring</span>
+<ul>
+<li>
+<a href=/docs/monitoring/alert-manager/>Alert Manager</a>
+</li>
+<li>
+<a href=/docs/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Others</span>
+<ul>
+<li>
+<a href=/docs/others/alert-slack-by-hook/>Alert Slack by Hook</a>
+</li>
+<li>
+<a href=/docs/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=/docs/about-me/>Introduction</a>
+<ul>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href=/posts/>
+Blog
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Docker Cheatsheet</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#httpsquickrefmedockergetting-startedgetting-started-a-idgetting-starteda><a href=https://quickref.me/docker#getting-started>#</a>Getting started </a></li>
+<li><a href=#httpsquickrefmedockercontainerscontainers-a-idcontainersa><a href=https://quickref.me/docker#containers>#</a>Containers </a></li>
+<li><a href=#httpsquickrefmedockerimagesimages-a-idimagesa><a href=https://quickref.me/docker#images>#</a>Images </a></li>
+<li><a href=#httpsquickrefmedockernetworkingnetworking-a-idnetworkinga><a href=https://quickref.me/docker#networking>#</a>Networking </a></li>
+<li><a href=#httpsquickrefmedockermiscellaneousmiscellaneous-a-idmiscellaneousa><a href=https://quickref.me/docker#miscellaneous>#</a>Miscellaneous </a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=docker>
+Docker
+<a class=anchor href=#docker>#</a>
+</h1>
+<h3 id=httpsquickrefmedockergetting-startedgetting-started-a-idgetting-starteda>
+<a href=https://quickref.me/docker#getting-started>#</a>Getting started
+<a class=anchor href=#httpsquickrefmedockergetting-startedgetting-started-a-idgetting-starteda>#</a>
+</h3>
+<h4 id=getting-started-a-idgetting-started-2a>
+Getting started
+<a class=anchor href=#getting-started-a-idgetting-started-2a>#</a>
+</h4>
+<p>Create and run a container in background</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker run -d -p 80:80 docker/getting-started
+</code></pre></div><ul>
+<li><code>-d</code> - Run the container in detached mode</li>
+<li><code>-p 80:80</code> - Map port 80 to port 80 in the container</li>
+<li><code>docker/getting-started</code> - The image to use</li>
+</ul>
+<p>Create and run a container in foreground</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker run -it -p 8001:8080 --name my-nginx nginx
+</code></pre></div><ul>
+<li><code>-it</code> - Interactive bash mode</li>
+<li><code>-p 8001:8080</code> - Map port 8001 to port 8080 in the container</li>
+<li><code>--name my-nginx</code> - Specify a name</li>
+<li><code>nginx</code> - The image to use</li>
+</ul>
+<h4 id=general-commands-a-idgeneral-commandsa>
+General commands
+<a class=anchor href=#general-commands-a-idgeneral-commandsa>#</a>
+</h4>
+<table>
+<thead>
+<tr>
+<th style=text-align:left><code>docker ps</code></th>
+<th style=text-align:left>List running containers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left><code>docker ps -a</code></td>
+<td style=text-align:left>List all containers</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker ps -s</code></td>
+<td style=text-align:left>List running containers <em>(with CPU / memory)</em></td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker images</code></td>
+<td style=text-align:left>List all images</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker exec -it &lt;container> bash</code></td>
+<td style=text-align:left>Connecting to container</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker logs &lt;container></code></td>
+<td style=text-align:left>Shows container&rsquo;s console log</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker stop &lt;container></code></td>
+<td style=text-align:left>Stop a container</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker restart &lt;container></code></td>
+<td style=text-align:left>Restart a container</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker rm &lt;container></code></td>
+<td style=text-align:left>Remove a container</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker port &lt;container></code></td>
+<td style=text-align:left>Shows container&rsquo;s port mapping</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker top &lt;container></code></td>
+<td style=text-align:left>List processes</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker kill &lt;container></code></td>
+<td style=text-align:left>Kill a container</td>
+</tr>
+</tbody>
+</table>
+<p>Parameter <code>&lt;container></code> can be container id or name</p>
+<h3 id=httpsquickrefmedockercontainerscontainers-a-idcontainersa>
+<a href=https://quickref.me/docker#containers>#</a>Containers
+<a class=anchor href=#httpsquickrefmedockercontainerscontainers-a-idcontainersa>#</a>
+</h3>
+<h4 id=starting--stopping-a-idstarting-stoppinga>
+Starting & Stopping
+<a class=anchor href=#starting--stopping-a-idstarting-stoppinga>#</a>
+</h4>
+<table>
+<thead>
+<tr>
+<th style=text-align:left><code>docker start nginx-server</code></th>
+<th style=text-align:left>Starting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left><code>docker stop nginx-server</code></td>
+<td style=text-align:left>Stopping</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker restart nginx-server</code></td>
+<td style=text-align:left>Restarting</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker pause nginx-server</code></td>
+<td style=text-align:left>Pausing</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker unpause nginx-server</code></td>
+<td style=text-align:left>Unpausing</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker wait nginx-server</code></td>
+<td style=text-align:left>Blocking a Container</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker kill nginx-server</code></td>
+<td style=text-align:left>Sending a SIGKILL</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker attach nginx-server</code></td>
+<td style=text-align:left>Connecting to an Existing Container</td>
+</tr>
+</tbody>
+</table>
+<h4 id=information-a-idinformationa>
+Information
+<a class=anchor href=#information-a-idinformationa>#</a>
+</h4>
+<table>
+<thead>
+<tr>
+<th style=text-align:left><code>docker ps</code></th>
+<th style=text-align:left>List running containers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left><code>docker ps -a</code></td>
+<td style=text-align:left>List all containers</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker logs nginx-server</code></td>
+<td style=text-align:left>Container Logs</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker inspect nginx-server</code></td>
+<td style=text-align:left>Inspecting Containers</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker events nginx-server</code></td>
+<td style=text-align:left>Containers Events</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker port nginx-server</code></td>
+<td style=text-align:left>Public Ports</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker top nginx-server</code></td>
+<td style=text-align:left>Running Processes</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker stats nginx-server</code></td>
+<td style=text-align:left>Container Resource Usage</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker diff nginx-server</code></td>
+<td style=text-align:left>Lists the changes made to a container.</td>
+</tr>
+</tbody>
+</table>
+<h4 id=creating-a-idcreatinga>
+Creating
+<a class=anchor href=#creating-a-idcreatinga>#</a>
+</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker create [options] IMAGE
+  -a, --attach               # attach stdout/err
+  -i, --interactive          # attach stdin (interactive)
+  -t, --tty                  # pseudo-tty
+      --name NAME            # name your image
+  -p, --publish 5000:5000    # port map (host:container)
+      --expose 5432          # expose a port to containers
+  -P, --publish-all          # publish all ports
+      --link container:alias # linking
+  -v, --volume `pwd`:/app    # mount (absolute paths needed)
+  -e, --env NAME=hello       # env vars
+</code></pre></div><p><strong>Example</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker create --name my_redis --expose 6379 redis:3.0.2
+</code></pre></div><h4 id=manipulating-a-idmanipulatinga>
+Manipulating
+<a class=anchor href=#manipulating-a-idmanipulatinga>#</a>
+</h4>
+<p>Renaming a Container</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker rename my-nginx nginx-server
+</code></pre></div><p>Removing a Container</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker rm nginx-server
+</code></pre></div><p>Updating a Container</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker update --cpu-shares 512 -m 300M nginx-server
+</code></pre></div><h3 id=httpsquickrefmedockerimagesimages-a-idimagesa>
+<a href=https://quickref.me/docker#images>#</a>Images
+<a class=anchor href=#httpsquickrefmedockerimagesimages-a-idimagesa>#</a>
+</h3>
+<h4 id=manipulating-a-idmanipulating-2a>
+Manipulating
+<a class=anchor href=#manipulating-a-idmanipulating-2a>#</a>
+</h4>
+<table>
+<thead>
+<tr>
+<th style=text-align:left><code>docker images</code></th>
+<th style=text-align:left>Listing images</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left><code>docker rmi nginx</code></td>
+<td style=text-align:left>Removing an image</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker load &lt; ubuntu.tar.gz</code></td>
+<td style=text-align:left>Loading a tarred repository</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker load --input ubuntu.tar</code></td>
+<td style=text-align:left>Loading a tarred repository</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker save busybox > ubuntu.tar</code></td>
+<td style=text-align:left>Save an image to a tar archive</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker history</code></td>
+<td style=text-align:left>Showing the history of an image</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker commit nginx</code></td>
+<td style=text-align:left>Save a container as an image.</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker tag nginx eon01/nginx</code></td>
+<td style=text-align:left>Tagging an image</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker push eon01/nginx</code></td>
+<td style=text-align:left>Pushing an image</td>
+</tr>
+</tbody>
+</table>
+<h4 id=building-images-a-idbuilding-imagesa>
+Building Images
+<a class=anchor href=#building-images-a-idbuilding-imagesa>#</a>
+</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker build .
+$ docker build github.com/creack/docker-firefox
+$ docker build - &lt; Dockerfile
+$ docker build - &lt; context.tar.gz
+$ docker build -t eon/nginx-server .
+$ docker build -f myOtherDockerfile .
+$ curl example.com/remote/Dockerfile | docker build -f - .
+</code></pre></div><h3 id=httpsquickrefmedockernetworkingnetworking-a-idnetworkinga>
+<a href=https://quickref.me/docker#networking>#</a>Networking
+<a class=anchor href=#httpsquickrefmedockernetworkingnetworking-a-idnetworkinga>#</a>
+</h3>
+<h4 id=manipulating-a-idmanipulating-3a>
+Manipulating
+<a class=anchor href=#manipulating-a-idmanipulating-3a>#</a>
+</h4>
+<p>Removing a network</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker network rm MyOverlayNetwork
+</code></pre></div><p>Listing networks</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker network ls
+</code></pre></div><p>Getting information about a network</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker network inspect MyOverlayNetwork
+</code></pre></div><p>Connecting a running container to a network</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker network connect MyOverlayNetwork nginx
+</code></pre></div><p>Connecting a container to a network when it starts</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker run -it -d --network=MyOverlayNetwork nginx
+</code></pre></div><p>Disconnecting a container from a network</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker network disconnect MyOverlayNetwork nginx
+</code></pre></div><h4 id=creating-networks-a-idcreating-networksa>
+Creating Networks
+<a class=anchor href=#creating-networks-a-idcreating-networksa>#</a>
+</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker network create -d overlay MyOverlayNetwork
+
+docker network create -d bridge MyBridgeNetwork
+
+docker network create -d overlay \
+  --subnet=192.168.0.0/16 \
+  --subnet=192.170.0.0/16 \
+  --gateway=192.168.0.100 \
+  --gateway=192.170.0.100 \
+  --ip-range=192.168.1.0/24 \
+  --aux-address=&#34;my-router=192.168.1.5&#34; \
+  --aux-address=&#34;my-switch=192.168.1.6&#34; \
+  --aux-address=&#34;my-printer=192.170.1.5&#34; \
+  --aux-address=&#34;my-nas=192.170.1.6&#34; \
+  MyOverlayNetwork
+</code></pre></div><h3 id=httpsquickrefmedockermiscellaneousmiscellaneous-a-idmiscellaneousa>
+<a href=https://quickref.me/docker#miscellaneous>#</a>Miscellaneous
+<a class=anchor href=#httpsquickrefmedockermiscellaneousmiscellaneous-a-idmiscellaneousa>#</a>
+</h3>
+<h4 id=docker-hub-a-iddocker-huba>
+Docker Hub
+<a class=anchor href=#docker-hub-a-iddocker-huba>#</a>
+</h4>
+<table>
+<thead>
+<tr>
+<th style=text-align:left><code>docker search search_word</code></th>
+<th style=text-align:left>Search docker hub for images.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left><code>docker pull user/image</code></td>
+<td style=text-align:left>Downloads an image from docker hub.</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker login</code></td>
+<td style=text-align:left>Authenticate to docker hub</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker push user/image</code></td>
+<td style=text-align:left>Uploads an image to docker hub.</td>
+</tr>
+</tbody>
+</table>
+<h4 id=registry-commands-a-idregistry-commandsa>
+Registry commands
+<a class=anchor href=#registry-commands-a-idregistry-commandsa>#</a>
+</h4>
+<p>Login to a Registry</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker login
+$ docker login localhost:8080
+</code></pre></div><p>Logout from a Registry</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker logout
+$ docker logout localhost:8080
+</code></pre></div><p>Searching an Image</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker search nginx
+$ docker search nginx --stars=3 --no-trunc busybox
+</code></pre></div><p>Pulling an Image</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker pull nginx
+$ docker pull eon01/nginx localhost:5000/myadmin/nginx
+</code></pre></div><p>Pushing an Image</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker push eon01/nginx
+$ docker push eon01/nginx localhost:5000/myadmin/nginx
+</code></pre></div><h4 id=batch-clean-a-idbatch-cleana>
+Batch clean
+<a class=anchor href=#batch-clean-a-idbatch-cleana>#</a>
+</h4>
+<table>
+<thead>
+<tr>
+<th style=text-align:left><code>docker stop -f $(docker ps -a -q)</code></th>
+<th style=text-align:left>Stopping all containers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left><code>docker rm -f $(docker ps -a -q)</code></td>
+<td style=text-align:left>Removing all containers</td>
+</tr>
+<tr>
+<td style=text-align:left><code>docker rmi -f $(docker images -q)</code></td>
+<td style=text-align:left>Removing all images</td>
+</tr>
+</tbody>
+</table>
+<h4 id=volumes-a-idvolumesa>
+Volumes
+<a class=anchor href=#volumes-a-idvolumesa>#</a>
+</h4>
+<p>Check volumes</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker volume ls
+</code></pre></div><p>Cleanup unused volumes</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ docker volume prune
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#httpsquickrefmedockergetting-startedgetting-started-a-idgetting-starteda><a href=https://quickref.me/docker#getting-started>#</a>Getting started </a></li>
+<li><a href=#httpsquickrefmedockercontainerscontainers-a-idcontainersa><a href=https://quickref.me/docker#containers>#</a>Containers </a></li>
+<li><a href=#httpsquickrefmedockerimagesimages-a-idimagesa><a href=https://quickref.me/docker#images>#</a>Images </a></li>
+<li><a href=#httpsquickrefmedockernetworkingnetworking-a-idnetworkinga><a href=https://quickref.me/docker#networking>#</a>Networking </a></li>
+<li><a href=#httpsquickrefmedockermiscellaneousmiscellaneous-a-idmiscellaneousa><a href=https://quickref.me/docker#miscellaneous>#</a>Miscellaneous </a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
