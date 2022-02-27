@@ -3,7 +3,7 @@
 <meta name=generator content="Hugo 0.92.2">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Table of contents #   About me  Linux #   Writing bash shell scripts best practice Dynamic port mapping for access FTP server Check SSL certificate expiration date(s) Quick load .env file Print all duplicated lines in a file  AWS #   Mount new EBS volume to AWS EC2 Setting Swap EC2 Extend the file system of EBS volumes Install cert bot ssl let&rsquo;sencrypt on amz linux 2 Install docker, docker-compose on AWS EC2  Docker #   Checking file when build docker Disstroless docker image Docker - How to cleanup (unused) resources Best practices for building containers Quick install docker Remove unused docker resource  Kubernetes #   Kubectl productivity Linkerd Cheatsheet  GCP #   Mistakes to avoid when using Google Cloud Untitled  Azure #   Azure 2 Untitled  Jenkins #   Jenkins fix report cannot view on browser Jenkins deploy AWS ECS  Others #   Alert slack by hook Install redmine on centos 7  Monitoring #   Alert manager Install node_exporter as systemd  Databases #   Postgres create user and grant permistions Install postgres client Amazon Linux 1    My website  Cheatsheet #   Docker Grep Bash  ">
+<meta name=description content="Table of contents #   About me My website  Linux #   Writing bash shell scripts best practice Dynamic port mapping for access FTP server Check SSL certificate expiration date(s) Quick load .env file Print all duplicated lines in a file  Cloud Provider #  AWS #   Mount new EBS volume to AWS EC2 Setting Swap EC2 Extend the file system of EBS volumes Install cert bot ssl let&rsquo;sencrypt on amz linux 2 Install docker, docker-compose on AWS EC2  GCP #   Mistakes to avoid when using Google Cloud Untitled  Azure #   Azure 2  Containers #  Docker #   Checking file when build docker Disstroless docker image Docker - How to cleanup (unused) resources Best practices for building containers Quick install docker Remove unused docker resource  Kubernetes #   Kubectl productivity Linkerd Cheatsheet  CI/CD #  Jenkins #   Jenkins fix report cannot view on browser Jenkins deploy AWS ECS  Others #   Alert slack by hook Install redmine on centos 7  Observability #  Monitoring #   Alert manager Install node_exporter as systemd  Databases #   Postgres create user and grant permistions Install postgres client Amazon Linux 1  Cheatsheet #   Docker Grep Bash  ">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
 <meta property="og:description" content>
@@ -14,7 +14,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.d1fbb1010c6187c95fd0cb971d08c98235b7d5e85b7e9b07331c319503802b10.js integrity="sha256-0fuxAQxhh8lf0MuXHQjJgjW31ehbfpsHMxwxlQOAKxA=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.ff33be2a6c4982b80f3a0076357ba8699182657564d8134b09053b06a08a8371.js integrity="sha256-/zO+KmxJgrgPOgB2NXuoaZGCZXVk2BNLCQU7BqCKg3E=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=http://docs.cuong-dev.ml/index.xml title=docs.cuong-dev.ml>
 </head>
 <body dir=ltr>
@@ -50,34 +50,6 @@
 </li>
 <li>
 <a href=/posts/hugoisforlovers/>Getting Started with Hugo</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Aws</span>
-<ul>
-<li>
-<a href=/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
-</li>
-<li>
-<a href=/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a>
-</li>
-<li>
-<a href=/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
-</li>
-<li>
-<a href=/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a>
-</li>
-<li>
-<a href=/aws/setting-swap-ec2/>Setting Swap Ec2</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Azure</span>
-<ul>
-<li>
-<a href=/azure/azure-new-service-update/>Azure New Service Update</a>
 </li>
 </ul>
 </li>
@@ -120,6 +92,47 @@
 </ul>
 </li>
 <li>
+<span>Cloud Provider</span>
+<ul>
+<li>
+<span>Aws</span>
+<ul>
+<li>
+<a href=/cloud-provider/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
+</li>
+<li>
+<a href=/cloud-provider/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a>
+</li>
+<li>
+<a href=/cloud-provider/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
+</li>
+<li>
+<a href=/cloud-provider/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a>
+</li>
+<li>
+<a href=/cloud-provider/aws/setting-swap-ec2/>Setting Swap Ec2</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Azure</span>
+<ul>
+<li>
+<a href=/cloud-provider/azure/azure-new-service-update/>Azure New Service Update</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Gcp</span>
+<ul>
+<li>
+<a href=/cloud-provider/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
 <span>Databases</span>
 <ul>
 <li>
@@ -130,54 +143,6 @@
 </li>
 <li>
 <a href=/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Docker</span>
-<ul>
-<li>
-<a href=/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a>
-</li>
-<li>
-<a href=/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
-</li>
-<li>
-<a href=/docker/disstroless-docker-image/>Disstroless Docker Image</a>
-</li>
-<li>
-<a href=/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
-</li>
-<li>
-<a href=/docker/quick-install-docker/>Quick Install Docker</a>
-</li>
-<li>
-<a href=/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Gcp</span>
-<ul>
-<li>
-<a href=/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a>
-</li>
-<li>
-<a href=/gcp/untitled/>Untitled</a>
-</li>
-</ul>
-</li>
-<li>
-<span>K8s</span>
-<ul>
-<li>
-<a href=/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
-</li>
-<li>
-<a href=/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a>
-</li>
-<li>
-<a href=/k8s/quick-scale-deployment-accross-namespaces/>Quick Scale Deployment Accross Namespaces</a>
 </li>
 </ul>
 </li>
@@ -205,13 +170,18 @@
 </ul>
 </li>
 <li>
+<span>Observability</span>
+<ul>
+<li>
 <span>Monitoring</span>
 <ul>
 <li>
-<a href=/monitoring/alert-manager/>Alert Manager</a>
+<a href=/observability/monitoring/alert-manager/>Alert Manager</a>
 </li>
 <li>
-<a href=/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a>
+<a href=/observability/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -227,10 +197,57 @@
 </ul>
 </li>
 <li>
+<span>Secret Management</span>
+<ul>
+<li>
 <span>Vault</span>
 <ul>
 <li>
-<a href=/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a>
+<a href=/secret-management/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<span>Containers</span>
+<ul>
+<li>
+<span>Docker</span>
+<ul>
+<li>
+<a href=/containers/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a>
+</li>
+<li>
+<a href=/containers/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
+</li>
+<li>
+<a href=/containers/docker/disstroless-docker-image/>Disstroless Docker Image</a>
+</li>
+<li>
+<a href=/containers/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
+</li>
+<li>
+<a href=/containers/docker/quick-install-docker/>Quick Install Docker</a>
+</li>
+<li>
+<a href=/containers/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
+</li>
+</ul>
+</li>
+<li>
+<span>K8s</span>
+<ul>
+<li>
+<a href=/containers/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
+</li>
+<li>
+<a href=/containers/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a>
+</li>
+<li>
+<a href=/containers/k8s/quick-scale-deployment-accross-namespaces/>Quick Scale Deployment Accross Namespaces</a>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -254,14 +271,30 @@
 <nav id=TableOfContents>
 <ul>
 <li><a href=#linux>Linux</a></li>
+<li><a href=#cloud-provider>Cloud Provider</a>
+<ul>
 <li><a href=#aws>AWS</a></li>
+<li><a href=#gcp>GCP</a></li>
+</ul>
+</li>
+<li><a href=#azure>Azure</a></li>
+<li><a href=#containers>Containers</a>
+<ul>
 <li><a href=#docker>Docker</a></li>
 <li><a href=#kubernetes-a-idk8sa>Kubernetes </a></li>
-<li><a href=#gcp>GCP</a></li>
-<li><a href=#azure>Azure</a></li>
+</ul>
+</li>
+<li><a href=#cicd>CI/CD</a>
+<ul>
 <li><a href=#jenkins>Jenkins</a></li>
+</ul>
+</li>
 <li><a href=#others>Others</a></li>
-<li><a href=#monitoring>Monitoring</a></li>
+<li><a href=#observability>Observability</a>
+<ul>
+<li></li>
+</ul>
+</li>
 <li><a href=#databases>Databases</a></li>
 <li><a href=#cheatsheet>Cheatsheet</a></li>
 </ul>
@@ -274,6 +307,7 @@ Table of contents
 </h1>
 <ul>
 <li><a href=about-me>About me</a></li>
+<li><a href=https://cuong-dev.ml/>My website</a></li>
 </ul>
 <h2 id=linux>
 Linux
@@ -286,10 +320,14 @@ Linux
 <li><a href=linux/quick-load-.env-file>Quick load .env file</a></li>
 <li><a href=linux/untitled>Print all duplicated lines in a file</a></li>
 </ul>
-<h2 id=aws>
+<h2 id=cloud-provider>
+Cloud Provider
+<a class=anchor href=#cloud-provider>#</a>
+</h2>
+<h3 id=aws>
 AWS
 <a class=anchor href=#aws>#</a>
-</h2>
+</h3>
 <ul>
 <li><a href=aws/mount-new-ebs-volume-to-aws-ec2>Mount new EBS volume to AWS EC2</a></li>
 <li><a href=aws/setting-swap-ec2>Setting Swap EC2</a></li>
@@ -297,30 +335,10 @@ AWS
 <li><a href=aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2>Install cert bot ssl let&rsquo;sencrypt on amz linux 2</a></li>
 <li><a href=aws/untitled>Install docker, docker-compose on AWS EC2</a></li>
 </ul>
-<h2 id=docker>
-Docker
-<a class=anchor href=#docker>#</a>
-</h2>
-<ul>
-<li><a href=docker/checking-file-when-build-docker>Checking file when build docker</a></li>
-<li><a href=docker/disstroless-docker-image>Disstroless docker image</a></li>
-<li><a href=docker/docker-how-to-cleanup-unused-resources>Docker - How to cleanup (unused) resources</a></li>
-<li><a href=docker/untitled>Best practices for building containers</a></li>
-<li><a href=docker/quick-install-docker>Quick install docker</a></li>
-<li><a href=docker/remove-unused-docker-resource>Remove unused docker resource</a></li>
-</ul>
-<h2 id=kubernetes-a-idk8sa>
-Kubernetes
-<a class=anchor href=#kubernetes-a-idk8sa>#</a>
-</h2>
-<ul>
-<li><a href=k8s/kubectl-tips-and-tricks>Kubectl productivity</a></li>
-<li><a href=k8s/untitled>Linkerd Cheatsheet</a></li>
-</ul>
-<h2 id=gcp>
+<h3 id=gcp>
 GCP
 <a class=anchor href=#gcp>#</a>
-</h2>
+</h3>
 <ul>
 <li><a href=gcp/mistakes-to-avoid-when-using-google-cloud>Mistakes to avoid when using Google Cloud</a></li>
 <li><a href=gcp/untitled>Untitled</a></li>
@@ -331,12 +349,39 @@ Azure
 </h2>
 <ul>
 <li><a href=azure/azure-2>Azure 2</a></li>
-<li><a href=azure/untitled>Untitled</a></li>
 </ul>
-<h2 id=jenkins>
+<h2 id=containers>
+Containers
+<a class=anchor href=#containers>#</a>
+</h2>
+<h3 id=docker>
+Docker
+<a class=anchor href=#docker>#</a>
+</h3>
+<ul>
+<li><a href=docker/checking-file-when-build-docker>Checking file when build docker</a></li>
+<li><a href=docker/disstroless-docker-image>Disstroless docker image</a></li>
+<li><a href=docker/docker-how-to-cleanup-unused-resources>Docker - How to cleanup (unused) resources</a></li>
+<li><a href=docker/untitled>Best practices for building containers</a></li>
+<li><a href=docker/quick-install-docker>Quick install docker</a></li>
+<li><a href=docker/remove-unused-docker-resource>Remove unused docker resource</a></li>
+</ul>
+<h3 id=kubernetes-a-idk8sa>
+Kubernetes
+<a class=anchor href=#kubernetes-a-idk8sa>#</a>
+</h3>
+<ul>
+<li><a href=k8s/kubectl-tips-and-tricks>Kubectl productivity</a></li>
+<li><a href=k8s/untitled>Linkerd Cheatsheet</a></li>
+</ul>
+<h2 id=cicd>
+CI/CD
+<a class=anchor href=#cicd>#</a>
+</h2>
+<h3 id=jenkins>
 Jenkins
 <a class=anchor href=#jenkins>#</a>
-</h2>
+</h3>
 <ul>
 <li><a href=jenkins/jenkins-fix-report-cannot-view-on-browser>Jenkins fix report cannot view on browser</a></li>
 <li><a href=jenkins/untitled>Jenkins deploy AWS ECS</a></li>
@@ -349,10 +394,14 @@ Others
 <li><a href=others/alert-slack-by-hook>Alert slack by hook</a></li>
 <li><a href=others/install-redmine-on-centos-7>Install redmine on centos 7</a></li>
 </ul>
-<h2 id=monitoring>
+<h2 id=observability>
+Observability
+<a class=anchor href=#observability>#</a>
+</h2>
+<h4 id=monitoring>
 Monitoring
 <a class=anchor href=#monitoring>#</a>
-</h2>
+</h4>
 <ul>
 <li><a href=monitoring/alert-manager>Alert manager</a></li>
 <li><a href=monitoring/install-node_exporter-as-systemd>Install node_exporter as systemd</a></li>
@@ -364,10 +413,6 @@ Databases
 <ul>
 <li><a href=databases/postgres-create-user-and-grant-permistions>Postgres create user and grant permistions</a></li>
 <li><a href=databases/install-postgres-client-amazon-linux-1>Install postgres client Amazon Linux 1</a></li>
-</ul>
-<hr>
-<ul>
-<li><a href=https://cuong-dev.ml/>My website</a></li>
 </ul>
 <h2 id=cheatsheet>
 Cheatsheet
@@ -393,14 +438,30 @@ Cheatsheet
 <nav id=TableOfContents>
 <ul>
 <li><a href=#linux>Linux</a></li>
+<li><a href=#cloud-provider>Cloud Provider</a>
+<ul>
 <li><a href=#aws>AWS</a></li>
+<li><a href=#gcp>GCP</a></li>
+</ul>
+</li>
+<li><a href=#azure>Azure</a></li>
+<li><a href=#containers>Containers</a>
+<ul>
 <li><a href=#docker>Docker</a></li>
 <li><a href=#kubernetes-a-idk8sa>Kubernetes </a></li>
-<li><a href=#gcp>GCP</a></li>
-<li><a href=#azure>Azure</a></li>
+</ul>
+</li>
+<li><a href=#cicd>CI/CD</a>
+<ul>
 <li><a href=#jenkins>Jenkins</a></li>
+</ul>
+</li>
 <li><a href=#others>Others</a></li>
-<li><a href=#monitoring>Monitoring</a></li>
+<li><a href=#observability>Observability</a>
+<ul>
+<li></li>
+</ul>
+</li>
 <li><a href=#databases>Databases</a></li>
 <li><a href=#cheatsheet>Cheatsheet</a></li>
 </ul>
