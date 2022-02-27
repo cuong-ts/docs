@@ -1,3 +1,4 @@
 baseURL = 'http://docs.cuong-dev.ml/'
 languageCode = 'en-us'
 title = 'Cuong Blogs'
+theme = "hugo-book"
