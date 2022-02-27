@@ -2,19 +2,19 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Azure new service update 3 #  15.0.0 - 2042-12-03 #  Fixed #   Removed humans, they weren&rsquo;t doing fine with animals.  Changed #   Animals are now super cute, all of them.  14.0.0 - 2042-10-06 #  Added #   Introduced animals into the world, we believe they&rsquo;re going to be a neat addition.  ">
+<meta name=description content="quick scale deployment accross namespaces #  k get deploy | awk 'NR > 1 {print $1}' | xargs -n1 kubectl scale deploy --replicas=0 ">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Azure new service update 3 #  15.0.0 - 2042-12-03 #  Fixed #   Removed humans, they weren&rsquo;t doing fine with animals.  Changed #   Animals are now super cute, all of them.  14.0.0 - 2042-10-06 #  Added #   Introduced animals into the world, we believe they&rsquo;re going to be a neat addition.  ">
+<meta property="og:description" content="quick scale deployment accross namespaces #  k get deploy | awk 'NR > 1 {print $1}' | xargs -n1 kubectl scale deploy --replicas=0 ">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://docs.cuong-dev.ml/azure/untitled-3/"><meta property="article:section" content="azure">
-<meta property="article:modified_time" content="2022-02-27T15:14:21+07:00">
-<title>Untitled 3 | docs.cuong-dev.ml</title>
+<meta property="og:url" content="http://docs.cuong-dev.ml/k8s/quick-scale-deployment-accross-namespaces/"><meta property="article:section" content="k8s">
+<meta property="article:modified_time" content="2022-02-27T18:58:59+07:00">
+<title>Quick Scale Deployment Accross Namespaces | docs.cuong-dev.ml</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.5d5ec4f514d87024bbbddc42888a5321f1cae74d7d56c4e06d68ab39b6a4d559.js integrity="sha256-XV7E9RTYcCS7vdxCiIpTIfHK5019VsTgbWirObak1Vk=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.e374511a52e8b5f97165d7e5425eb35df777aadd127d7a4ec9ff808f915d62e2.js integrity="sha256-43RRGlLotflxZdflQl6zXfd3qt0SfXpOyf+Aj5FdYuI=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -84,19 +84,7 @@
 <span>Azure</span>
 <ul>
 <li>
-<a href=/azure/azure-2/>Azure 2</a>
-</li>
-<li>
 <a href=/azure/azure-new-service-update/>Azure New Service Update</a>
-</li>
-<li>
-<a href=/azure/untitled-3/ class=active>Untitled 3</a>
-</li>
-<li>
-<a href=/azure/untitled-copy/>Untitled Copy</a>
-</li>
-<li>
-<a href=/azure/untitled/>Untitled</a>
 </li>
 </ul>
 </li>
@@ -182,6 +170,9 @@
 <li>
 <a href=/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a>
 </li>
+<li>
+<a href=/k8s/quick-scale-deployment-accross-namespaces/ class=active>Quick Scale Deployment Accross Namespaces</a>
+</li>
 </ul>
 </li>
 <li>
@@ -237,7 +228,7 @@
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Untitled 3</strong>
+<strong>Quick Scale Deployment Accross Namespaces</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
@@ -245,55 +236,17 @@
 <aside class="hidden clearfix">
 <nav id=TableOfContents>
 <ul>
-<li><a href=#1500---2042-12-03>15.0.0 - 2042-12-03</a>
-<ul>
-<li><a href=#fixed>Fixed</a></li>
-<li><a href=#changed>Changed</a></li>
-</ul>
-</li>
-<li><a href=#1400---2042-10-06>14.0.0 - 2042-10-06</a>
-<ul>
-<li><a href=#added>Added</a></li>
-</ul>
-</li>
+<li><a href=#quick-scale-deployment-accross-namespaces>quick scale deployment accross namespaces</a></li>
 </ul>
 </nav>
 </aside>
 </header>
-<article class=markdown><h1 id=azure-new-service-update-3>
-Azure new service update 3
-<a class=anchor href=#azure-new-service-update-3>#</a>
-</h1>
-<h2 id=1500---2042-12-03>
-15.0.0 - 2042-12-03
-<a class=anchor href=#1500---2042-12-03>#</a>
+<article class=markdown><h2 id=quick-scale-deployment-accross-namespaces>
+quick scale deployment accross namespaces
+<a class=anchor href=#quick-scale-deployment-accross-namespaces>#</a>
 </h2>
-<h3 id=fixed>
-Fixed
-<a class=anchor href=#fixed>#</a>
-</h3>
-<ul>
-<li>Removed humans, they weren&rsquo;t doing fine with animals.</li>
-</ul>
-<h3 id=changed>
-Changed
-<a class=anchor href=#changed>#</a>
-</h3>
-<ul>
-<li>Animals are now super cute, all of them.</li>
-</ul>
-<h2 id=1400---2042-10-06>
-14.0.0 - 2042-10-06
-<a class=anchor href=#1400---2042-10-06>#</a>
-</h2>
-<h3 id=added>
-Added
-<a class=anchor href=#added>#</a>
-</h3>
-<ul>
-<li>Introduced animals into the world, we believe they&rsquo;re going to be a neat addition.</li>
-</ul>
-</article>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>k get deploy | awk <span style=color:#e6db74>&#39;NR &gt; 1 {print $1}&#39;</span> | xargs -n1  kubectl scale deploy --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</code></pre></div></article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
 </div>
@@ -307,17 +260,7 @@ Added
 <div class=book-toc-content>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#1500---2042-12-03>15.0.0 - 2042-12-03</a>
-<ul>
-<li><a href=#fixed>Fixed</a></li>
-<li><a href=#changed>Changed</a></li>
-</ul>
-</li>
-<li><a href=#1400---2042-10-06>14.0.0 - 2042-10-06</a>
-<ul>
-<li><a href=#added>Added</a></li>
-</ul>
-</li>
+<li><a href=#quick-scale-deployment-accross-namespaces>quick scale deployment accross namespaces</a></li>
 </ul>
 </nav>
 </div>
