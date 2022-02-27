@@ -1,5 +1,5 @@
 ---
-weight: 8
+weight: 2
 title: Blogs
 bookCollapseSection: true
 ---

@@ -1,5 +1,5 @@
 ---
-weight: 8
+weight: 1
 title: About me
 type: docs
 ---
