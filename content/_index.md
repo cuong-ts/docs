@@ -2,40 +2,37 @@
 title: Introduction
 type: docs
 ---
+# About me
 
-# Acerbo datus maxime
+**Cuong Nguyen Duc**  
+Sr. DevOps Engineer   
+HCMC, Vietnam  
+LinkedIn:[ **https://www.linkedin.com/in/ndcuong**](https://www.linkedin.com/in/ndcuong)\*\*\*\*
 
-{{< columns >}}
-## Astris ipse furtiva
+### About me
 
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
+Sr. DevOps Engineer with 4+ years working in a variety of environment, from mixed physical, virtual environment moving to cloud.
 
-<--->
+Currently working at [http://scs71.com/](http://scs71.com/) - SCS aspires to develop the best and most effective solutions in the Shipping & Logistics industries.
 
-## Suis quot vota
+* Enable CI/CD pipeline using Devops toolchain to speed up software development cycle
+* Ensure infrastructure/application performance and stability by apply proactively monitoring and alert.
+* Strong team/cross-team work.
+* Good planning, documenting and troubleshooting skill.
+* Devops mindset, willing to fill the gap between development and operation.
+* Ability to quickly learn new skills to meet the need. 
 
-Ea _furtique_ risere fratres edidit terrae magis. Colla tam mihi tenebat:
-miseram excita suadent es pecudes iam. Concilio _quam_ velatus posset ait quod
-nunc! Fragosis suae dextra geruntur functus vulgata.
-{{< /columns >}}
+{% hint style="info" %}
+[https://github.com/cuongnd-scs](https://github.com/cuongnd-scs)
+{% endhint %}
 
+### Certificates
 
-## Tempora nisi nunc
+{% hint style="info" %}
+* [x] [AWS Certified Solutions Architect \(2020\)](https://www.youracclaim.com/badges/aa491e3b-e2e1-4feb-a3b8-67bb4ef1014d/linked_in_profile)
+* [x] [HashiCorp Certified: Terraform Associate \(2021\)](https://www.credly.com/badges/3e74e097-1bcd-4c8c-85f9-51873a451b12)
+* [x] [Data, ML, and AI Tasks in Google Cloud](https://google.qwiklabs.com/public_profiles/c739d04d-4aa4-4dcb-9044-aedc19135223) 
+* [x] Advanced English Writing and Grammar \(2018\)
+{% endhint %}
 
-Lorem **markdownum** emicat gestu. Cannis sol pressit ducta. **Est** Idaei,
-tremens ausim se tutaeque, illi ulnis hausit, sed, lumina cutem. Quae avis
-sequens!
-
-    var panel = ram_design;
-    if (backup + system) {
-        file.readPoint = network_native;
-        sidebar_engine_device(cell_tftp_raster,
-                dual_login_paper.adf_vci.application_reader_design(
-                graphicsNvramCdma, lpi_footer_snmp, integer_model));
-    }
-
-## Locis suis novi cum suoque decidit eadem
-
-Idmoniae ripis, at aves, ali missa adest, ut _et autem_, et ab?
+### 
