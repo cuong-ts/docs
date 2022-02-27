@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cuong Blogs</title>
+    <link>http://docs.cuong-dev.ml/</link>
+    <description>Recent content on Cuong Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Feb 2022 12:18:24 +0700</lastBuildDate><atom:link href="http://docs.cuong-dev.ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>http://docs.cuong-dev.ml/posts/my-first-post/</link>
+      <pubDate>Sun, 27 Feb 2022 12:18:24 +0700</pubDate>
+      
+      <guid>http://docs.cuong-dev.ml/posts/my-first-post/</guid>
+      <description>c</description>
+    </item>
+    
+  </channel>
+</rss>
