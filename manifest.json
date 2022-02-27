@@ -1,6 +1,6 @@
 {
-  "name": "Cuong Blogs",
-  "short_name": "Cuong Blogs",
+  "name": "docs.cuong-dev.ml",
+  "short_name": "docs.cuong-dev.ml",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

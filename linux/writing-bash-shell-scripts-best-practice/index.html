@@ -1,0 +1,461 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Writing bash shell scripts best practice #  Many people hack together shell scripts quickly to do simple tasks, but these soon take on a life of their own. Unfortunately shell scripts are full of subtle effects which result in scripts failing in unusual ways. It’s possible to write scripts which minimise these problems. In this article, I explain several techniques for writing robust bash scripts.
+Use set -u #  How often have you written a script that broke because a variable wasn’t set?">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="Writing bash shell scripts best practice #  Many people hack together shell scripts quickly to do simple tasks, but these soon take on a life of their own. Unfortunately shell scripts are full of subtle effects which result in scripts failing in unusual ways. It’s possible to write scripts which minimise these problems. In this article, I explain several techniques for writing robust bash scripts.
+Use set -u #  How often have you written a script that broke because a variable wasn’t set?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://docs.cuong-dev.ml/linux/writing-bash-shell-scripts-best-practice/"><meta property="article:section" content="linux">
+<meta property="article:modified_time" content="2022-02-27T15:14:21+07:00">
+<title>Writing Bash Shell Scripts Best Practice | docs.cuong-dev.ml</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.a79195495c2bc288299c32357c5f4730e0c4d36cb359f627bf4967169146feb0.js integrity="sha256-p5GVSVwrwogpnDI1fF9HMODE02yzWfYnv0lnFpFG/rA=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>docs.cuong-dev.ml</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/about-me/>About me</a>
+<ul>
+</ul>
+</li>
+<li>
+<span>Blogs</span>
+<ul>
+<li>
+<a href=/posts/creating-a-new-theme/>Creating a New Theme</a>
+</li>
+<li>
+<a href=/posts/goisforlovers/>(Hu)go Template Primer</a>
+</li>
+<li>
+<a href=/posts/hugoisforlovers/>Getting Started with Hugo</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Aws</span>
+<ul>
+<li>
+<a href=/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
+</li>
+<li>
+<a href=/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a>
+</li>
+<li>
+<a href=/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
+</li>
+<li>
+<a href=/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a>
+</li>
+<li>
+<a href=/aws/setting-swap-ec2/>Setting Swap Ec2</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Azure</span>
+<ul>
+<li>
+<a href=/azure/azure-2/>Azure 2</a>
+</li>
+<li>
+<a href=/azure/azure-new-service-update/>Azure New Service Update</a>
+</li>
+<li>
+<a href=/azure/untitled-3/>Untitled 3</a>
+</li>
+<li>
+<a href=/azure/untitled-copy/>Untitled Copy</a>
+</li>
+<li>
+<a href=/azure/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Cheatsheet</span>
+<ul>
+<li>
+<a href=/cheatsheet/bash/>Bash</a>
+</li>
+<li>
+<a href=/cheatsheet/docker-cheatsheet/>Docker Cheatsheet</a>
+</li>
+<li>
+<a href=/cheatsheet/grep/>Grep</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Databases</span>
+<ul>
+<li>
+<a href=/databases/General-Table-Size-Information/>General Table Size Information</a>
+</li>
+<li>
+<a href=/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a>
+</li>
+<li>
+<a href=/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Docker</span>
+<ul>
+<li>
+<a href=/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a>
+</li>
+<li>
+<a href=/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
+</li>
+<li>
+<a href=/docker/disstroless-docker-image/>Disstroless Docker Image</a>
+</li>
+<li>
+<a href=/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
+</li>
+<li>
+<a href=/docker/quick-install-docker/>Quick Install Docker</a>
+</li>
+<li>
+<a href=/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Gcp</span>
+<ul>
+<li>
+<a href=/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a>
+</li>
+<li>
+<a href=/gcp/untitled/>Untitled</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Jenkins</span>
+<ul>
+<li>
+<a href=/jenkins/Jenkins-deploy-AWS-ECS/>Jenkins Deploy Aws Ecs</a>
+</li>
+<li>
+<a href=/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a>
+</li>
+</ul>
+</li>
+<li>
+<span>K8s</span>
+<ul>
+<li>
+<a href=/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
+</li>
+<li>
+<a href=/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Linux</span>
+<ul>
+<li>
+<a href=/linux/check-ssl-certificate-expiration-date-s/>Check Ssl Certificate Expiration Date S</a>
+</li>
+<li>
+<a href=/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a>
+</li>
+<li>
+<a href=/linux/print-all-duplicated/>Print All Duplicated</a>
+</li>
+<li>
+<a href=/linux/quick-load-.env-file/>Quick Load .Env File</a>
+</li>
+<li>
+<a href=/linux/writing-bash-shell-scripts-best-practice/ class=active>Writing Bash Shell Scripts Best Practice</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Monitoring</span>
+<ul>
+<li>
+<a href=/monitoring/alert-manager/>Alert Manager</a>
+</li>
+<li>
+<a href=/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Others</span>
+<ul>
+<li>
+<a href=/others/alert-slack-by-hook/>Alert Slack by Hook</a>
+</li>
+<li>
+<a href=/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Writing Bash Shell Scripts Best Practice</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#use-set--u>Use set -u</a></li>
+<li><a href=#use-set--e>Use set -e</a></li>
+<li><a href=#program-defensively--expect-the-unexpected>Program defensively – expect the unexpected</a></li>
+<li><a href=#be-prepared-for-spaces-in-filenames>Be prepared for spaces in filenames</a></li>
+<li><a href=#setting-traps>Setting traps</a></li>
+<li><a href=#race-conditions>Race conditions</a></li>
+<li><a href=#be-atomic>Be atomic</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=writing-bash-shell-scripts-best-practice>
+Writing bash shell scripts best practice
+<a class=anchor href=#writing-bash-shell-scripts-best-practice>#</a>
+</h1>
+<p>Many people hack together shell scripts quickly to do simple tasks, but these soon take on a life of their own. Unfortunately shell scripts are full of subtle effects which result in scripts failing in unusual ways. It’s possible to write scripts which minimise these problems. In this article, I explain several techniques for writing robust bash scripts.</p>
+<h3 id=use-set--u>
+Use set -u
+<a class=anchor href=#use-set--u>#</a>
+</h3>
+<p>How often have you written a script that broke because a variable wasn’t set? I know I have, many times.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>chroot=$1
+...
+rm -rf $chroot/usr/share/doc
+</code></pre></div><p>If you ran the script above and accidentally forgot to give a parameter, you would have just deleted all of your system documentation rather than making a smaller chroot. So what can you do about it? Fortunately bash provides you with set -u, which will exit your script if you try to use an uninitialised variable. You can also use the slightly more readable set -o nounset.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>david% bash /tmp/shrink-chroot.sh
+$chroot=
+david% bash -u /tmp/shrink-chroot.sh
+/tmp/shrink-chroot.sh: line 3: $1: unbound variable
+david%
+</code></pre></div><h3 id=use-set--e>
+Use set -e
+<a class=anchor href=#use-set--e>#</a>
+</h3>
+<p>Every script you write should include set -e at the top. This tells bash that it should exit the script if any statement returns a non-true return value. The benefit of using -e is that it prevents errors snowballing into serious issues when they could have been caught earlier. Again, for readability you may want to use set -o errexit.</p>
+<p>Using -e gives you error checking for free. If you forget to check something, bash will do it or you. Unfortunately it means you can’t check $? as bash will never get to the checking code if it isn’t zero. There are other constructs you could use:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>command
+if [ &#34;$?&#34;-ne 0]; then echo &#34;command failed&#34;; exit 1; fi
+</code></pre></div><p>could be replaced with</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>command || { echo &#34;command failed&#34;; exit 1; }
+</code></pre></div><p>or</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if ! command; then echo &#34;command failed&#34;; exit 1; fi
+</code></pre></div><p>What if you have a command that returns non-zero or you are not interested in its return value? You can use command || true, or if you have a longer section of code, you can turn off the error checking, but I recommend you use this sparingly.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>set +e
+command1
+command2
+set -e
+</code></pre></div><p>On a slightly related note, by default bash takes the error status of the last item in a pipeline, which may not be what you want. For example, false | true will be considered to have succeeded. If you would like this to fail, then you can use set -o pipefail to make it fail.</p>
+<h3 id=program-defensively--expect-the-unexpected>
+Program defensively – expect the unexpected
+<a class=anchor href=#program-defensively--expect-the-unexpected>#</a>
+</h3>
+<p>Your script should take into account of the unexpected, like files missing or directories not being created. There are several things you can do to prevent errors in these situations. For example, when you create a directory, if the parent directory doesn’t exist, <strong>mkdir</strong> will return an error. If you add a -p option then <strong>mkdir</strong> will create all the parent directories before creating the requested directory. Another example is <strong>rm</strong>. If you ask rm to delete a non-existent file, it will complain and your script will terminate. (You are using -e, right?) You can fix this by using -f, which will silently continue if the file didn’t exist.</p>
+<h3 id=be-prepared-for-spaces-in-filenames>
+Be prepared for spaces in filenames
+<a class=anchor href=#be-prepared-for-spaces-in-filenames>#</a>
+</h3>
+<p>Someone will always use spaces in filenames or command line arguments and you should keep this in mind when writing shell scripts. In particular you should use quotes around variables.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [ $filename = &#34;foo&#34; ];
+</code></pre></div><p>will fail if $filename contains a space. This can be fixed by using:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [ &#34;$filename&#34; = &#34;foo&#34; ];
+</code></pre></div><p>When using $@ variable, you should always quote it or any arguments containing a space will be expanded in to separate words.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>david% foo() { for i in $@; do printf &#34;%s\n&#34; &#34;$i&#34;; done }; foo bar &#34;baz quux&#34;
+bar
+baz
+quux
+david% foo() { for i in &#34;$@&#34;; do printf &#34;%s\n&#34; &#34;$i&#34;; done }; foo bar &#34;baz quux&#34;
+bar
+baz quux
+</code></pre></div><p>I can not think of a single place where you shouldn’t use “$@” over $@, so when in doubt, use quotes.</p>
+<p>If you use <strong>find</strong> and <strong>xargs</strong> together, you should use -print0 to separate filenames with a null character rather than new lines. You then need to use -0 with xargs.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>david% touch &#34;foo bar&#34;
+david% find | xargs ls
+ls: ./foo: No such file or directory
+ls: bar: No such file or directory
+david% find -print0 | xargs -0 ls
+./foo bar
+</code></pre></div><h3 id=setting-traps>
+Setting traps
+<a class=anchor href=#setting-traps>#</a>
+</h3>
+<p>Often you write scripts which fail and leave the filesystem in an inconsistent state; things like lock files, temporary files or you’ve updated one file and there is an error updating the next file. It would be nice if you could fix these problems, either by deleting the lock files or by rolling back to a known good state when your script suffers a problem. Fortunately bash provides a way to run a command or function when it receives a unix signal using the <strong>trap</strong> command.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>trap command signal [signal ...]
+</code></pre></div><p>There are many signals you can trap (you can get a list of them by running <strong>kill -l</strong>), but for cleaning up after problems there are only 3 we are interested in: INT, TERM and EXIT. You can also reset traps back to their default by using - as the command.</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left></th>
+<th style=text-align:left></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>Signal</td>
+<td style=text-align:left>Description</td>
+</tr>
+<tr>
+<td style=text-align:left>INT</td>
+<td style=text-align:left>Interrupt – This signal is sent when someone kills the script by pressing ctrl-c.</td>
+</tr>
+<tr>
+<td style=text-align:left>TERM</td>
+<td style=text-align:left>Terminate – this signal is sent when someone sends the TERM signal using the kill command.</td>
+</tr>
+<tr>
+<td style=text-align:left>EXIT</td>
+<td style=text-align:left>Exit – this is a pseudo-signal and is triggered when your script exits, either through reaching the end of the script, an exit command or by a command failing when usingset -e.</td>
+</tr>
+</tbody>
+</table>
+<p>Usually, when you write something using a lock file you would use something like:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [ ! -e $lockfile ]; then
+   touch $lockfile
+   critical-section
+   rm $lockfile
+else
+   echo &#34;critical-section is already running&#34;
+fi
+</code></pre></div><p>What happens if someone kills your script while critical-section is running? The lockfile will be left there and your script won’t run again until it’s been deleted. The fix is to use:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [ ! -e $lockfile ]; then
+   trap &#34;rm -f $lockfile; exit&#34; INT TERM EXIT
+   touch $lockfile
+   critical-section
+   rm $lockfile
+   trap - INT TERM EXIT
+else
+   echo &#34;critical-section is already running&#34;
+fi
+</code></pre></div><p>Now when you kill the script it will delete the lock file too. Notice that we explicitly exit from the script at the end of trap command, otherwise the script will resume from the point that the signal was received.</p>
+<h3 id=race-conditions>
+Race conditions
+<a class=anchor href=#race-conditions>#</a>
+</h3>
+<p>It’s worth pointing out that there is a slight race condition in the above lock example between the time we test for the lockfile and the time we create it. A possible solution to this is to use IO redirection and bash’s noclobber mode, which won’t redirect to an existing file. We can use something similar to:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if ( set -o noclobber; echo &#34;$$&#34; &gt; &#34;$lockfile&#34;) 2&gt; /dev/null; 
+then
+   trap &#39;rm -f &#34;$lockfile&#34;; exit $?&#39; INT TERM EXIT
+
+   critical-section
+
+   rm -f &#34;$lockfile&#34;
+   trap - INT TERM EXIT
+else
+   echo &#34;Failed to acquire lockfile: $lockfile.&#34; 
+   echo &#34;Held by $(cat $lockfile)&#34;
+fi
+</code></pre></div><p>A slightly more complicated problem is where you need to update a bunch of files and need the script to fail gracefully if there is a problem in the middle of the update. You want to be certain that something either happened correctly or that it appears as though it didn’t happen at all.Say you had a script to add users.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>add_to_passwd $user
+cp -a /etc/skel /home/$user
+chown $user /home/$user -R
+</code></pre></div><p>There could be problems if you ran out of diskspace or someone killed the process. In this case you’d want the user to not exist and all their files to be removed.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>rollback() {
+   del_from_passwd $user
+   if [ -e /home/$user ]; then
+      rm -rf /home/$user
+   fi
+   exit
+}
+
+trap rollback INT TERM EXIT
+add_to_passwd $user
+cp -a /etc/skel /home/$user
+chown $user /home/$user -R
+trap - INT TERM EXIT
+</code></pre></div><p>We needed to remove the trap at the end or the <strong>rollback</strong> function would have been called as we exited, undoing all the script’s hard work.</p>
+<h3 id=be-atomic>
+Be atomic
+<a class=anchor href=#be-atomic>#</a>
+</h3>
+<p>Sometimes you need to update a bunch of files in a directory at once, say you need to rewrite urls form one host to another on your website. You might write:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for file in $(find /var/www -type f -name &#34;*.html&#34;); do
+   perl -pi -e &#39;s/www.example.net/www.example.com/&#39; $file
+done
+</code></pre></div><p>Now if there is a problem with the script you could have half the site referring to <a href=http://www.example.com>www.example.com</a> and the rest referring to <a href=http://www.example.net>www.example.net</a>. You could fix this using a backup and a trap, but you also have the problem that the site will be inconsistent during the upgrade too.</p>
+<p>The solution to this is to make the changes an (almost) atomic operation. To do this make a copy of the data, make the changes in the copy, move the original out of the way and then move the copy back into place. You need to make sure that both the old and the new directories are moved to locations that are on the same partition so you can take advantage of the property of most unix filesystems that moving directories is very fast, as they only have to update the inode for that directory.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>cp -a /var/www /var/www-tmp
+for file in $(find /var/www-tmp -type f -name &#34;*.html&#34;); do
+   perl -pi -e &#39;s/www.example.net/www.example.com/&#39; $file
+done
+mv /var/www /var/www-old
+mv /var/www-tmp /var/www
+</code></pre></div><p>This means that if there is a problem with the update, the live system is not affected. Also the time where it is affected is reduced to the time between the two <strong>mv</strong>s, which should be very minimal, as the filesystem just has to change two entries in the inodes rather than copying all the data around.</p>
+<p>The disadvantage of this technique is that you need to use twice as much disk space and that any process that keeps files open for a long time will still have the old files open and not the new ones, so you would have to restart those processes if this is the case. In our example this isn’t a problem as apache opens the files every request. You can check for files with files open by using <strong>lsof</strong>. An advantage is that you now have a backup before you made your changes in case you need to revert.</p>
+<p>REF: <a href=https://www.davidpashley.com/articles/writing-robust-shell-scripts/>https://www.davidpashley.com/articles/writing-robust-shell-scripts/</a></p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#use-set--u>Use set -u</a></li>
+<li><a href=#use-set--e>Use set -e</a></li>
+<li><a href=#program-defensively--expect-the-unexpected>Program defensively – expect the unexpected</a></li>
+<li><a href=#be-prepared-for-spaces-in-filenames>Be prepared for spaces in filenames</a></li>
+<li><a href=#setting-traps>Setting traps</a></li>
+<li><a href=#race-conditions>Race conditions</a></li>
+<li><a href=#be-atomic>Be atomic</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
