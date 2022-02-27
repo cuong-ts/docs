@@ -2,17 +2,17 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Alert slack by hook #  Send slack alert
-#!/bin/bash  curl https://hooks.slack.com/services/xxx \  -X POST -H &#34;Content-type: application/json&#34; \  -d @- << EOF { &#34;channel&#34;: &#34;$1&#34;, &#34;username&#34;: &#34;$2&#34;, &#34;color&#34;: &#34;danger&#34;, &#34;icon_emoji&#34;: &#34;:ghost:&#34;, &#34;pretext&#34;: &#34;$MONIT_DATE&#34;, &#34;text&#34;: &#34;$MONIT_SERVICE - $MONIT_DESCRIPTION&#34; } EOF Send slack alert with RAM usage
-#!/bin/bash  LOG_FILE_PATH=&#34;/var/log/memory_$(date '+%Y-%m-%d-%H').log&#34; date | sudo tee -a $LOG_FILE_PATH ps -eo rss,pid,user,command | sort -rn | head -20 | awk '{ hr[1024**2]=&#34;GB&#34;; hr[1024]=&#34;MB&#34;; for (x=1024**3; x>=1024; x/=1024) { if ($1>=x) { printf (&#34;%-6.">
+<meta name=description content="Linkerd Cheatsheet #  Uninject #  Remove the Linkerd proxy from a Kubernetes config.
+You can uninject resources contained in a single file, inside a folder and its sub-folders, or coming from stdin.
+Examples #  # Uninject all the deployments in the default namespace. kubectl get deploy -o yaml | linkerd uninject - | kubectl apply -f - # Download a resource and uninject it through stdin. curl http://url.">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Alert slack by hook #  Send slack alert
-#!/bin/bash  curl https://hooks.slack.com/services/xxx \  -X POST -H &#34;Content-type: application/json&#34; \  -d @- << EOF { &#34;channel&#34;: &#34;$1&#34;, &#34;username&#34;: &#34;$2&#34;, &#34;color&#34;: &#34;danger&#34;, &#34;icon_emoji&#34;: &#34;:ghost:&#34;, &#34;pretext&#34;: &#34;$MONIT_DATE&#34;, &#34;text&#34;: &#34;$MONIT_SERVICE - $MONIT_DESCRIPTION&#34; } EOF Send slack alert with RAM usage
-#!/bin/bash  LOG_FILE_PATH=&#34;/var/log/memory_$(date '+%Y-%m-%d-%H').log&#34; date | sudo tee -a $LOG_FILE_PATH ps -eo rss,pid,user,command | sort -rn | head -20 | awk '{ hr[1024**2]=&#34;GB&#34;; hr[1024]=&#34;MB&#34;; for (x=1024**3; x>=1024; x/=1024) { if ($1>=x) { printf (&#34;%-6.">
+<meta property="og:description" content="Linkerd Cheatsheet #  Uninject #  Remove the Linkerd proxy from a Kubernetes config.
+You can uninject resources contained in a single file, inside a folder and its sub-folders, or coming from stdin.
+Examples #  # Uninject all the deployments in the default namespace. kubectl get deploy -o yaml | linkerd uninject - | kubectl apply -f - # Download a resource and uninject it through stdin. curl http://url.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://docs.cuong-dev.ml/docs/others/alert-slack-by-hook/"><meta property="article:section" content="docs">
-<title>Alert Slack by Hook | Cuong Blogs</title>
+<meta property="og:url" content="http://docs.cuong-dev.ml/docs/k8s/linkerd-cheatsheet/"><meta property="article:section" content="docs">
+<title>Linkerd Cheatsheet | Cuong Blogs</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
@@ -161,7 +161,7 @@
 <a href=/docs/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
 </li>
 <li>
-<a href=/docs/k8s/linkerd-cheatsheet/>Linkerd Cheatsheet</a>
+<a href=/docs/k8s/linkerd-cheatsheet/ class=active>Linkerd Cheatsheet</a>
 </li>
 </ul>
 </li>
@@ -200,7 +200,7 @@
 <span>Others</span>
 <ul>
 <li>
-<a href=/docs/others/alert-slack-by-hook/ class=active>Alert Slack by Hook</a>
+<a href=/docs/others/alert-slack-by-hook/>Alert Slack by Hook</a>
 </li>
 <li>
 <a href=/docs/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a>
@@ -225,55 +225,46 @@ Blogs
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Alert Slack by Hook</strong>
+<strong>Linkerd Cheatsheet</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
 </div>
 <aside class="hidden clearfix">
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#uninject>Uninject</a></li>
+<li><a href=#examples-a-idexamplesa>Examples </a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </aside>
 </header>
-<article class=markdown><h1 id=alert-slack-by-hook>
-Alert slack by hook
-<a class=anchor href=#alert-slack-by-hook>#</a>
+<article class=markdown><h1 id=linkerd-cheatsheet>
+Linkerd Cheatsheet
+<a class=anchor href=#linkerd-cheatsheet>#</a>
 </h1>
-<p>Send slack alert</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#!/bin/bash
-</span><span style=color:#75715e></span>
-curl https://hooks.slack.com/services/xxx <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>    -X POST -H <span style=color:#e6db74>&#34;Content-type: application/json&#34;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>    -d @- <span style=color:#e6db74>&lt;&lt; EOF
-</span><span style=color:#e6db74>{
-</span><span style=color:#e6db74>    &#34;channel&#34;: &#34;$1&#34;,
-</span><span style=color:#e6db74>    &#34;username&#34;: &#34;$2&#34;,
-</span><span style=color:#e6db74>    &#34;color&#34;: &#34;danger&#34;,
-</span><span style=color:#e6db74>    &#34;icon_emoji&#34;: &#34;:ghost:&#34;,
-</span><span style=color:#e6db74>    &#34;pretext&#34;: &#34;$MONIT_DATE&#34;,
-</span><span style=color:#e6db74>    &#34;text&#34;: &#34;$MONIT_SERVICE - $MONIT_DESCRIPTION&#34;
-</span><span style=color:#e6db74>}
-</span><span style=color:#e6db74>EOF</span>
-</code></pre></div><p>Send slack alert with RAM usage</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#!/bin/bash
-</span><span style=color:#75715e></span>
-LOG_FILE_PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/var/log/memory_</span><span style=color:#66d9ef>$(</span>date <span style=color:#e6db74>&#39;+%Y-%m-%d-%H&#39;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74>.log&#34;</span>
+<h3 id=uninject>
+Uninject
+<a class=anchor href=#uninject>#</a>
+</h3>
+<p>Remove the Linkerd proxy from a Kubernetes config.</p>
+<p>You can uninject resources contained in a single file, inside a folder and its sub-folders, or coming from stdin.</p>
+<h3 id=examples-a-idexamplesa>
+Examples
+<a class=anchor href=#examples-a-idexamplesa>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Uninject all the deployments in the default namespace.</span>
+kubectl get deploy -o yaml | linkerd uninject - | kubectl apply -f -
 
-date | sudo tee -a $LOG_FILE_PATH
-ps -eo rss,pid,user,command | sort -rn | head -20 | awk <span style=color:#e6db74>&#39;{ hr[1024**2]=&#34;GB&#34;; hr[1024]=&#34;MB&#34;; for (x=1024**3; x&gt;=1024; x/=1024) { if ($1&gt;=x) { printf (&#34;%-6.2f %s &#34;, $1/x, hr[x]); break } } } { printf (&#34;%-6s %-10s &#34;, $2, $3) } { for ( x=4 ; x&lt;=NF ; x++ ) { printf (&#34;%s &#34;,$x) } print (&#34;\n&#34;) }&#39;</span> | sudo tee -a $LOG_FILE_PATH
-memory_log<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>ps -eo rss,pid,user,command | sort -rn | head -10 | awk <span style=color:#e6db74>&#39;{ hr[1024**2]=&#34;GB&#34;; hr[1024]=&#34;MB&#34;; for (x=1024**3; x&gt;=1024; x/=1024) { if ($1&gt;=x) { printf (&#34;%-6.2f %s &#34;, $1/x, hr[x]); break } } } { printf (&#34;%-6s %-10s &#34;, $2, $3) } { for ( x=4 ; x&lt;=NF ; x++ ) { printf (&#34;%s &#34;,$x) } print (&#34;\n&#34;) }&#39;</span><span style=color:#66d9ef>)</span>
-curl https://hooks.slack.com/services/xxx <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>    -X POST -H <span style=color:#e6db74>&#34;Content-type: application/json&#34;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>    -d @- <span style=color:#e6db74>&lt;&lt; EOF
-</span><span style=color:#e6db74>{
-</span><span style=color:#e6db74>    &#34;channel&#34;: &#34;$1&#34;,
-</span><span style=color:#e6db74>    &#34;username&#34;: &#34;$2&#34;,
-</span><span style=color:#e6db74>    &#34;color&#34;: &#34;warning&#34;,
-</span><span style=color:#e6db74>    &#34;icon_emoji&#34;: &#34;:ghost:&#34;,
-</span><span style=color:#e6db74>    &#34;pretext&#34;: &#34;$MONIT_SERVICE - $MONIT_DESCRIPTION&#34;,
-</span><span style=color:#e6db74>    &#34;text&#34;: &#34;\`\`\`$memory_log\`\`\`&#34;,
-</span><span style=color:#e6db74>    &#34;mrkdwn&#34;: true
-</span><span style=color:#e6db74>}   
-</span><span style=color:#e6db74>EOF</span>
+<span style=color:#75715e># Download a resource and uninject it through stdin.</span>
+curl http://url.to/yml | linkerd uninject - | kubectl apply -f -
+
+<span style=color:#75715e># Uninject all the resources inside a folder and its sub-folders.</span>
+linkerd uninject &lt;folder&gt; | kubectl apply -f -
 </code></pre></div></article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
@@ -286,7 +277,16 @@ curl https://hooks.slack.com/services/xxx <span style=color:#ae81ff>\
 </div>
 <aside class=book-toc>
 <div class=book-toc-content>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#uninject>Uninject</a></li>
+<li><a href=#examples-a-idexamplesa>Examples </a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 </aside>
 </main>

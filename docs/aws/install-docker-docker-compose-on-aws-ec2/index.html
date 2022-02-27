@@ -2,22 +2,20 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Linkerd Cheatsheet #  Uninject #  Remove the Linkerd proxy from a Kubernetes config.
-You can uninject resources contained in a single file, inside a folder and its sub-folders, or coming from stdin.
-Examples #  # Uninject all the deployments in the default namespace. kubectl get deploy -o yaml | linkerd uninject - | kubectl apply -f - # Download a resource and uninject it through stdin. curl http://url.">
+<meta name=description content="Install docker, docker-compose on AWS EC2 #  {% code title=&ldquo;install-ec2.sh&rdquo; %}
+yum install docker git -y sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.27.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose systemctl start docker systemctl enable docker sudo dd if=/dev/zero of=/swapfile bs=128M count=32 sudo chmod 600 /swapfile sudo mkswap /swapfile sudo swapon /swapfile echo &#34;/swapfile swap swap defaults 0 0&#34; >> /etc/fstab {% endcode %}">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Linkerd Cheatsheet #  Uninject #  Remove the Linkerd proxy from a Kubernetes config.
-You can uninject resources contained in a single file, inside a folder and its sub-folders, or coming from stdin.
-Examples #  # Uninject all the deployments in the default namespace. kubectl get deploy -o yaml | linkerd uninject - | kubectl apply -f - # Download a resource and uninject it through stdin. curl http://url.">
+<meta property="og:description" content="Install docker, docker-compose on AWS EC2 #  {% code title=&ldquo;install-ec2.sh&rdquo; %}
+yum install docker git -y sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.27.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose systemctl start docker systemctl enable docker sudo dd if=/dev/zero of=/swapfile bs=128M count=32 sudo chmod 600 /swapfile sudo mkswap /swapfile sudo swapon /swapfile echo &#34;/swapfile swap swap defaults 0 0&#34; >> /etc/fstab {% endcode %}">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://docs.cuong-dev.ml/docs/k8s/untitled/"><meta property="article:section" content="docs">
-<title>Untitled | Cuong Blogs</title>
+<meta property="og:url" content="http://docs.cuong-dev.ml/docs/aws/install-docker-docker-compose-on-aws-ec2/"><meta property="article:section" content="docs">
+<title>Install Docker, Docker Compose on Aws Ec2 | Cuong Blogs</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.91550ee429c582351285038bd35b3d8e1fff2703e2b632a8f36d0f6b16ae1064.js integrity="sha256-kVUO5CnFgjUShQOL01s9jh//JwPitjKo820PaxauEGQ=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.55e0539719e72da549c7ebf2ef046042ab7866cfac8242180db8848d3f7c9be6.js integrity="sha256-VeBTlxnnLaVJx+vy7wRgQqt4Zs+sgkIYDbiEjT98m+Y=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -48,6 +46,9 @@ Examples #  # Uninject all the deployments in the default namespace. kubectl get
 <a href=/docs/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
 </li>
 <li>
+<a href=/docs/aws/install-docker-docker-compose-on-aws-ec2/ class=active>Install Docker, Docker Compose on Aws Ec2</a>
+</li>
+<li>
 <a href=/docs/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
 </li>
 <li>
@@ -55,9 +56,6 @@ Examples #  # Uninject all the deployments in the default namespace. kubectl get
 </li>
 <li>
 <a href=/docs/aws/setting-swap-ec2/>Setting Swap Ec2</a>
-</li>
-<li>
-<a href=/docs/aws/untitled/>Untitled</a>
 </li>
 </ul>
 </li>
@@ -99,6 +97,9 @@ Examples #  # Uninject all the deployments in the default namespace. kubectl get
 <span>Databases</span>
 <ul>
 <li>
+<a href=/docs/databases/general-table-size-information/>General Table Size Information</a>
+</li>
+<li>
 <a href=/docs/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a>
 </li>
 <li>
@@ -109,6 +110,9 @@ Examples #  # Uninject all the deployments in the default namespace. kubectl get
 <li>
 <span>Docker</span>
 <ul>
+<li>
+<a href=/docs/docker/best-practices-for-building-containers/>Best Practices for Building Containers</a>
+</li>
 <li>
 <a href=/docs/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
 </li>
@@ -123,9 +127,6 @@ Examples #  # Uninject all the deployments in the default namespace. kubectl get
 </li>
 <li>
 <a href=/docs/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
-</li>
-<li>
-<a href=/docs/docker/untitled/>Untitled</a>
 </li>
 </ul>
 </li>
@@ -144,10 +145,10 @@ Examples #  # Uninject all the deployments in the default namespace. kubectl get
 <span>Jenkins</span>
 <ul>
 <li>
-<a href=/docs/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a>
+<a href=/docs/jenkins/jenkins-deploy-aws-ecs/>Jenkins Deploy Aws Ecs</a>
 </li>
 <li>
-<a href=/docs/jenkins/untitled/>Untitled</a>
+<a href=/docs/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a>
 </li>
 </ul>
 </li>
@@ -158,7 +159,7 @@ Examples #  # Uninject all the deployments in the default namespace. kubectl get
 <a href=/docs/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
 </li>
 <li>
-<a href=/docs/k8s/untitled/ class=active>Untitled</a>
+<a href=/docs/k8s/linkerd-cheatsheet/>Linkerd Cheatsheet</a>
 </li>
 </ul>
 </li>
@@ -208,7 +209,7 @@ Examples #  # Uninject all the deployments in the default namespace. kubectl get
 <ul>
 <li>
 <a href=/posts/>
-Blog
+Blogs
 </a>
 </li>
 </ul>
@@ -222,47 +223,34 @@ Blog
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Untitled</strong>
+<strong>Install Docker, Docker Compose on Aws Ec2</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
 </div>
 <aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#uninject>Uninject</a></li>
-<li><a href=#examples-a-idexamplesa>Examples </a></li>
-</ul>
-</li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </aside>
 </header>
-<article class=markdown><h1 id=linkerd-cheatsheet>
-Linkerd Cheatsheet
-<a class=anchor href=#linkerd-cheatsheet>#</a>
+<article class=markdown><h1 id=install-docker-docker-compose-on-aws-ec2>
+Install docker, docker-compose on AWS EC2
+<a class=anchor href=#install-docker-docker-compose-on-aws-ec2>#</a>
 </h1>
-<h3 id=uninject>
-Uninject
-<a class=anchor href=#uninject>#</a>
-</h3>
-<p>Remove the Linkerd proxy from a Kubernetes config.</p>
-<p>You can uninject resources contained in a single file, inside a folder and its sub-folders, or coming from stdin.</p>
-<h3 id=examples-a-idexamplesa>
-Examples
-<a class=anchor href=#examples-a-idexamplesa>#</a>
-</h3>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Uninject all the deployments in the default namespace.</span>
-kubectl get deploy -o yaml | linkerd uninject - | kubectl apply -f -
+<p>{% code title=&ldquo;install-ec2.sh&rdquo; %}</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>yum install docker git -y
+sudo curl -L <span style=color:#e6db74>&#34;https://github.com/docker/compose/releases/download/1.27.0/docker-compose-</span><span style=color:#66d9ef>$(</span>uname -s<span style=color:#66d9ef>)</span><span style=color:#e6db74>-</span><span style=color:#66d9ef>$(</span>uname -m<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+systemctl start docker
+systemctl enable docker
 
-<span style=color:#75715e># Download a resource and uninject it through stdin.</span>
-curl http://url.to/yml | linkerd uninject - | kubectl apply -f -
-
-<span style=color:#75715e># Uninject all the resources inside a folder and its sub-folders.</span>
-linkerd uninject &lt;folder&gt; | kubectl apply -f -
-</code></pre></div></article>
+sudo dd <span style=color:#66d9ef>if</span><span style=color:#f92672>=</span>/dev/zero of<span style=color:#f92672>=</span>/swapfile bs<span style=color:#f92672>=</span>128M count<span style=color:#f92672>=</span><span style=color:#ae81ff>32</span>
+sudo chmod <span style=color:#ae81ff>600</span> /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo <span style=color:#e6db74>&#34;/swapfile swap swap defaults 0 0&#34;</span> &gt;&gt; /etc/fstab
+</code></pre></div><p>{% endcode %}</p>
+</article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
 </div>
@@ -274,16 +262,7 @@ linkerd uninject &lt;folder&gt; | kubectl apply -f -
 </div>
 <aside class=book-toc>
 <div class=book-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#uninject>Uninject</a></li>
-<li><a href=#examples-a-idexamplesa>Examples </a></li>
-</ul>
-</li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </div>
 </aside>
 </main>
