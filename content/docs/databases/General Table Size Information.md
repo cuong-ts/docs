@@ -20,3 +20,4 @@ SELECT *, pg_size_pretty(total_bytes) AS total
   ) a
 ) a;
 ```
+<img width="704" alt="image" src="https://user-images.githubusercontent.com/90603605/155873162-a2bd6b24-5814-46c4-a8e3-352aed411b55.png">
