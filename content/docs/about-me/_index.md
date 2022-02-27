@@ -1,5 +1,6 @@
 ---
-title: Introduction
+weight: 8
+title: About me
 type: docs
 ---
 # About me
