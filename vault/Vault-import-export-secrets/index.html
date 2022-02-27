@@ -2,22 +2,14 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Untitled #  Getting Super Powers #  Becoming a super hero is a fairly straight forward process:
-$ give me super-powers {% hint style=&ldquo;info&rdquo; %} Super-powers are granted randomly so please submit an issue if you&rsquo;re not happy with yours. {% endhint %}
-Once you&rsquo;re strong enough, save the world:
-{% code title=&ldquo;hello.sh&rdquo; %}
-# Ain't no code for that yet, sorry echo 'You got to trust me on this, I saved the world' {% endcode %}">
+<meta name=description content="Vault import, export secrets #  ./medusa export path --address=&#34;https://vault-url.com&#34; --token=&#34;s.xxx&#34; --format=&#34;yaml&#34; > export.yaml ./medusa import path ./export.yaml --address=&#34;https://https://vault-url.com&#34; --token=&#34;s.xxx&#34; REF: https://github.com/jonasvinther/medusa">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Untitled #  Getting Super Powers #  Becoming a super hero is a fairly straight forward process:
-$ give me super-powers {% hint style=&ldquo;info&rdquo; %} Super-powers are granted randomly so please submit an issue if you&rsquo;re not happy with yours. {% endhint %}
-Once you&rsquo;re strong enough, save the world:
-{% code title=&ldquo;hello.sh&rdquo; %}
-# Ain't no code for that yet, sorry echo 'You got to trust me on this, I saved the world' {% endcode %}">
+<meta property="og:description" content="Vault import, export secrets #  ./medusa export path --address=&#34;https://vault-url.com&#34; --token=&#34;s.xxx&#34; --format=&#34;yaml&#34; > export.yaml ./medusa import path ./export.yaml --address=&#34;https://https://vault-url.com&#34; --token=&#34;s.xxx&#34; REF: https://github.com/jonasvinther/medusa">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://docs.cuong-dev.ml/gcp/untitled/"><meta property="article:section" content="gcp">
-<meta property="article:modified_time" content="2022-02-27T15:14:21+07:00">
-<title>Untitled | docs.cuong-dev.ml</title>
+<meta property="og:url" content="http://docs.cuong-dev.ml/vault/Vault-import-export-secrets/"><meta property="article:section" content="vault">
+<meta property="article:modified_time" content="2022-02-27T19:58:32+07:00">
+<title>Vault Import, Export Secrets | docs.cuong-dev.ml</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
@@ -154,7 +146,7 @@ Once you&rsquo;re strong enough, save the world:
 <a href=/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a>
 </li>
 <li>
-<a href=/gcp/untitled/ class=active>Untitled</a>
+<a href=/gcp/untitled/>Untitled</a>
 </li>
 </ul>
 </li>
@@ -232,7 +224,7 @@ Once you&rsquo;re strong enough, save the world:
 <span>Vault</span>
 <ul>
 <li>
-<a href=/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a>
+<a href=/vault/Vault-import-export-secrets/ class=active>Vault Import, Export Secrets</a>
 </li>
 </ul>
 </li>
@@ -247,37 +239,22 @@ Once you&rsquo;re strong enough, save the world:
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Untitled</strong>
+<strong>Vault Import, Export Secrets</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
 </div>
 <aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#getting-super-powers>Getting Super Powers</a></li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </aside>
 </header>
-<article class=markdown><h1 id=untitled>
-Untitled
-<a class=anchor href=#untitled>#</a>
+<article class=markdown><h1 id=vault-import-export-secrets>
+Vault import, export secrets
+<a class=anchor href=#vault-import-export-secrets>#</a>
 </h1>
-<h2 id=getting-super-powers>
-Getting Super Powers
-<a class=anchor href=#getting-super-powers>#</a>
-</h2>
-<p>Becoming a super hero is a fairly straight forward process:</p>
-<pre tabindex=0><code>$ give me super-powers
-</code></pre><p>{% hint style=&ldquo;info&rdquo; %}
-Super-powers are granted randomly so please submit an issue if you&rsquo;re not happy with yours.
-{% endhint %}</p>
-<p>Once you&rsquo;re strong enough, save the world:</p>
-<p>{% code title=&ldquo;hello.sh&rdquo; %}</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Ain&#39;t no code for that yet, sorry</span>
-echo <span style=color:#e6db74>&#39;You got to trust me on this, I saved the world&#39;</span>
-</code></pre></div><p>{% endcode %}</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>./medusa export path --address<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://vault-url.com&#34;</span> --token<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;s.xxx&#34;</span> --format<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;yaml&#34;</span> &gt; export.yaml
+./medusa import path ./export.yaml --address<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://https://vault-url.com&#34;</span> --token<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;s.xxx&#34;</span>
+</code></pre></div><p>REF: <a href=https://github.com/jonasvinther/medusa>https://github.com/jonasvinther/medusa</a></p>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
@@ -290,11 +267,7 @@ echo <span style=color:#e6db74>&#39;You got to trust me on this, I saved the wor
 </div>
 <aside class=book-toc>
 <div class=book-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#getting-super-powers>Getting Super Powers</a></li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </div>
 </aside>
 </main>
