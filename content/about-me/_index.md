@@ -10,8 +10,6 @@ SRE | DevOps Engineer
 HCMC, Vietnam  
 LinkedIn:[ **https://www.linkedin.com/in/ndcuong**](https://www.linkedin.com/in/ndcuong) 
 
-### About me
-
 SRE | DevOps Engineer with 5+ years working in a variety of environment, from mixed physical, virtual environment moving to cloud.
 
 * Enable CI/CD pipeline using Devops toolchain to speed up software development cycle
@@ -21,11 +19,9 @@ SRE | DevOps Engineer with 5+ years working in a variety of environment, from mi
 * Devops mindset, willing to fill the gap between development and operation.
 * Ability to quickly learn new skills to meet the need. 
 
-
-Github: 
-
-[https://github.com/cuong-ts](https://github.com/cuongn-ts)
-
+{{< hint info >}} **Github** : 
+[https://github.com/cuong-ts](https://github.com/cuongn-ts) 
+{{< /hint >}}
 
 ### Certificates
 

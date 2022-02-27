@@ -1,4 +1,13 @@
 baseURL = 'http://docs.cuong-dev.ml/'
 languageCode = 'en-us'
-title = 'Cuong Blogs'
+title = 'docs.cuong-dev.ml'
 theme = "hugo-book"
+disablePathToLower = 'true'
+enableGitInfo = 'true'
+
+[params]
+# (Optional, default light) Sets color theme: light, dark or auto.
+# Theme 'auto' switches between dark and light modes based on browser/os preferences
+    BookTheme = 'light'
+    BookComments = true
+    BookSection = '*'
