@@ -2,14 +2,16 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="https://github.com/GoogleContainerTools/distroless">
+<meta name=description content="CLI Usage #  argo list # List workflows argo submit [--watch] myworkflow.yaml # Create workflow argo submit myworkflow.yaml -p foo=bar # Create workflow with parameters argo submit myworkflow.yaml --parameter-file config.yaml argo submit myworkflow.yaml --entry-point &#34;my-command&#34; argo logs <pod> # Show workflow log argo delete <pod> # Delete workflow argo delete --all # Delete all workflows  You can also use kubectl
+kubectl get wf # List workflows kubectl delete wf <name> # Delete workflow  Simple Workflow #  apiVersion: argoproj.">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="https://github.com/GoogleContainerTools/distroless">
+<meta property="og:description" content="CLI Usage #  argo list # List workflows argo submit [--watch] myworkflow.yaml # Create workflow argo submit myworkflow.yaml -p foo=bar # Create workflow with parameters argo submit myworkflow.yaml --parameter-file config.yaml argo submit myworkflow.yaml --entry-point &#34;my-command&#34; argo logs <pod> # Show workflow log argo delete <pod> # Delete workflow argo delete --all # Delete all workflows  You can also use kubectl
+kubectl get wf # List workflows kubectl delete wf <name> # Delete workflow  Simple Workflow #  apiVersion: argoproj.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://docs.cuong-dev.ml/docker/disstroless-docker-image/"><meta property="article:section" content="docker">
-<meta property="article:modified_time" content="2022-02-27T15:14:21+07:00">
-<title>Disstroless Docker Image | docs.cuong-dev.ml</title>
+<meta property="og:url" content="http://docs.cuong-dev.ml/argocd/ArgoCD-cheatsheet/"><meta property="article:section" content="argocd">
+<meta property="article:modified_time" content="2022-02-27T15:34:16+07:00">
+<title>Argo Cd Cheatsheet | docs.cuong-dev.ml</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
@@ -56,7 +58,7 @@
 <span>Argocd</span>
 <ul>
 <li>
-<a href=/argocd/ArgoCD-cheatsheet/>Argo Cd Cheatsheet</a>
+<a href=/argocd/ArgoCD-cheatsheet/ class=active>Argo Cd Cheatsheet</a>
 </li>
 </ul>
 </li>
@@ -138,7 +140,7 @@
 <a href=/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
 </li>
 <li>
-<a href=/docker/disstroless-docker-image/ class=active>Disstroless Docker Image</a>
+<a href=/docker/disstroless-docker-image/>Disstroless Docker Image</a>
 </li>
 <li>
 <a href=/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
@@ -237,32 +239,135 @@
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Disstroless Docker Image</strong>
+<strong>Argo Cd Cheatsheet</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
 </div>
 <aside class="hidden clearfix">
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#cli-usage>CLI Usage</a></li>
+<li><a href=#simple-workflow>Simple Workflow</a></li>
+<li><a href=#multi-step-workflow>Multi-Step Workflow</a></li>
+<li><a href=#steps-with-loops>Steps with Loops</a></li>
+<li><a href=#steps-conditional-execution>Steps: Conditional Execution</a></li>
+<li><a href=#steps-running-scripts>Steps: Running scripts</a></li>
+</ul>
+</nav>
 </aside>
 </header>
-<article class=markdown><h1 id=disstroless-docker-image>
-Disstroless docker image
-<a class=anchor href=#disstroless-docker-image>#</a>
-</h1>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>FROM golang:1.12 as build-env
+<article class=markdown><h2 id=cli-usage>
+CLI Usage
+<a class=anchor href=#cli-usage>#</a>
+</h2>
+<pre><code>argo list                                # List workflows
 
-WORKDIR /go/src/app
-ADD . /go/src/app
+argo submit [--watch] myworkflow.yaml    # Create workflow
+argo submit myworkflow.yaml -p foo=bar   # Create workflow with parameters
+argo submit myworkflow.yaml --parameter-file config.yaml
+argo submit myworkflow.yaml --entry-point &quot;my-command&quot;
 
-RUN go get -d -v ./...
-
-RUN go build -o /go/bin/app
-
-FROM gcr.io/distroless/base
-COPY --from<span style=color:#f92672>=</span>build-env /go/bin/app /
-CMD <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;/app&#34;</span><span style=color:#f92672>]</span>
-</code></pre></div></article>
+argo logs &lt;pod&gt;                          # Show workflow log
+argo delete &lt;pod&gt;                        # Delete workflow
+argo delete --all                        # Delete all workflows
+</code></pre>
+<p>You can also use kubectl</p>
+<pre><code>kubectl get wf             # List workflows
+kubectl delete wf &lt;name&gt;   # Delete workflow
+</code></pre>
+<h2 id=simple-workflow>
+Simple Workflow
+<a class=anchor href=#simple-workflow>#</a>
+</h2>
+<pre><code>apiVersion: argoproj.io/v1alpha1
+kind: Workflow                  # new type of k8s spec
+metadata:
+  generateName: hello-world-    # name of the workflow spec
+spec:
+  entrypoint: whalesay          # invoke the whalesay template
+  templates:
+  - name: whalesay              # name of the template
+    container:
+      image: docker/whalesay
+      command: [cowsay]
+      args: [&quot;{{inputs.parameters.message}}&quot;]
+      resources:                # limit the resources
+        limits:
+          memory: 32Mi
+          cpu: 100m
+</code></pre>
+<h2 id=multi-step-workflow>
+Multi-Step Workflow
+<a class=anchor href=#multi-step-workflow>#</a>
+</h2>
+<pre><code>apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+[...]
+spec:
+  [...]
+  templates:
+  - name: my-template
+    steps:
+    - - name: step1           # &lt;- Note the list in list structure!
+        template: [...]
+        arguments:
+          parameters: 
+            - [...]
+    - - name: step2a
+        [...]
+      - name: step2b
+        [...]
+</code></pre>
+<p>Execution of the defined steps happens by traversing the list tree. All elements of a tree leaf run in parallel
+while the first level list does define the steps sequence.</p>
+<h2 id=steps-with-loops>
+Steps with Loops
+<a class=anchor href=#steps-with-loops>#</a>
+</h2>
+<pre><code>steps:
+- - name: print-message
+    template: whalesay
+    arguments:
+      parameters:
+      - name: message
+        value: &quot;{{item}}&quot;
+    withItems:              # invoke whalesay once for each item in parallel
+    - hello world           # item 1
+    - goodbye world         # item 2
+</code></pre>
+<h2 id=steps-conditional-execution>
+Steps: Conditional Execution
+<a class=anchor href=#steps-conditional-execution>#</a>
+</h2>
+<pre><code> steps:
+    # flip a coin
+    - - name: flip-coin
+        template: flip-coin
+    # evaluate the result in parallel
+    - - name: heads
+        template: heads                 # call heads template if &quot;heads&quot;
+        when: &quot;{{steps.flip-coin.outputs.result}} == heads&quot;
+      - name: tails
+        template: tails                 # call tails template if &quot;tails&quot;
+        when: &quot;{{steps.flip-coin.outputs.result}} == tails&quot;
+</code></pre>
+<h2 id=steps-running-scripts>
+Steps: Running scripts
+<a class=anchor href=#steps-running-scripts>#</a>
+</h2>
+<pre><code>spec:
+  templates:
+  - name: flip-coin
+    script:
+      image: python:alpine3.6
+      command: [python]
+      source: |
+        import random
+        result = &quot;heads&quot; if random.randint(0,1) == 0 else &quot;tails&quot;
+        print(result)
+</code></pre>
+</article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
 </div>
@@ -274,7 +379,16 @@ CMD <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;/app&#34;</
 </div>
 <aside class=book-toc>
 <div class=book-toc-content>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#cli-usage>CLI Usage</a></li>
+<li><a href=#simple-workflow>Simple Workflow</a></li>
+<li><a href=#multi-step-workflow>Multi-Step Workflow</a></li>
+<li><a href=#steps-with-loops>Steps with Loops</a></li>
+<li><a href=#steps-conditional-execution>Steps: Conditional Execution</a></li>
+<li><a href=#steps-running-scripts>Steps: Running scripts</a></li>
+</ul>
+</nav>
 </div>
 </aside>
 </main>
