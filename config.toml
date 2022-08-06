@@ -2,7 +2,7 @@ baseURL = 'http://docs.cuong-dev.ml/'
 languageCode = 'en-us'
 title = 'docs.cuong-dev.ml'
 theme = "hugo-book"
-disablePathToLower = 'true'
+disablePathToLower = 'false'
 enableGitInfo = 'true'
 
 [params]
