@@ -14,28 +14,28 @@
 ## Cloud Provider
 ### AWS
 
-* [Mount new EBS volume to AWS EC2](aws/mount-new-ebs-volume-to-aws-ec2)
-* [Setting Swap EC2](aws/setting-swap-ec2)
-* [Extend the file system of EBS volumes](aws/extend-the-file-system-of-ebs-volumes)
-* [Install cert bot ssl let'sencrypt on amz linux 2](aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2)
-* [Install docker, docker-compose on AWS EC2](aws/untitled)
+* [Mount new EBS volume to AWS EC2](cloud-provider/aws/mount-new-ebs-volume-to-aws-ec2)
+* [Setting Swap EC2](cloud-provider/aws/setting-swap-ec2)
+* [Extend the file system of EBS volumes](cloud-provider/aws/extend-the-file-system-of-ebs-volumes)
+* [Install cert bot ssl let'sencrypt on amz linux 2](cloud-provider/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2)
+* [Install docker, docker-compose on AWS EC2](cloud-provider/aws/untitled)
 ### GCP
 
-* [Mistakes to avoid when using Google Cloud](gcp/mistakes-to-avoid-when-using-google-cloud)
-* [Untitled](gcp/untitled)
+* [Mistakes to avoid when using Google Cloud](cloud-provider/gcp/mistakes-to-avoid-when-using-google-cloud)
+* [Untitled](cloud-provider/gcp/untitled)
 
 ## Azure
 
-* [Azure 2](azure/azure-2)
+* [Azure 2](cloud-provider/azure/azure-2)
 
 ## Containers
 ### Docker
-* [Checking file when build docker](docker/checking-file-when-build-docker)
-* [Disstroless docker image](docker/disstroless-docker-image)
-* [Docker - How to cleanup \(unused\) resources](docker/docker-how-to-cleanup-unused-resources)
-* [Best practices for building containers](docker/untitled)
-* [Quick install docker](docker/quick-install-docker)
-* [Remove unused docker resource](docker/remove-unused-docker-resource)
+* [Checking file when build docker](containers/docker/checking-file-when-build-docker)
+* [Disstroless docker image](containers/docker/disstroless-docker-image)
+* [Docker - How to cleanup \(unused\) resources](containers/docker/docker-how-to-cleanup-unused-resources)
+* [Best practices for building containers](containers/docker/untitled)
+* [Quick install docker](containers/docker/quick-install-docker)
+* [Remove unused docker resource](containers/docker/remove-unused-docker-resource)
 
 ### Kubernetes <a id="k8s"></a>
 
@@ -45,8 +45,8 @@
 ## CI/CD
 ### Jenkins
 
-* [Jenkins fix report cannot view on browser](jenkins/jenkins-fix-report-cannot-view-on-browser)
-* [Jenkins deploy AWS ECS](jenkins/untitled)
+* [Jenkins fix report cannot view on browser](ci-cd/jenkins/jenkins-fix-report-cannot-view-on-browser)
+* [Jenkins deploy AWS ECS](ci-cd/jenkins/untitled)
 
 ## Others
 
@@ -56,8 +56,8 @@
 ## Observability
 #### Monitoring
 
-* [Alert manager](monitoring/alert-manager)
-* [Install node\_exporter as systemd](monitoring/install-node_exporter-as-systemd)
+* [Alert manager](observability/monitoring/alert-manager)
+* [Install node\_exporter as systemd](observability/monitoring/install-node_exporter-as-systemd)
 
 ## Databases
 
