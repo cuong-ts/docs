@@ -11,3 +11,5 @@ enableGitInfo = 'true'
     BookTheme = 'light'
     BookComments = true
     BookSection = '*'
+    BookRepo = 'https://github.com/cuong-ts/docs'
+    BookEditPath= 'edit/main'

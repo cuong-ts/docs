@@ -10,6 +10,7 @@
 * [Check SSL certificate expiration date\(s\)](linux/check-ssl-certificate-expiration-date-s)
 * [Quick load .env file](linux/quick-load-.env-file)
 * [Print all duplicated lines in a file](linux/untitled)
+* [Convert service account json to single line](linux/convert-service-account-json-to-single-line)
 
 ## Cloud Provider
 ### AWS
@@ -39,9 +40,9 @@
 
 ### Kubernetes <a id="k8s"></a>
 
-* [Kubectl productivity](k8s/kubectl-tips-and-tricks)
-* [Linkerd Cheatsheet](k8s/untitled)
-
+* [Kubectl productivity](containers/k8s/kubectl-tips-and-tricks)
+* [Linkerd Cheatsheet](containers/k8s/linkerd-cheatsheet)
+* [kubectl-tips-and-tricks](containers/k8s/kubectl-tips-and-tricks/)
 ## CI/CD
 ### Jenkins
 
