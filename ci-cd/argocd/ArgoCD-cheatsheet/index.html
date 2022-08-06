@@ -1,321 +1,21 @@
-<!doctype html><html lang=en-us dir=ltr>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="CLI Usage #  argo list # List workflows argo submit [--watch] myworkflow.yaml # Create workflow argo submit myworkflow.yaml -p foo=bar # Create workflow with parameters argo submit myworkflow.yaml --parameter-file config.yaml argo submit myworkflow.yaml --entry-point &#34;my-command&#34; argo logs <pod> # Show workflow log argo delete <pod> # Delete workflow argo delete --all # Delete all workflows  You can also use kubectl
-kubectl get wf # List workflows kubectl delete wf <name> # Delete workflow  Simple Workflow #  apiVersion: argoproj.">
-<meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="CLI Usage #  argo list # List workflows argo submit [--watch] myworkflow.yaml # Create workflow argo submit myworkflow.yaml -p foo=bar # Create workflow with parameters argo submit myworkflow.yaml --parameter-file config.yaml argo submit myworkflow.yaml --entry-point &#34;my-command&#34; argo logs <pod> # Show workflow log argo delete <pod> # Delete workflow argo delete --all # Delete all workflows  You can also use kubectl
-kubectl get wf # List workflows kubectl delete wf <name> # Delete workflow  Simple Workflow #  apiVersion: argoproj.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://docs.cuong-dev.ml/ci-cd/argocd/ArgoCD-cheatsheet/"><meta property="article:section" content="ci-cd">
-<meta property="article:modified_time" content="2022-02-27T20:33:05+07:00">
-<title>Argo Cd Cheatsheet | docs.cuong-dev.ml</title>
-<link rel=manifest href=/manifest.json>
-<link rel=icon href=/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
-<script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.8cc8175bcd86157af0149a8e6bbee6476f803aaa3b5d11d0f985c6dcbb562212.js integrity="sha256-jMgXW82GFXrwFJqOa77mR2+AOqo7XRHQ+YXG3LtWIhI=" crossorigin=anonymous></script>
-</head>
-<body dir=ltr>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<div class=book-menu-content>
-<nav>
-<h2 class=book-brand>
-<a class="flex align-center" href=/><span>docs.cuong-dev.ml</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<a href=/about-me/>About me</a>
-<ul>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-a07783f405300745807d39eacf150420 class=toggle>
-<label for=section-a07783f405300745807d39eacf150420 class="flex justify-between">
-<a role=button>Blogs</a>
-</label>
-<ul>
-<li>
-<a href=/posts/creating-a-new-theme/>Creating a New Theme</a>
-</li>
-<li>
-<a href=/posts/goisforlovers/>(Hu)go Template Primer</a>
-</li>
-<li>
-<a href=/posts/hugoisforlovers/>Getting Started with Hugo</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-de0ecdbdbaf98b9c0960557719ae69e4 class=toggle>
-<label for=section-de0ecdbdbaf98b9c0960557719ae69e4 class="flex justify-between">
-<a role=button>Cloud Provider</a>
-</label>
-<ul>
-<li>
-<span>Aws</span>
-<ul>
-<li>
-<a href=/cloud-provider/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/setting-swap-ec2/>Setting Swap Ec2</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Azure</span>
-<ul>
-<li>
-<a href=/cloud-provider/azure/azure-new-service-update/>Azure New Service Update</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Gcp</span>
-<ul>
-<li>
-<a href=/cloud-provider/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-72ed89028f94f588e751de2f6f0bee24 class=toggle checked>
-<label for=section-72ed89028f94f588e751de2f6f0bee24 class="flex justify-between">
-<a role=button>Ci Cd</a>
-</label>
-<ul>
-<li>
-<span>Argocd</span>
-<ul>
-<li>
-<a href=/ci-cd/argocd/ArgoCD-cheatsheet/ class=active>Argo Cd Cheatsheet</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Jenkins</span>
-<ul>
-<li>
-<a href=/ci-cd/jenkins/Jenkins-deploy-AWS-ECS/>Jenkins Deploy Aws Ecs</a>
-</li>
-<li>
-<a href=/ci-cd/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-db801fcabe18fdefdb1b34d275e81669 class=toggle>
-<label for=section-db801fcabe18fdefdb1b34d275e81669 class="flex justify-between">
-<a role=button>Linux</a>
-</label>
-<ul>
-<li>
-<a href=/linux/check-ssl-certificate-expiration-date-s/>Check Ssl Certificate Expiration Date S</a>
-</li>
-<li>
-<a href=/linux/Convert-service-account-json-to-single-line/>Convert Service Account JSON to Single Line</a>
-</li>
-<li>
-<a href=/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a>
-</li>
-<li>
-<a href=/linux/print-all-duplicated/>Print All Duplicated</a>
-</li>
-<li>
-<a href=/linux/quick-load-.env-file/>Quick Load .Env File</a>
-</li>
-<li>
-<a href=/linux/writing-bash-shell-scripts-best-practice/>Writing Bash Shell Scripts Best Practice</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-a6282ae0427584769cba6657e1b1e677 class=toggle>
-<label for=section-a6282ae0427584769cba6657e1b1e677 class="flex justify-between">
-<a role=button>Databases</a>
-</label>
-<ul>
-<li>
-<a href=/databases/General-Table-Size-Information/>General Table Size Information</a>
-</li>
-<li>
-<a href=/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a>
-</li>
-<li>
-<a href=/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class=toggle>
-<label for=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class="flex justify-between">
-<a role=button>Containers</a>
-</label>
-<ul>
-<li>
-<span>Docker</span>
-<ul>
-<li>
-<a href=/containers/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a>
-</li>
-<li>
-<a href=/containers/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
-</li>
-<li>
-<a href=/containers/docker/disstroless-docker-image/>Disstroless Docker Image</a>
-</li>
-<li>
-<a href=/containers/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
-</li>
-<li>
-<a href=/containers/docker/quick-install-docker/>Quick Install Docker</a>
-</li>
-<li>
-<a href=/containers/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
-</li>
-</ul>
-</li>
-<li>
-<span>K8s</span>
-<ul>
-<li>
-<a href=/containers/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
-</li>
-<li>
-<a href=/containers/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a>
-</li>
-<li>
-<a href=/containers/k8s/quick-scale-deployment-accross-namespaces/>Quick Scale Deployment Accross Namespaces</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-5afc9cafd20c13acf538598cf7e4cf3b class=toggle>
-<label for=section-5afc9cafd20c13acf538598cf7e4cf3b class="flex justify-between">
-<a role=button>Observability</a>
-</label>
-<ul>
-<li>
-<span>Monitoring</span>
-<ul>
-<li>
-<a href=/observability/monitoring/alert-manager/>Alert Manager</a>
-</li>
-<li>
-<a href=/observability/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-9f5db7fc9f15ff8a71c4cce94534a865 class=toggle>
-<label for=section-9f5db7fc9f15ff8a71c4cce94534a865 class="flex justify-between">
-<a role=button>Secret Management</a>
-</label>
-<ul>
-<li>
-<span>Vault</span>
-<ul>
-<li>
-<a href=/secret-management/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-0a911fc5dbe691768c557e6a743b35ca class=toggle>
-<label for=section-0a911fc5dbe691768c557e6a743b35ca class="flex justify-between">
-<a role=button>Cheatsheet</a>
-</label>
-<ul>
-<li>
-<a href=/cheatsheet/bash/>Bash</a>
-</li>
-<li>
-<a href=/cheatsheet/docker-cheatsheet/>Docker Cheatsheet</a>
-</li>
-<li>
-<a href=/cheatsheet/grep/>Grep</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-523e3ee5816fa44f0cea5a47adad9fb1 class=toggle>
-<label for=section-523e3ee5816fa44f0cea5a47adad9fb1 class="flex justify-between">
-<a role=button>Others</a>
-</label>
-<ul>
-<li>
-<a href=/others/alert-slack-by-hook/>Alert Slack by Hook</a>
-</li>
-<li>
-<a href=/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</div>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="CLI Usage # argo list # List workflows argo submit [--watch] myworkflow.yaml # Create workflow argo submit myworkflow.yaml -p foo=bar # Create workflow with parameters argo submit myworkflow.yaml --parameter-file config.yaml argo submit myworkflow.yaml --entry-point &#34;my-command&#34; argo logs <pod> # Show workflow log argo delete <pod> # Delete workflow argo delete --all # Delete all workflows You can also use kubectl
+kubectl get wf # List workflows kubectl delete wf <name> # Delete workflow Simple Workflow # apiVersion: argoproj."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="CLI Usage # argo list # List workflows argo submit [--watch] myworkflow.yaml # Create workflow argo submit myworkflow.yaml -p foo=bar # Create workflow with parameters argo submit myworkflow.yaml --parameter-file config.yaml argo submit myworkflow.yaml --entry-point &#34;my-command&#34; argo logs <pod> # Show workflow log argo delete <pod> # Delete workflow argo delete --all # Delete all workflows You can also use kubectl
+kubectl get wf # List workflows kubectl delete wf <name> # Delete workflow Simple Workflow # apiVersion: argoproj."><meta property="og:type" content="article"><meta property="og:url" content="http://docs.cuong-dev.ml/ci-cd/argocd/ArgoCD-cheatsheet/"><meta property="article:section" content="ci-cd"><meta property="article:modified_time" content="2022-02-27T20:33:05+07:00"><title>Argo Cd Cheatsheet | docs.cuong-dev.ml</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.c33aa4c5207daffa8dc6e7a61c01e5683c5cf62fd92c7395a0e46f3a3160ce2a.js integrity="sha256-wzqkxSB9r/qNxuemHAHlaDxc9i/ZLHOVoORvOjFgzio=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>docs.cuong-dev.ml</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href=/about-me/>About me</a><ul></ul></li><li><input type=checkbox id=section-a07783f405300745807d39eacf150420 class=toggle>
+<label for=section-a07783f405300745807d39eacf150420 class="flex justify-between"><a role=button>Blogs</a></label><ul><li><a href=/posts/creating-a-new-theme/>Creating a New Theme</a></li><li><a href=/posts/goisforlovers/>(Hu)go Template Primer</a></li><li><a href=/posts/hugoisforlovers/>Getting Started with Hugo</a></li></ul></li><li><input type=checkbox id=section-de0ecdbdbaf98b9c0960557719ae69e4 class=toggle>
+<label for=section-de0ecdbdbaf98b9c0960557719ae69e4 class="flex justify-between"><a role=button>Cloud Provider</a></label><ul><li><span>Aws</span><ul><li><a href=/cloud-provider/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a></li><li><a href=/cloud-provider/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a></li><li><a href=/cloud-provider/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a></li><li><a href=/cloud-provider/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a></li><li><a href=/cloud-provider/aws/setting-swap-ec2/>Setting Swap Ec2</a></li></ul></li><li><span>Azure</span><ul><li><a href=/cloud-provider/azure/azure-new-service-update/>Azure New Service Update</a></li></ul></li><li><span>Gcp</span><ul><li><a href=/cloud-provider/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a></li></ul></li></ul></li><li><input type=checkbox id=section-72ed89028f94f588e751de2f6f0bee24 class=toggle checked>
+<label for=section-72ed89028f94f588e751de2f6f0bee24 class="flex justify-between"><a role=button>Ci Cd</a></label><ul><li><span>Argocd</span><ul><li><a href=/ci-cd/argocd/ArgoCD-cheatsheet/ class=active>Argo Cd Cheatsheet</a></li></ul></li><li><span>Jenkins</span><ul><li><a href=/ci-cd/jenkins/Jenkins-deploy-AWS-ECS/>Jenkins Deploy Aws Ecs</a></li><li><a href=/ci-cd/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a></li></ul></li></ul></li><li><input type=checkbox id=section-db801fcabe18fdefdb1b34d275e81669 class=toggle>
+<label for=section-db801fcabe18fdefdb1b34d275e81669 class="flex justify-between"><a role=button>Linux</a></label><ul><li><a href=/linux/check-ssl-certificate-expiration-date-s/>Check Ssl Certificate Expiration Date S</a></li><li><a href=/linux/Convert-service-account-json-to-single-line/>Convert Service Account JSON to Single Line</a></li><li><a href=/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a></li><li><a href=/linux/print-all-duplicated/>Print All Duplicated</a></li><li><a href=/linux/quick-load-.env-file/>Quick Load .Env File</a></li><li><a href=/linux/writing-bash-shell-scripts-best-practice/>Writing Bash Shell Scripts Best Practice</a></li></ul></li><li><input type=checkbox id=section-a6282ae0427584769cba6657e1b1e677 class=toggle>
+<label for=section-a6282ae0427584769cba6657e1b1e677 class="flex justify-between"><a role=button>Databases</a></label><ul><li><a href=/databases/General-Table-Size-Information/>General Table Size Information</a></li><li><a href=/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a></li><li><a href=/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a></li></ul></li><li><input type=checkbox id=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class=toggle>
+<label for=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class="flex justify-between"><a role=button>Containers</a></label><ul><li><span>Docker</span><ul><li><a href=/containers/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a></li><li><a href=/containers/docker/checking-file-when-build-docker/>Checking File When Build Docker</a></li><li><a href=/containers/docker/disstroless-docker-image/>Disstroless Docker Image</a></li><li><a href=/containers/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a></li><li><a href=/containers/docker/quick-install-docker/>Quick Install Docker</a></li><li><a href=/containers/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a></li></ul></li><li><span>K8s</span><ul><li><a href=/containers/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a></li><li><a href=/containers/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a></li><li><a href=/containers/k8s/quick-scale-deployment-accross-namespaces/>Quick Scale Deployment Accross Namespaces</a></li></ul></li></ul></li><li><input type=checkbox id=section-5afc9cafd20c13acf538598cf7e4cf3b class=toggle>
+<label for=section-5afc9cafd20c13acf538598cf7e4cf3b class="flex justify-between"><a role=button>Observability</a></label><ul><li><span>Monitoring</span><ul><li><a href=/observability/monitoring/alert-manager/>Alert Manager</a></li><li><a href=/observability/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a></li></ul></li></ul></li><li><input type=checkbox id=section-9f5db7fc9f15ff8a71c4cce94534a865 class=toggle>
+<label for=section-9f5db7fc9f15ff8a71c4cce94534a865 class="flex justify-between"><a role=button>Secret Management</a></label><ul><li><span>Vault</span><ul><li><a href=/secret-management/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a></li></ul></li></ul></li><li><input type=checkbox id=section-0a911fc5dbe691768c557e6a743b35ca class=toggle>
+<label for=section-0a911fc5dbe691768c557e6a743b35ca class="flex justify-between"><a role=button>Cheatsheet</a></label><ul><li><a href=/cheatsheet/bash/>Bash</a></li><li><a href=/cheatsheet/docker-cheatsheet/>Docker Cheatsheet</a></li><li><a href=/cheatsheet/grep/>Grep</a></li></ul></li><li><input type=checkbox id=section-523e3ee5816fa44f0cea5a47adad9fb1 class=toggle>
+<label for=section-523e3ee5816fa44f0cea5a47adad9fb1 class="flex justify-between"><a role=button>Others</a></label><ul><li><a href=/others/alert-slack-by-hook/>Alert Slack by Hook</a></li><li><a href=/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Argo Cd Cheatsheet</strong>
-<label for=toc-control>
-<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#cli-usage>CLI Usage</a></li>
-<li><a href=#simple-workflow>Simple Workflow</a></li>
-<li><a href=#multi-step-workflow>Multi-Step Workflow</a></li>
-<li><a href=#steps-with-loops>Steps with Loops</a></li>
-<li><a href=#steps-conditional-execution>Steps: Conditional Execution</a></li>
-<li><a href=#steps-running-scripts>Steps: Running scripts</a></li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h2 id=cli-usage>
-CLI Usage
-<a class=anchor href=#cli-usage>#</a>
-</h2>
-<pre><code>argo list                                # List workflows
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#cli-usage>CLI Usage</a></li><li><a href=#simple-workflow>Simple Workflow</a></li><li><a href=#multi-step-workflow>Multi-Step Workflow</a></li><li><a href=#steps-with-loops>Steps with Loops</a></li><li><a href=#steps-conditional-execution>Steps: Conditional Execution</a></li><li><a href=#steps-running-scripts>Steps: Running scripts</a></li></ul></nav></aside></header><article class=markdown><h2 id=cli-usage>CLI Usage
+<a class=anchor href=#cli-usage>#</a></h2><pre><code>argo list                                # List workflows
 
 argo submit [--watch] myworkflow.yaml    # Create workflow
 argo submit myworkflow.yaml -p foo=bar   # Create workflow with parameters
@@ -325,16 +25,10 @@ argo submit myworkflow.yaml --entry-point &quot;my-command&quot;
 argo logs &lt;pod&gt;                          # Show workflow log
 argo delete &lt;pod&gt;                        # Delete workflow
 argo delete --all                        # Delete all workflows
-</code></pre>
-<p>You can also use kubectl</p>
-<pre><code>kubectl get wf             # List workflows
+</code></pre><p>You can also use kubectl</p><pre><code>kubectl get wf             # List workflows
 kubectl delete wf &lt;name&gt;   # Delete workflow
-</code></pre>
-<h2 id=simple-workflow>
-Simple Workflow
-<a class=anchor href=#simple-workflow>#</a>
-</h2>
-<pre><code>apiVersion: argoproj.io/v1alpha1
+</code></pre><h2 id=simple-workflow>Simple Workflow
+<a class=anchor href=#simple-workflow>#</a></h2><pre><code>apiVersion: argoproj.io/v1alpha1
 kind: Workflow                  # new type of k8s spec
 metadata:
   generateName: hello-world-    # name of the workflow spec
@@ -350,12 +44,8 @@ spec:
         limits:
           memory: 32Mi
           cpu: 100m
-</code></pre>
-<h2 id=multi-step-workflow>
-Multi-Step Workflow
-<a class=anchor href=#multi-step-workflow>#</a>
-</h2>
-<pre><code>apiVersion: argoproj.io/v1alpha1
+</code></pre><h2 id=multi-step-workflow>Multi-Step Workflow
+<a class=anchor href=#multi-step-workflow>#</a></h2><pre><code>apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 [...]
 spec:
@@ -372,14 +62,9 @@ spec:
         [...]
       - name: step2b
         [...]
-</code></pre>
-<p>Execution of the defined steps happens by traversing the list tree. All elements of a tree leaf run in parallel
-while the first level list does define the steps sequence.</p>
-<h2 id=steps-with-loops>
-Steps with Loops
-<a class=anchor href=#steps-with-loops>#</a>
-</h2>
-<pre><code>steps:
+</code></pre><p>Execution of the defined steps happens by traversing the list tree. All elements of a tree leaf run in parallel
+while the first level list does define the steps sequence.</p><h2 id=steps-with-loops>Steps with Loops
+<a class=anchor href=#steps-with-loops>#</a></h2><pre><code>steps:
 - - name: print-message
     template: whalesay
     arguments:
@@ -389,12 +74,8 @@ Steps with Loops
     withItems:              # invoke whalesay once for each item in parallel
     - hello world           # item 1
     - goodbye world         # item 2
-</code></pre>
-<h2 id=steps-conditional-execution>
-Steps: Conditional Execution
-<a class=anchor href=#steps-conditional-execution>#</a>
-</h2>
-<pre><code> steps:
+</code></pre><h2 id=steps-conditional-execution>Steps: Conditional Execution
+<a class=anchor href=#steps-conditional-execution>#</a></h2><pre><code> steps:
     # flip a coin
     - - name: flip-coin
         template: flip-coin
@@ -405,12 +86,8 @@ Steps: Conditional Execution
       - name: tails
         template: tails                 # call tails template if &quot;tails&quot;
         when: &quot;{{steps.flip-coin.outputs.result}} == tails&quot;
-</code></pre>
-<h2 id=steps-running-scripts>
-Steps: Running scripts
-<a class=anchor href=#steps-running-scripts>#</a>
-</h2>
-<pre><code>spec:
+</code></pre><h2 id=steps-running-scripts>Steps: Running scripts
+<a class=anchor href=#steps-running-scripts>#</a></h2><pre><code>spec:
   templates:
   - name: flip-coin
     script:
@@ -420,31 +97,4 @@ Steps: Running scripts
         import random
         result = &quot;heads&quot; if random.randint(0,1) == 0 else &quot;tails&quot;
         print(result)
-</code></pre>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-</div>
-<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<div class=book-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#cli-usage>CLI Usage</a></li>
-<li><a href=#simple-workflow>Simple Workflow</a></li>
-<li><a href=#multi-step-workflow>Multi-Step Workflow</a></li>
-<li><a href=#steps-with-loops>Steps with Loops</a></li>
-<li><a href=#steps-conditional-execution>Steps: Conditional Execution</a></li>
-<li><a href=#steps-running-scripts>Steps: Running scripts</a></li>
-</ul>
-</nav>
-</div>
-</aside>
-</main>
-</body>
-</html>
+</code></pre></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#cli-usage>CLI Usage</a></li><li><a href=#simple-workflow>Simple Workflow</a></li><li><a href=#multi-step-workflow>Multi-Step Workflow</a></li><li><a href=#steps-with-loops>Steps with Loops</a></li><li><a href=#steps-conditional-execution>Steps: Conditional Execution</a></li><li><a href=#steps-running-scripts>Steps: Running scripts</a></li></ul></nav></div></aside></main></body></html>

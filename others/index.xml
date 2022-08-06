@@ -4,4 +4,5 @@
 [root@new-redmine ~]# cat /etc/os-release NAME=&amp;#34;CentOS Linux&amp;#34; VERSION=&amp;#34;7 (Core)&amp;#34; ID=&amp;#34;centos&amp;#34; ID_LIKE=&amp;#34;rhel fedora&amp;#34; VERSION_ID=&amp;#34;7&amp;#34; PRETTY_NAME=&amp;#34;CentOS Linux 7 (Core)&amp;#34; mariadb 5.5.68
 [root@new-redmine ~]# mysql --version mysql Ver 15.1 Distrib 5.5.68-MariaDB, for Linux (x86_64) using readline 5.1 rbenv installed, ruby 2.5.5
 [redmine@new-redmine ~]$ rbenv --version rbenv 1.1.2-40-g62d7798 [redmine@new-redmine current]$ rbenv version 2.5.5 (set by /opt/redmine/current/.ruby-version) redmine version 4.1.1
-ssh keypair setup https://docs.gitlab.com/ee/ssh/README.html</description></item></channel></rss>
+ssh keypair setup https://docs.gitlab.com/ee/ssh/README.html
+Install redmine # Install dependencies</description></item></channel></rss>

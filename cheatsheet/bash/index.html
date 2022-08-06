@@ -1,1504 +1,422 @@
-<!doctype html><html lang=en-us dir=ltr>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="This is a quick reference cheat sheet to getting started with linux bash shell scripting.">
-<meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="This is a quick reference cheat sheet to getting started with linux bash shell scripting.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://docs.cuong-dev.ml/cheatsheet/bash/"><meta property="article:section" content="cheatsheet">
-<meta property="article:modified_time" content="2022-02-27T15:14:21+07:00">
-<title>Bash | docs.cuong-dev.ml</title>
-<link rel=manifest href=/manifest.json>
-<link rel=icon href=/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
-<script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.8cc8175bcd86157af0149a8e6bbee6476f803aaa3b5d11d0f985c6dcbb562212.js integrity="sha256-jMgXW82GFXrwFJqOa77mR2+AOqo7XRHQ+YXG3LtWIhI=" crossorigin=anonymous></script>
-</head>
-<body dir=ltr>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<div class=book-menu-content>
-<nav>
-<h2 class=book-brand>
-<a class="flex align-center" href=/><span>docs.cuong-dev.ml</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<a href=/about-me/>About me</a>
-<ul>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-a07783f405300745807d39eacf150420 class=toggle>
-<label for=section-a07783f405300745807d39eacf150420 class="flex justify-between">
-<a role=button>Blogs</a>
-</label>
-<ul>
-<li>
-<a href=/posts/creating-a-new-theme/>Creating a New Theme</a>
-</li>
-<li>
-<a href=/posts/goisforlovers/>(Hu)go Template Primer</a>
-</li>
-<li>
-<a href=/posts/hugoisforlovers/>Getting Started with Hugo</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-de0ecdbdbaf98b9c0960557719ae69e4 class=toggle>
-<label for=section-de0ecdbdbaf98b9c0960557719ae69e4 class="flex justify-between">
-<a role=button>Cloud Provider</a>
-</label>
-<ul>
-<li>
-<span>Aws</span>
-<ul>
-<li>
-<a href=/cloud-provider/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/setting-swap-ec2/>Setting Swap Ec2</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Azure</span>
-<ul>
-<li>
-<a href=/cloud-provider/azure/azure-new-service-update/>Azure New Service Update</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Gcp</span>
-<ul>
-<li>
-<a href=/cloud-provider/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-72ed89028f94f588e751de2f6f0bee24 class=toggle>
-<label for=section-72ed89028f94f588e751de2f6f0bee24 class="flex justify-between">
-<a role=button>Ci Cd</a>
-</label>
-<ul>
-<li>
-<span>Argocd</span>
-<ul>
-<li>
-<a href=/ci-cd/argocd/ArgoCD-cheatsheet/>Argo Cd Cheatsheet</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Jenkins</span>
-<ul>
-<li>
-<a href=/ci-cd/jenkins/Jenkins-deploy-AWS-ECS/>Jenkins Deploy Aws Ecs</a>
-</li>
-<li>
-<a href=/ci-cd/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-db801fcabe18fdefdb1b34d275e81669 class=toggle>
-<label for=section-db801fcabe18fdefdb1b34d275e81669 class="flex justify-between">
-<a role=button>Linux</a>
-</label>
-<ul>
-<li>
-<a href=/linux/check-ssl-certificate-expiration-date-s/>Check Ssl Certificate Expiration Date S</a>
-</li>
-<li>
-<a href=/linux/Convert-service-account-json-to-single-line/>Convert Service Account JSON to Single Line</a>
-</li>
-<li>
-<a href=/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a>
-</li>
-<li>
-<a href=/linux/print-all-duplicated/>Print All Duplicated</a>
-</li>
-<li>
-<a href=/linux/quick-load-.env-file/>Quick Load .Env File</a>
-</li>
-<li>
-<a href=/linux/writing-bash-shell-scripts-best-practice/>Writing Bash Shell Scripts Best Practice</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-a6282ae0427584769cba6657e1b1e677 class=toggle>
-<label for=section-a6282ae0427584769cba6657e1b1e677 class="flex justify-between">
-<a role=button>Databases</a>
-</label>
-<ul>
-<li>
-<a href=/databases/General-Table-Size-Information/>General Table Size Information</a>
-</li>
-<li>
-<a href=/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a>
-</li>
-<li>
-<a href=/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class=toggle>
-<label for=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class="flex justify-between">
-<a role=button>Containers</a>
-</label>
-<ul>
-<li>
-<span>Docker</span>
-<ul>
-<li>
-<a href=/containers/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a>
-</li>
-<li>
-<a href=/containers/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
-</li>
-<li>
-<a href=/containers/docker/disstroless-docker-image/>Disstroless Docker Image</a>
-</li>
-<li>
-<a href=/containers/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
-</li>
-<li>
-<a href=/containers/docker/quick-install-docker/>Quick Install Docker</a>
-</li>
-<li>
-<a href=/containers/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
-</li>
-</ul>
-</li>
-<li>
-<span>K8s</span>
-<ul>
-<li>
-<a href=/containers/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
-</li>
-<li>
-<a href=/containers/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a>
-</li>
-<li>
-<a href=/containers/k8s/quick-scale-deployment-accross-namespaces/>Quick Scale Deployment Accross Namespaces</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-5afc9cafd20c13acf538598cf7e4cf3b class=toggle>
-<label for=section-5afc9cafd20c13acf538598cf7e4cf3b class="flex justify-between">
-<a role=button>Observability</a>
-</label>
-<ul>
-<li>
-<span>Monitoring</span>
-<ul>
-<li>
-<a href=/observability/monitoring/alert-manager/>Alert Manager</a>
-</li>
-<li>
-<a href=/observability/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-9f5db7fc9f15ff8a71c4cce94534a865 class=toggle>
-<label for=section-9f5db7fc9f15ff8a71c4cce94534a865 class="flex justify-between">
-<a role=button>Secret Management</a>
-</label>
-<ul>
-<li>
-<span>Vault</span>
-<ul>
-<li>
-<a href=/secret-management/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-0a911fc5dbe691768c557e6a743b35ca class=toggle checked>
-<label for=section-0a911fc5dbe691768c557e6a743b35ca class="flex justify-between">
-<a role=button>Cheatsheet</a>
-</label>
-<ul>
-<li>
-<a href=/cheatsheet/bash/ class=active>Bash</a>
-</li>
-<li>
-<a href=/cheatsheet/docker-cheatsheet/>Docker Cheatsheet</a>
-</li>
-<li>
-<a href=/cheatsheet/grep/>Grep</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-523e3ee5816fa44f0cea5a47adad9fb1 class=toggle>
-<label for=section-523e3ee5816fa44f0cea5a47adad9fb1 class="flex justify-between">
-<a role=button>Others</a>
-</label>
-<ul>
-<li>
-<a href=/others/alert-slack-by-hook/>Alert Slack by Hook</a>
-</li>
-<li>
-<a href=/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</div>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="This is a quick reference cheat sheet to getting started with linux bash shell scripting."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="This is a quick reference cheat sheet to getting started with linux bash shell scripting."><meta property="og:type" content="article"><meta property="og:url" content="http://docs.cuong-dev.ml/cheatsheet/bash/"><meta property="article:section" content="cheatsheet"><meta property="article:modified_time" content="2022-02-27T15:14:21+07:00"><title>Bash | docs.cuong-dev.ml</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.c33aa4c5207daffa8dc6e7a61c01e5683c5cf62fd92c7395a0e46f3a3160ce2a.js integrity="sha256-wzqkxSB9r/qNxuemHAHlaDxc9i/ZLHOVoORvOjFgzio=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>docs.cuong-dev.ml</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href=/about-me/>About me</a><ul></ul></li><li><input type=checkbox id=section-a07783f405300745807d39eacf150420 class=toggle>
+<label for=section-a07783f405300745807d39eacf150420 class="flex justify-between"><a role=button>Blogs</a></label><ul><li><a href=/posts/creating-a-new-theme/>Creating a New Theme</a></li><li><a href=/posts/goisforlovers/>(Hu)go Template Primer</a></li><li><a href=/posts/hugoisforlovers/>Getting Started with Hugo</a></li></ul></li><li><input type=checkbox id=section-de0ecdbdbaf98b9c0960557719ae69e4 class=toggle>
+<label for=section-de0ecdbdbaf98b9c0960557719ae69e4 class="flex justify-between"><a role=button>Cloud Provider</a></label><ul><li><span>Aws</span><ul><li><a href=/cloud-provider/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a></li><li><a href=/cloud-provider/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a></li><li><a href=/cloud-provider/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a></li><li><a href=/cloud-provider/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a></li><li><a href=/cloud-provider/aws/setting-swap-ec2/>Setting Swap Ec2</a></li></ul></li><li><span>Azure</span><ul><li><a href=/cloud-provider/azure/azure-new-service-update/>Azure New Service Update</a></li></ul></li><li><span>Gcp</span><ul><li><a href=/cloud-provider/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a></li></ul></li></ul></li><li><input type=checkbox id=section-72ed89028f94f588e751de2f6f0bee24 class=toggle>
+<label for=section-72ed89028f94f588e751de2f6f0bee24 class="flex justify-between"><a role=button>Ci Cd</a></label><ul><li><span>Argocd</span><ul><li><a href=/ci-cd/argocd/ArgoCD-cheatsheet/>Argo Cd Cheatsheet</a></li></ul></li><li><span>Jenkins</span><ul><li><a href=/ci-cd/jenkins/Jenkins-deploy-AWS-ECS/>Jenkins Deploy Aws Ecs</a></li><li><a href=/ci-cd/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a></li></ul></li></ul></li><li><input type=checkbox id=section-db801fcabe18fdefdb1b34d275e81669 class=toggle>
+<label for=section-db801fcabe18fdefdb1b34d275e81669 class="flex justify-between"><a role=button>Linux</a></label><ul><li><a href=/linux/check-ssl-certificate-expiration-date-s/>Check Ssl Certificate Expiration Date S</a></li><li><a href=/linux/Convert-service-account-json-to-single-line/>Convert Service Account JSON to Single Line</a></li><li><a href=/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a></li><li><a href=/linux/print-all-duplicated/>Print All Duplicated</a></li><li><a href=/linux/quick-load-.env-file/>Quick Load .Env File</a></li><li><a href=/linux/writing-bash-shell-scripts-best-practice/>Writing Bash Shell Scripts Best Practice</a></li></ul></li><li><input type=checkbox id=section-a6282ae0427584769cba6657e1b1e677 class=toggle>
+<label for=section-a6282ae0427584769cba6657e1b1e677 class="flex justify-between"><a role=button>Databases</a></label><ul><li><a href=/databases/General-Table-Size-Information/>General Table Size Information</a></li><li><a href=/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a></li><li><a href=/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a></li></ul></li><li><input type=checkbox id=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class=toggle>
+<label for=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class="flex justify-between"><a role=button>Containers</a></label><ul><li><span>Docker</span><ul><li><a href=/containers/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a></li><li><a href=/containers/docker/checking-file-when-build-docker/>Checking File When Build Docker</a></li><li><a href=/containers/docker/disstroless-docker-image/>Disstroless Docker Image</a></li><li><a href=/containers/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a></li><li><a href=/containers/docker/quick-install-docker/>Quick Install Docker</a></li><li><a href=/containers/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a></li></ul></li><li><span>K8s</span><ul><li><a href=/containers/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a></li><li><a href=/containers/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a></li><li><a href=/containers/k8s/quick-scale-deployment-accross-namespaces/>Quick Scale Deployment Accross Namespaces</a></li></ul></li></ul></li><li><input type=checkbox id=section-5afc9cafd20c13acf538598cf7e4cf3b class=toggle>
+<label for=section-5afc9cafd20c13acf538598cf7e4cf3b class="flex justify-between"><a role=button>Observability</a></label><ul><li><span>Monitoring</span><ul><li><a href=/observability/monitoring/alert-manager/>Alert Manager</a></li><li><a href=/observability/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a></li></ul></li></ul></li><li><input type=checkbox id=section-9f5db7fc9f15ff8a71c4cce94534a865 class=toggle>
+<label for=section-9f5db7fc9f15ff8a71c4cce94534a865 class="flex justify-between"><a role=button>Secret Management</a></label><ul><li><span>Vault</span><ul><li><a href=/secret-management/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a></li></ul></li></ul></li><li><input type=checkbox id=section-0a911fc5dbe691768c557e6a743b35ca class=toggle checked>
+<label for=section-0a911fc5dbe691768c557e6a743b35ca class="flex justify-between"><a role=button>Cheatsheet</a></label><ul><li><a href=/cheatsheet/bash/ class=active>Bash</a></li><li><a href=/cheatsheet/docker-cheatsheet/>Docker Cheatsheet</a></li><li><a href=/cheatsheet/grep/>Grep</a></li></ul></li><li><input type=checkbox id=section-523e3ee5816fa44f0cea5a47adad9fb1 class=toggle>
+<label for=section-523e3ee5816fa44f0cea5a47adad9fb1 class="flex justify-between"><a role=button>Others</a></label><ul><li><a href=/others/alert-slack-by-hook/>Alert Slack by Hook</a></li><li><a href=/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Bash</strong>
-<label for=toc-control>
-<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#httpsquickrefmebashgetting-startedgetting-started-a-idgetting-starteda><a href=https://quickref.me/bash#getting-started>#</a>Getting started </a></li>
-<li><a href=#httpsquickrefmebashparameter-expansionsparameter-expansions-a-idparameter-expansionsa><a href=https://quickref.me/bash#parameter-expansions>#</a>Parameter expansions </a></li>
-<li><a href=#httpsquickrefmebasharraysarrays-a-idarraysa><a href=https://quickref.me/bash#arrays>#</a>Arrays </a></li>
-<li><a href=#httpsquickrefmebashdictionariesdictionaries-a-iddictionariesa><a href=https://quickref.me/bash#dictionaries>#</a>Dictionaries </a></li>
-<li><a href=#httpsquickrefmebashconditionals-2conditionals-a-idconditionals-2a><a href=https://quickref.me/bash#conditionals-2>#</a>Conditionals </a></li>
-<li><a href=#httpsquickrefmebashloopsloops-a-idloopsa><a href=https://quickref.me/bash#loops>#</a>Loops </a></li>
-<li><a href=#httpsquickrefmebashfunctions-2functions-a-idfunctions-2a><a href=https://quickref.me/bash#functions-2>#</a>Functions </a></li>
-<li><a href=#httpsquickrefmebashoptionsoptions-a-idoptionsa><a href=https://quickref.me/bash#options>#</a>Options </a></li>
-<li><a href=#httpsquickrefmebashhistoryhistory-a-idhistorya><a href=https://quickref.me/bash#history>#</a>History </a></li>
-<li><a href=#httpsquickrefmebashmiscellaneousmiscellaneous-a-idmiscellaneousa><a href=https://quickref.me/bash#miscellaneous>#</a>Miscellaneous </a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h1 id=bash>
-Bash
-<a class=anchor href=#bash>#</a>
-</h1>
-<h3 id=httpsquickrefmebashgetting-startedgetting-started-a-idgetting-starteda>
-<a href=https://quickref.me/bash#getting-started>#</a>Getting started
-<a class=anchor href=#httpsquickrefmebashgetting-startedgetting-started-a-idgetting-starteda>#</a>
-</h3>
-<h4 id=hellosh-a-idhello-sha>
-hello.sh
-<a class=anchor href=#hellosh-a-idhello-sha>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>#!/bin/bash
-
-VAR=&#34;world&#34;
-echo &#34;Hello $VAR!&#34; # =&gt; Hello world!
-</code></pre></div><p>Execute the script</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$ bash hello.sh
-</code></pre></div><h4 id=variables-a-idvariablesa>
-Variables
-<a class=anchor href=#variables-a-idvariablesa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>NAME=&#34;John&#34;
-
-echo ${NAME}    # =&gt; John
-echo $NAME      # =&gt; John
-echo &#34;$NAME&#34;    # =&gt; John
-echo &#39;$NAME&#39;    # =&gt; $NAME
-echo &#34;${NAME}!&#34; # =&gt; John!
-
-NAME = &#34;John&#34; # =&gt; Error (about space)
-</code></pre></div><h4 id=comments-a-idcommentsa>
-Comments
-<a class=anchor href=#comments-a-idcommentsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text># This is an inline Bash comment.
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>: &#39;
-This is a
-very neat comment
-in bash
-&#39;
-</code></pre></div><p>Multi-line comments use <code>:'</code> to open and <code>'</code> to close</p>
-<h4 id=arguments-a-idargumentsa>
-Arguments
-<a class=anchor href=#arguments-a-idargumentsa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>$1</code> … <code>$9</code></th>
-<th style=text-align:left>Parameter 1 &mldr; 9</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>$0</code></td>
-<td style=text-align:left>Name of the script itself</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$1</code></td>
-<td style=text-align:left>First argument</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${10}</code></td>
-<td style=text-align:left>Positional parameter 10</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$#</code></td>
-<td style=text-align:left>Number of arguments</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$$</code></td>
-<td style=text-align:left>Process id of the shell</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$*</code></td>
-<td style=text-align:left>All arguments</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$@</code></td>
-<td style=text-align:left>All arguments, starting from first</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$-</code></td>
-<td style=text-align:left>Current options</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$_</code></td>
-<td style=text-align:left>Last argument of the previous command</td>
-</tr>
-</tbody>
-</table>
-<p>See: <a href=http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables>Special parameters</a>.</p>
-<h4 id=functions-a-idfunctionsa>
-Functions
-<a class=anchor href=#functions-a-idfunctionsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>get_name() {
-    echo &#34;John&#34;
-}
-
-echo &#34;You are $(get_name)&#34;
-</code></pre></div><p>See: <a href=https://quickref.me/bash#functions-2>Functions</a></p>
-<h4 id=conditionals-a-idconditionalsa>
-Conditionals
-<a class=anchor href=#conditionals-a-idconditionalsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [[ -z &#34;$string&#34; ]]; then
-    echo &#34;String is empty&#34;
-elif [[ -n &#34;$string&#34; ]]; then
-    echo &#34;String is not empty&#34;
-fi
-</code></pre></div><p>See: <a href=https://quickref.me/bash#conditionals-2>Conditionals</a></p>
-<h4 id=brace-expansion-a-idbrace-expansiona>
-Brace expansion
-<a class=anchor href=#brace-expansion-a-idbrace-expansiona>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>echo {A,B}.js
-</code></pre></div><table>
-<thead>
-<tr>
-<th style=text-align:left><code>{A,B}</code></th>
-<th style=text-align:left>Same as <code>A B</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>{A,B}.js</code></td>
-<td style=text-align:left>Same as <code>A.js B.js</code></td>
-</tr>
-<tr>
-<td style=text-align:left><code>{1..5}</code></td>
-<td style=text-align:left>Same as <code>1 2 3 4 5</code></td>
-</tr>
-</tbody>
-</table>
-<p>See: <a href=http://wiki.bash-hackers.org/syntax/expansion/brace>Brace expansion</a></p>
-<h4 id=shell-execution-a-idshell-executiona>
-Shell execution
-<a class=anchor href=#shell-execution-a-idshell-executiona>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>echo &#34;I&#39;m in $(PWD)&#34;
-# Same
-echo &#34;I&#39;m in `pwd`&#34;
-</code></pre></div><p>See: <a href=http://wiki.bash-hackers.org/syntax/expansion/cmdsubst>Command substitution</a></p>
-<h3 id=httpsquickrefmebashparameter-expansionsparameter-expansions-a-idparameter-expansionsa>
-<a href=https://quickref.me/bash#parameter-expansions>#</a>Parameter expansions
-<a class=anchor href=#httpsquickrefmebashparameter-expansionsparameter-expansions-a-idparameter-expansionsa>#</a>
-</h3>
-<h4 id=syntax-a-idsyntaxa>
-Syntax
-<a class=anchor href=#syntax-a-idsyntaxa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>${FOO%suffix}</code></th>
-<th style=text-align:left>Remove suffix</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>${FOO#prefix}</code></td>
-<td style=text-align:left>Remove prefix</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${FOO%%suffix}</code></td>
-<td style=text-align:left>Remove long suffix</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${FOO##prefix}</code></td>
-<td style=text-align:left>Remove long prefix</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${FOO/from/to}</code></td>
-<td style=text-align:left>Replace first match</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${FOO//from/to}</code></td>
-<td style=text-align:left>Replace all</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${FOO/%from/to}</code></td>
-<td style=text-align:left>Replace suffix</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${FOO/#from/to}</code></td>
-<td style=text-align:left>Replace prefix</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Substrings</strong></p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>${FOO:0:3}</code></th>
-<th style=text-align:left>Substring <em>(position, length)</em></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>${FOO:(-3):3}</code></td>
-<td style=text-align:left>Substring from the right</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Length</strong></p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>${#FOO}</code></th>
-<th style=text-align:left>Length of <code>$FOO</code></th>
-</tr>
-</thead>
-</table>
-<p><strong>Default values</strong></p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>${FOO:-val}</code></th>
-<th style=text-align:left><code>$FOO</code>, or <code>val</code> if unset</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>${FOO:=val}</code></td>
-<td style=text-align:left>Set <code>$FOO</code> to <code>val</code> if unset</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${FOO:+val}</code></td>
-<td style=text-align:left><code>val</code> if <code>$FOO</code> is set</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${FOO:?message}</code></td>
-<td style=text-align:left>Show message and exit if <code>$FOO</code> is unset</td>
-</tr>
-</tbody>
-</table>
-<h4 id=substitution-a-idsubstitutiona>
-Substitution
-<a class=anchor href=#substitution-a-idsubstitutiona>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>echo ${food:-Cake}  #=&gt; $food or &#34;Cake&#34;
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>STR=&#34;/path/to/foo.cpp&#34;
-echo ${STR%.cpp}    # /path/to/foo
-echo ${STR%.cpp}.o  # /path/to/foo.o
-echo ${STR%/*}      # /path/to
-
-echo ${STR##*.}     # cpp (extension)
-echo ${STR##*/}     # foo.cpp (basepath)
-
-echo ${STR#*/}      # path/to/foo.cpp
-echo ${STR##*/}     # foo.cpp
-
-echo ${STR/foo/bar} # /path/to/bar.cpp
-</code></pre></div><h4 id=slicing-a-idslicinga>
-Slicing
-<a class=anchor href=#slicing-a-idslicinga>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>name=&#34;John&#34;
-echo ${name}           # =&gt; John
-echo ${name:0:2}       # =&gt; Jo
-echo ${name::2}        # =&gt; Jo
-echo ${name::-1}       # =&gt; Joh
-echo ${name:(-1)}      # =&gt; n
-echo ${name:(-2)}      # =&gt; hn
-echo ${name:(-2):2}    # =&gt; hn
-
-length=2
-echo ${name:0:length}  # =&gt; Jo
-</code></pre></div><p>See: <a href=http://wiki.bash-hackers.org/syntax/pe>Parameter expansion</a></p>
-<h4 id=basepath--dirpath-a-idbasepath-dirpatha>
-basepath & dirpath
-<a class=anchor href=#basepath--dirpath-a-idbasepath-dirpatha>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>SRC=&#34;/path/to/foo.cpp&#34;
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>BASEPATH=${SRC##*/}   
-echo $BASEPATH  # =&gt; &#34;foo.cpp&#34;
-
-
-DIRPATH=${SRC%$BASEPATH}
-echo $DIRPATH   # =&gt; &#34;/path/to/&#34;
-</code></pre></div><h4 id=transform-a-idtransforma>
-Transform
-<a class=anchor href=#transform-a-idtransforma>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>STR=&#34;HELLO WORLD!&#34;
-echo ${STR,}   # =&gt; hELLO WORLD!
-echo ${STR,,}  # =&gt; hello world!
-
-STR=&#34;hello world!&#34;
-echo ${STR^}   # =&gt; Hello world!
-echo ${STR^^}  # =&gt; HELLO WORLD!
-
-ARR=(hello World)
-echo &#34;${ARR[@],}&#34; # =&gt; hello world
-echo &#34;${ARR[@]^}&#34; # =&gt; Hello World
-</code></pre></div><h3 id=httpsquickrefmebasharraysarrays-a-idarraysa>
-<a href=https://quickref.me/bash#arrays>#</a>Arrays
-<a class=anchor href=#httpsquickrefmebasharraysarrays-a-idarraysa>#</a>
-</h3>
-<h4 id=defining-arrays-a-iddefining-arraysa>
-Defining arrays
-<a class=anchor href=#defining-arrays-a-iddefining-arraysa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>Fruits=(&#39;Apple&#39; &#39;Banana&#39; &#39;Orange&#39;)
-
-Fruits[0]=&#34;Apple&#34;
-Fruits[1]=&#34;Banana&#34;
-Fruits[2]=&#34;Orange&#34;
-
-ARRAY2=(foo{1..2}) # =&gt; foo1 foo2
-ARRAY3=({A..D})    # =&gt; A B C D
-
-# declare construct
-declare -a Numbers=(1 2 3 4 5 6)
-</code></pre></div><h4 id=indexing-a-idindexinga>
-Indexing
-<a class=anchor href=#indexing-a-idindexinga>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>${Fruits[0]}</code></th>
-<th style=text-align:left>First element</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>${Fruits[-1]}</code></td>
-<td style=text-align:left>Last element</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${Fruits[*]}</code></td>
-<td style=text-align:left>All elements</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${Fruits[@]}</code></td>
-<td style=text-align:left>All elements</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${#Fruits[@]}</code></td>
-<td style=text-align:left>Number of all</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${#Fruits}</code></td>
-<td style=text-align:left>Length of 1st</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${#Fruits[3]}</code></td>
-<td style=text-align:left>Length of nth</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${Fruits[@]:3:2}</code></td>
-<td style=text-align:left>Range</td>
-</tr>
-<tr>
-<td style=text-align:left><code>${!Fruits[@]}</code></td>
-<td style=text-align:left>Keys of all</td>
-</tr>
-</tbody>
-</table>
-<h4 id=iteration-a-iditerationa>
-Iteration
-<a class=anchor href=#iteration-a-iditerationa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>Fruits=(&#39;Apple&#39; &#39;Banana&#39; &#39;Orange&#39;)
-
-for e in &#34;${Fruits[@]}&#34;; do
-    echo $e
-done
-</code></pre></div><p><strong>With index</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for i in &#34;${!Fruits[@]}&#34;; do
-  printf &#34;%s\t%s\n&#34; &#34;$i&#34; &#34;${Fruits[$i]}&#34;
-done
-
-</code></pre></div><h4 id=operations-a-idoperationsa>
-Operations
-<a class=anchor href=#operations-a-idoperationsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>Fruits=(&#34;${Fruits[@]}&#34; &#34;Watermelon&#34;)     # Push
-Fruits+=(&#39;Watermelon&#39;)                   # Also Push
-Fruits=( ${Fruits[@]/Ap*/} )             # Remove by regex match
-unset Fruits[2]                          # Remove one item
-Fruits=(&#34;${Fruits[@]}&#34;)                  # Duplicate
-Fruits=(&#34;${Fruits[@]}&#34; &#34;${Veggies[@]}&#34;)  # Concatenate
-lines=(`cat &#34;logfile&#34;`)                  # Read from file
-</code></pre></div><h4 id=arrays-as-arguments-a-idarrays-as-argumentsa>
-Arrays as arguments
-<a class=anchor href=#arrays-as-arguments-a-idarrays-as-argumentsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>function extract()
-{
-    local -n myarray=$1
-    local idx=$2
-    echo &#34;${myarray[$idx]}&#34;
-}
-Fruits=(&#39;Apple&#39; &#39;Banana&#39; &#39;Orange&#39;)
-extract Fruits 2     # =&gt; Orangle
-</code></pre></div><h3 id=httpsquickrefmebashdictionariesdictionaries-a-iddictionariesa>
-<a href=https://quickref.me/bash#dictionaries>#</a>Dictionaries
-<a class=anchor href=#httpsquickrefmebashdictionariesdictionaries-a-iddictionariesa>#</a>
-</h3>
-<h4 id=defining-a-iddefininga>
-Defining
-<a class=anchor href=#defining-a-iddefininga>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>declare -A sounds
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>sounds[dog]=&#34;bark&#34;
-sounds[cow]=&#34;moo&#34;
-sounds[bird]=&#34;tweet&#34;
-sounds[wolf]=&#34;howl&#34;
-</code></pre></div><h4 id=working-with-dictionaries-a-idworking-with-dictionariesa>
-Working with dictionaries
-<a class=anchor href=#working-with-dictionaries-a-idworking-with-dictionariesa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>echo ${sounds[dog]} # Dog&#39;s sound
-echo ${sounds[@]}   # All values
-echo ${!sounds[@]}  # All keys
-echo ${#sounds[@]}  # Number of elements
-unset sounds[dog]   # Delete dog
-</code></pre></div><h4 id=iteration-a-iditeration-2a>
-Iteration
-<a class=anchor href=#iteration-a-iditeration-2a>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for val in &#34;${sounds[@]}&#34;; do
-    echo $val
-done
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for key in &#34;${!sounds[@]}&#34;; do
-    echo $key
-done
-</code></pre></div><h3 id=httpsquickrefmebashconditionals-2conditionals-a-idconditionals-2a>
-<a href=https://quickref.me/bash#conditionals-2>#</a>Conditionals
-<a class=anchor href=#httpsquickrefmebashconditionals-2conditionals-a-idconditionals-2a>#</a>
-</h3>
-<h4 id=integer-conditions-a-idinteger-conditionsa>
-Integer conditions
-<a class=anchor href=#integer-conditions-a-idinteger-conditionsa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>[[ NUM -eq NUM ]]</code></th>
-<th style=text-align:left>Equal</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>[[ NUM -ne NUM ]]</code></td>
-<td style=text-align:left>Not equal</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ NUM -lt NUM ]]</code></td>
-<td style=text-align:left>Less than</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ NUM -le NUM ]]</code></td>
-<td style=text-align:left>Less than or equal</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ NUM -gt NUM ]]</code></td>
-<td style=text-align:left>Greater than</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ NUM -ge NUM ]]</code></td>
-<td style=text-align:left>Greater than or equal</td>
-</tr>
-<tr>
-<td style=text-align:left><code>(( NUM &lt; NUM ))</code></td>
-<td style=text-align:left>Less than</td>
-</tr>
-<tr>
-<td style=text-align:left><code>(( NUM &lt;= NUM ))</code></td>
-<td style=text-align:left>Less than or equal</td>
-</tr>
-<tr>
-<td style=text-align:left><code>(( NUM > NUM ))</code></td>
-<td style=text-align:left>Greater than</td>
-</tr>
-<tr>
-<td style=text-align:left><code>(( NUM >= NUM ))</code></td>
-<td style=text-align:left>Greater than or equal</td>
-</tr>
-</tbody>
-</table>
-<h4 id=string-conditions-a-idstring-conditionsa>
-String conditions
-<a class=anchor href=#string-conditions-a-idstring-conditionsa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>[[ -z STR ]]</code></th>
-<th style=text-align:left>Empty string</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>[[ -n STR ]]</code></td>
-<td style=text-align:left>Not empty string</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ STR == STR ]]</code></td>
-<td style=text-align:left>Equal</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ STR = STR ]]</code></td>
-<td style=text-align:left>Equal (Same above)</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ STR &lt; STR ]]</code></td>
-<td style=text-align:left>Less than <em>(ASCII)</em></td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ STR > STR ]]</code></td>
-<td style=text-align:left>Greater than <em>(ASCII)</em></td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ STR != STR ]]</code></td>
-<td style=text-align:left>Not Equal</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ STR =~ STR ]]</code></td>
-<td style=text-align:left>Regexp</td>
-</tr>
-</tbody>
-</table>
-<h4 id=example-a-idexamplea>
-Example
-<a class=anchor href=#example-a-idexamplea>#</a>
-</h4>
-<p><strong>String</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [[ -z &#34;$string&#34; ]]; then
-    echo &#34;String is empty&#34;
-elif [[ -n &#34;$string&#34; ]]; then
-    echo &#34;String is not empty&#34;
-else
-    echo &#34;This never happens&#34;
-fi
-</code></pre></div><p><strong>Combinations</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [[ X &amp;&amp; Y ]]; then
-    ...
-fi
-</code></pre></div><p><strong>Equal</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [[ &#34;$A&#34; == &#34;$B&#34; ]]; then
-    ...
-fi
-</code></pre></div><p><strong>Regex</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [[ &#39;1. abc&#39; =~ ([a-z]+) ]]; then
-    echo ${BASH_REMATCH[1]}
-fi
-</code></pre></div><p><strong>Smaller</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if (( $a &lt; $b )); then
-   echo &#34;$a is smaller than $b&#34;
-fi
-</code></pre></div><p><strong>Exists</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [[ -e &#34;file.txt&#34; ]]; then
-    echo &#34;file exists&#34;
-fi
-</code></pre></div><h4 id=file-conditions-a-idfile-conditionsa>
-File conditions
-<a class=anchor href=#file-conditions-a-idfile-conditionsa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>[[ -e FILE ]]</code></th>
-<th style=text-align:left>Exists</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>[[ -d FILE ]]</code></td>
-<td style=text-align:left>Directory</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ -f FILE ]]</code></td>
-<td style=text-align:left>File</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ -h FILE ]]</code></td>
-<td style=text-align:left>Symlink</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ -s FILE ]]</code></td>
-<td style=text-align:left>Size is > 0 bytes</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ -r FILE ]]</code></td>
-<td style=text-align:left>Readable</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ -w FILE ]]</code></td>
-<td style=text-align:left>Writable</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ -x FILE ]]</code></td>
-<td style=text-align:left>Executable</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ f1 -nt f2 ]]</code></td>
-<td style=text-align:left>f1 newer than f2</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ f1 -ot f2 ]]</code></td>
-<td style=text-align:left>f2 older than f1</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ f1 -ef f2 ]]</code></td>
-<td style=text-align:left>Same files</td>
-</tr>
-</tbody>
-</table>
-<h4 id=more-conditions-a-idmore-conditionsa>
-More conditions
-<a class=anchor href=#more-conditions-a-idmore-conditionsa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>[[ -o noclobber ]]</code></th>
-<th style=text-align:left>If OPTION is enabled</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>[[ ! EXPR ]]</code></td>
-<td style=text-align:left>Not</td>
-</tr>
-<tr>
-<td style=text-align:left><code>[[ X && Y ]]</code></td>
-<td style=text-align:left>And</td>
-</tr>
-<tr>
-<td style=text-align:left>`[[ X</td>
-<td style=text-align:left></td>
-</tr>
-</tbody>
-</table>
-<h4 id=logical-and-or-a-idlogical-and-ora>
-logical and, or
-<a class=anchor href=#logical-and-or-a-idlogical-and-ora>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if [ &#34;$1&#34; = &#39;y&#39; -a $2 -gt 0 ]; then
-    echo &#34;yes&#34;
-fi
-
-if [ &#34;$1&#34; = &#39;n&#39; -o $2 -lt 0 ]; then
-    echo &#34;no&#34;
-fi
-</code></pre></div><h3 id=httpsquickrefmebashloopsloops-a-idloopsa>
-<a href=https://quickref.me/bash#loops>#</a>Loops
-<a class=anchor href=#httpsquickrefmebashloopsloops-a-idloopsa>#</a>
-</h3>
-<h4 id=basic-for-loop-a-idbasic-for-loopa>
-Basic for loop
-<a class=anchor href=#basic-for-loop-a-idbasic-for-loopa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for i in /etc/rc.*; do
-    echo $i
-done
-</code></pre></div><h4 id=c-like-for-loop-a-idc-like-for-loopa>
-C-like for loop
-<a class=anchor href=#c-like-for-loop-a-idc-like-for-loopa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for ((i = 0 ; i &lt; 100 ; i++)); do
-    echo $i
-done
-</code></pre></div><h4 id=ranges-a-idrangesa>
-Ranges
-<a class=anchor href=#ranges-a-idrangesa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for i in {1..5}; do
-    echo &#34;Welcome $i&#34;
-done
-</code></pre></div><p><strong>With step size</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for i in {5..50..5}; do
-    echo &#34;Welcome $i&#34;
-done
-</code></pre></div><h4 id=auto-increment-a-idauto-incrementa>
-Auto increment
-<a class=anchor href=#auto-increment-a-idauto-incrementa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>i=1
-while [[ $i -lt 4 ]]; do
-    echo &#34;Number: $i&#34;
-    ((i++))
-done
-</code></pre></div><h4 id=auto-decrement-a-idauto-decrementa>
-Auto decrement
-<a class=anchor href=#auto-decrement-a-idauto-decrementa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>i=3
-while [[ $i -gt 0 ]]; do
-    echo &#34;Number: $i&#34;
-    ((i--))
-done
-</code></pre></div><h4 id=continue-a-idcontinuea>
-Continue
-<a class=anchor href=#continue-a-idcontinuea>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for number in $(seq 1 3); do
-    if [[ $number == 2 ]]; then
-        continue;
-    fi
-    echo &#34;$number&#34;
-done
-</code></pre></div><h4 id=break-a-idbreaka>
-Break
-<a class=anchor href=#break-a-idbreaka>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>for number in $(seq 1 3); do
-    if [[ $number == 2 ]]; then
-        # Skip entire rest of loop.
-        break;
-    fi
-    # This will only print 1
-    echo &#34;$number&#34;
-done
-</code></pre></div><h4 id=until-a-iduntila>
-Until
-<a class=anchor href=#until-a-iduntila>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>count=0
-until [ $count -gt 10 ]; do
-    echo &#34;$count&#34;
-    ((count++))
-done
-</code></pre></div><h4 id=forever-a-idforevera>
-Forever
-<a class=anchor href=#forever-a-idforevera>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>while true; do
-    # here is some code.
-done
-</code></pre></div><h4 id=forever-shorthand-a-idforever-shorthanda>
-Forever (shorthand)
-<a class=anchor href=#forever-shorthand-a-idforever-shorthanda>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>while :; do
-    # here is some code.
-done
-</code></pre></div><h4 id=reading-lines-a-idreading-linesa>
-Reading lines
-<a class=anchor href=#reading-lines-a-idreading-linesa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>cat file.txt | while read line; do
-    echo $line
-done
-</code></pre></div><h3 id=httpsquickrefmebashfunctions-2functions-a-idfunctions-2a>
-<a href=https://quickref.me/bash#functions-2>#</a>Functions
-<a class=anchor href=#httpsquickrefmebashfunctions-2functions-a-idfunctions-2a>#</a>
-</h3>
-<h4 id=defining-functions-a-iddefining-functionsa>
-Defining functions
-<a class=anchor href=#defining-functions-a-iddefining-functionsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>myfunc() {
-    echo &#34;hello $1&#34;
-}
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text># Same as above (alternate syntax)
-function myfunc() {
-    echo &#34;hello $1&#34;
-}
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>myfunc &#34;John&#34;
-</code></pre></div><h4 id=returning-values-a-idreturning-valuesa>
-Returning values
-<a class=anchor href=#returning-values-a-idreturning-valuesa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>myfunc() {
-    local myresult=&#39;some value&#39;
-    echo $myresult
-}
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>result=&#34;$(myfunc)&#34;
-</code></pre></div><h4 id=raising-errors-a-idraising-errorsa>
-Raising errors
-<a class=anchor href=#raising-errors-a-idraising-errorsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>myfunc() {
-    return 1
-}
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if myfunc; then
-    echo &#34;success&#34;
-else
-    echo &#34;failure&#34;
-fi
-</code></pre></div><h3 id=httpsquickrefmebashoptionsoptions-a-idoptionsa>
-<a href=https://quickref.me/bash#options>#</a>Options
-<a class=anchor href=#httpsquickrefmebashoptionsoptions-a-idoptionsa>#</a>
-</h3>
-<h4 id=options-a-idoptions-2a>
-Options
-<a class=anchor href=#options-a-idoptions-2a>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text># Avoid overlay files
-# (echo &#34;hi&#34; &gt; foo)
-set -o noclobber
-
-# Used to exit upon error
-# avoiding cascading errors
-set -o errexit   
-
-# Unveils hidden failures
-set -o pipefail  
-
-# Exposes unset variables
-set -o nounset
-</code></pre></div><h4 id=glob-options-a-idglob-optionsa>
-Glob options
-<a class=anchor href=#glob-options-a-idglob-optionsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text># Non-matching globs are removed  
-# (&#39;*.foo&#39; =&gt; &#39;&#39;)
-shopt -s nullglob   
-
-# Non-matching globs throw errors
-shopt -s failglob  
-
-# Case insensitive globs
-shopt -s nocaseglob 
-
-# Wildcards match dotfiles 
-# (&#34;*.sh&#34; =&gt; &#34;.foo.sh&#34;)
-shopt -s dotglob    
-
-# Allow ** for recursive matches 
-# (&#39;lib/**/*.rb&#39; =&gt; &#39;lib/a/b/c.rb&#39;)
-shopt -s globstar   
-</code></pre></div><h3 id=httpsquickrefmebashhistoryhistory-a-idhistorya>
-<a href=https://quickref.me/bash#history>#</a>History
-<a class=anchor href=#httpsquickrefmebashhistoryhistory-a-idhistorya>#</a>
-</h3>
-<h4 id=commands-a-idcommandsa>
-Commands
-<a class=anchor href=#commands-a-idcommandsa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>history</code></th>
-<th style=text-align:left>Show history</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>shopt -s histverify</code></td>
-<td style=text-align:left>Don&rsquo;t execute expanded result immediately</td>
-</tr>
-</tbody>
-</table>
-<h4 id=expansions-a-idexpansionsa>
-Expansions
-<a class=anchor href=#expansions-a-idexpansionsa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>!$</code></th>
-<th style=text-align:left>Expand last parameter of most recent command</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>!*</code></td>
-<td style=text-align:left>Expand all parameters of most recent command</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!-n</code></td>
-<td style=text-align:left>Expand <code>n</code>th most recent command</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!n</code></td>
-<td style=text-align:left>Expand <code>n</code>th command in history</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!&lt;command></code></td>
-<td style=text-align:left>Expand most recent invocation of command <code>&lt;command></code></td>
-</tr>
-</tbody>
-</table>
-<h4 id=operations-a-idoperations-2a>
-Operations
-<a class=anchor href=#operations-a-idoperations-2a>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>!!</code></th>
-<th style=text-align:left>Execute last command again</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>!!:s/&lt;FROM>/&lt;TO>/</code></td>
-<td style=text-align:left>Replace first occurrence of <code>&lt;FROM></code> to <code>&lt;TO></code> in most recent command</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!!:gs/&lt;FROM>/&lt;TO>/</code></td>
-<td style=text-align:left>Replace all occurrences of <code>&lt;FROM></code> to <code>&lt;TO></code> in most recent command</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!$:t</code></td>
-<td style=text-align:left>Expand only basename from last parameter of most recent command</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!$:h</code></td>
-<td style=text-align:left>Expand only directory from last parameter of most recent command</td>
-</tr>
-</tbody>
-</table>
-<p><code>!!</code> and <code>!$</code> can be replaced with any valid expansion.</p>
-<h4 id=slices-a-idslicesa>
-Slices
-<a class=anchor href=#slices-a-idslicesa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>!!:n</code></th>
-<th style=text-align:left>Expand only <code>n</code>th token from most recent command (command is <code>0</code>; first argument is <code>1</code>)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>!^</code></td>
-<td style=text-align:left>Expand first argument from most recent command</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!$</code></td>
-<td style=text-align:left>Expand last token from most recent command</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!!:n-m</code></td>
-<td style=text-align:left>Expand range of tokens from most recent command</td>
-</tr>
-<tr>
-<td style=text-align:left><code>!!:n-$</code></td>
-<td style=text-align:left>Expand <code>n</code>th token to last from most recent command</td>
-</tr>
-</tbody>
-</table>
-<p><code>!!</code> can be replaced with any valid expansion i.e. <code>!cat</code>, <code>!-2</code>, <code>!42</code>, etc.</p>
-<h3 id=httpsquickrefmebashmiscellaneousmiscellaneous-a-idmiscellaneousa>
-<a href=https://quickref.me/bash#miscellaneous>#</a>Miscellaneous
-<a class=anchor href=#httpsquickrefmebashmiscellaneousmiscellaneous-a-idmiscellaneousa>#</a>
-</h3>
-<h4 id=numeric-calculations-a-idnumeric-calculationsa>
-Numeric calculations
-<a class=anchor href=#numeric-calculations-a-idnumeric-calculationsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$((a + 200))      # Add 200 to $a
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>$(($RANDOM%200))  # Random number 0..199
-</code></pre></div><h4 id=subshells-a-idsubshellsa>
-Subshells
-<a class=anchor href=#subshells-a-idsubshellsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>(cd somedir; echo &#34;I&#39;m now in $PWD&#34;)
-pwd # still in first directory
-</code></pre></div><h4 id=inspecting-commands-a-idinspecting-commandsa>
-Inspecting commands
-<a class=anchor href=#inspecting-commands-a-idinspecting-commandsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>command -V cd
-#=&gt; &#34;cd is a function/alias/whatever&#34;
-</code></pre></div><h4 id=redirection-a-idredirectiona>
-Redirection
-<a class=anchor href=#redirection-a-idredirectiona>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>python hello.py &gt; output.txt   # stdout to (file)
-python hello.py &gt;&gt; output.txt  # stdout to (file), append
-python hello.py 2&gt; error.log   # stderr to (file)
-python hello.py 2&gt;&amp;1           # stderr to stdout
-python hello.py 2&gt;/dev/null    # stderr to (null)
-python hello.py &amp;&gt;/dev/null    # stdout and stderr to (null)
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>python hello.py &lt; foo.txt      # feed foo.txt to stdin for python
-</code></pre></div><h4 id=source-relative-a-idsource-relativea>
-Source relative
-<a class=anchor href=#source-relative-a-idsource-relativea>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>source &#34;${0%/*}/../share/foo.sh&#34;
-</code></pre></div><h4 id=directory-of-script-a-iddirectory-of-scripta>
-Directory of script
-<a class=anchor href=#directory-of-script-a-iddirectory-of-scripta>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>DIR=&#34;${0%/*}&#34;
-</code></pre></div><h4 id=caseswitch-a-idcase-switcha>
-Case/switch
-<a class=anchor href=#caseswitch-a-idcase-switcha>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>case &#34;$1&#34; in
-    start | up)
-    vagrant up
-    ;;
-
-    *)
-    echo &#34;Usage: $0 {start|stop|ssh}&#34;
-    ;;
-esac
-</code></pre></div><h4 id=trap-errors-a-idtrap-errorsa>
-Trap errors
-<a class=anchor href=#trap-errors-a-idtrap-errorsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>trap &#39;echo Error at about $LINENO&#39; ERR
-</code></pre></div><p>or</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>traperr() {
-    echo &#34;ERROR: ${BASH_SOURCE[1]} at about ${BASH_LINENO[0]}&#34;
-}
-
-set -o errtrace
-trap traperr ERR
-</code></pre></div><h4 id=printf-a-idprintfa>
-printf
-<a class=anchor href=#printf-a-idprintfa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>printf &#34;Hello %s, I&#39;m %s&#34; Sven Olga
-#=&gt; &#34;Hello Sven, I&#39;m Olga
-
-printf &#34;1 + 1 = %d&#34; 2
-#=&gt; &#34;1 + 1 = 2&#34;
-
-printf &#34;Print a float: %f&#34; 2
-#=&gt; &#34;Print a float: 2.000000&#34;
-</code></pre></div><h4 id=getting-options-a-idgetting-optionsa>
-Getting options
-<a class=anchor href=#getting-options-a-idgetting-optionsa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>while [[ &#34;$1&#34; =~ ^- &amp;&amp; ! &#34;$1&#34; == &#34;--&#34; ]]; do case $1 in
-    -V | --version )
-    echo $version
-    exit
-    ;;
-    -s | --string )
-    shift; string=$1
-    ;;
-    -f | --flag )
-    flag=1
-    ;;
-esac; shift; done
-if [[ &#34;$1&#34; == &#39;--&#39; ]]; then shift; fi
-</code></pre></div><h4 id=check-for-commands-result-a-idcheck-for-command-s-resulta>
-Check for command&rsquo;s result
-<a class=anchor href=#check-for-commands-result-a-idcheck-for-command-s-resulta>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if ping -c 1 google.com; then
-    echo &#34;It appears you have a working internet connection&#34;
-fi
-</code></pre></div><h4 id=special-variables-a-idspecial-variablesa>
-Special variables
-<a class=anchor href=#special-variables-a-idspecial-variablesa>#</a>
-</h4>
-<table>
-<thead>
-<tr>
-<th style=text-align:left><code>$?</code></th>
-<th style=text-align:left>Exit status of last task</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>$!</code></td>
-<td style=text-align:left>PID of last background task</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$$</code></td>
-<td style=text-align:left>PID of shell</td>
-</tr>
-<tr>
-<td style=text-align:left><code>$0</code></td>
-<td style=text-align:left>Filename of the shell script</td>
-</tr>
-</tbody>
-</table>
-<p>See <a href=http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables>Special parameters</a>.</p>
-<h4 id=grep-check-a-idgrep-checka>
-Grep check
-<a class=anchor href=#grep-check-a-idgrep-checka>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>if grep -q &#39;foo&#39; ~/.bash_history; then
-    echo &#34;You appear to have typed &#39;foo&#39; in the past&#34;
-fi
-</code></pre></div><h4 id=backslash-escapes-a-idbackslash-escapesa>
-Backslash escapes
-<a class=anchor href=#backslash-escapes-a-idbackslash-escapesa>#</a>
-</h4>
-<ul>
-<li>
-<ul>
-<li>!</li>
-</ul>
-</li>
-<li>"</li>
-<li>#</li>
-<li>&</li>
-<li>'</li>
-<li>(</li>
-<li>)</li>
-<li>,</li>
-<li>;</li>
-<li>&lt;</li>
-<li>></li>
-<li>[</li>
-<li>|</li>
-<li>\</li>
-<li>]</li>
-<li>^</li>
-<li>{</li>
-<li>}</li>
-<li>`</li>
-<li>$</li>
-<li>*</li>
-<li>?</li>
-</ul>
-<p>Escape these special characters with <code>\</code></p>
-<h4 id=heredoc-a-idheredoca>
-Heredoc
-<a class=anchor href=#heredoc-a-idheredoca>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>cat &lt;&lt;END
-hello world
-END
-</code></pre></div><h4 id=go-to-previous-directory-a-idgo-to-previous-directorya>
-Go to previous directory
-<a class=anchor href=#go-to-previous-directory-a-idgo-to-previous-directorya>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>pwd # /home/user/foo
-cd bar/
-pwd # /home/user/foo/bar
-cd -
-pwd # /home/user/foo
-</code></pre></div><h4 id=reading-input-a-idreading-inputa>
-Reading input
-<a class=anchor href=#reading-input-a-idreading-inputa>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>echo -n &#34;Proceed? [y/n]: &#34;
-read ans
-echo $ans
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>read -n 1 ans    # Just one character
-</code></pre></div><h4 id=conditional-execution-a-idconditional-executiona>
-Conditional execution
-<a class=anchor href=#conditional-execution-a-idconditional-executiona>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>git commit &amp;&amp; git push
-git commit || echo &#34;Commit failed&#34;
-</code></pre></div><h4 id=strict-mode-a-idstrict-modea>
-Strict mode
-<a class=anchor href=#strict-mode-a-idstrict-modea>#</a>
-</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>set -euo pipefail
-IFS=$&#39;\n\t&#39;
-</code></pre></div><p>See: <a href=http://redsymbol.net/articles/unofficial-bash-strict-mode/>Unofficial bash strict mode</a></p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-</div>
-<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<div class=book-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#httpsquickrefmebashgetting-startedgetting-started-a-idgetting-starteda><a href=https://quickref.me/bash#getting-started>#</a>Getting started </a></li>
-<li><a href=#httpsquickrefmebashparameter-expansionsparameter-expansions-a-idparameter-expansionsa><a href=https://quickref.me/bash#parameter-expansions>#</a>Parameter expansions </a></li>
-<li><a href=#httpsquickrefmebasharraysarrays-a-idarraysa><a href=https://quickref.me/bash#arrays>#</a>Arrays </a></li>
-<li><a href=#httpsquickrefmebashdictionariesdictionaries-a-iddictionariesa><a href=https://quickref.me/bash#dictionaries>#</a>Dictionaries </a></li>
-<li><a href=#httpsquickrefmebashconditionals-2conditionals-a-idconditionals-2a><a href=https://quickref.me/bash#conditionals-2>#</a>Conditionals </a></li>
-<li><a href=#httpsquickrefmebashloopsloops-a-idloopsa><a href=https://quickref.me/bash#loops>#</a>Loops </a></li>
-<li><a href=#httpsquickrefmebashfunctions-2functions-a-idfunctions-2a><a href=https://quickref.me/bash#functions-2>#</a>Functions </a></li>
-<li><a href=#httpsquickrefmebashoptionsoptions-a-idoptionsa><a href=https://quickref.me/bash#options>#</a>Options </a></li>
-<li><a href=#httpsquickrefmebashhistoryhistory-a-idhistorya><a href=https://quickref.me/bash#history>#</a>History </a></li>
-<li><a href=#httpsquickrefmebashmiscellaneousmiscellaneous-a-idmiscellaneousa><a href=https://quickref.me/bash#miscellaneous>#</a>Miscellaneous </a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</aside>
-</main>
-</body>
-</html>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#httpsquickrefmebashgetting-startedgetting-started-a-idgetting-starteda><a href=https://quickref.me/bash#getting-started>#</a>Getting started</a></li><li><a href=#httpsquickrefmebashparameter-expansionsparameter-expansions-a-idparameter-expansionsa><a href=https://quickref.me/bash#parameter-expansions>#</a>Parameter expansions</a></li><li><a href=#httpsquickrefmebasharraysarrays-a-idarraysa><a href=https://quickref.me/bash#arrays>#</a>Arrays</a></li><li><a href=#httpsquickrefmebashdictionariesdictionaries-a-iddictionariesa><a href=https://quickref.me/bash#dictionaries>#</a>Dictionaries</a></li><li><a href=#httpsquickrefmebashconditionals-2conditionals-a-idconditionals-2a><a href=https://quickref.me/bash#conditionals-2>#</a>Conditionals</a></li><li><a href=#httpsquickrefmebashloopsloops-a-idloopsa><a href=https://quickref.me/bash#loops>#</a>Loops</a></li><li><a href=#httpsquickrefmebashfunctions-2functions-a-idfunctions-2a><a href=https://quickref.me/bash#functions-2>#</a>Functions</a></li><li><a href=#httpsquickrefmebashoptionsoptions-a-idoptionsa><a href=https://quickref.me/bash#options>#</a>Options</a></li><li><a href=#httpsquickrefmebashhistoryhistory-a-idhistorya><a href=https://quickref.me/bash#history>#</a>History</a></li><li><a href=#httpsquickrefmebashmiscellaneousmiscellaneous-a-idmiscellaneousa><a href=https://quickref.me/bash#miscellaneous>#</a>Miscellaneous</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=bash>Bash
+<a class=anchor href=#bash>#</a></h1><h3 id=httpsquickrefmebashgetting-startedgetting-started-a-idgetting-starteda><a href=https://quickref.me/bash#getting-started>#</a>Getting started
+<a class=anchor href=#httpsquickrefmebashgetting-startedgetting-started-a-idgetting-starteda>#</a></h3><h4 id=hellosh-a-idhello-sha>hello.sh
+<a class=anchor href=#hellosh-a-idhello-sha>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>#!/bin/bash
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>VAR=&#34;world&#34;
+</span></span><span style=display:flex><span>echo &#34;Hello $VAR!&#34; # =&gt; Hello world!
+</span></span></code></pre></div><p>Execute the script</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>$ bash hello.sh
+</span></span></code></pre></div><h4 id=variables-a-idvariablesa>Variables
+<a class=anchor href=#variables-a-idvariablesa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>NAME=&#34;John&#34;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo ${NAME}    # =&gt; John
+</span></span><span style=display:flex><span>echo $NAME      # =&gt; John
+</span></span><span style=display:flex><span>echo &#34;$NAME&#34;    # =&gt; John
+</span></span><span style=display:flex><span>echo &#39;$NAME&#39;    # =&gt; $NAME
+</span></span><span style=display:flex><span>echo &#34;${NAME}!&#34; # =&gt; John!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME = &#34;John&#34; # =&gt; Error (about space)
+</span></span></code></pre></div><h4 id=comments-a-idcommentsa>Comments
+<a class=anchor href=#comments-a-idcommentsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span># This is an inline Bash comment.
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>: &#39;
+</span></span><span style=display:flex><span>This is a
+</span></span><span style=display:flex><span>very neat comment
+</span></span><span style=display:flex><span>in bash
+</span></span><span style=display:flex><span>&#39;
+</span></span></code></pre></div><p>Multi-line comments use <code>:'</code> to open and <code>'</code> to close</p><h4 id=arguments-a-idargumentsa>Arguments
+<a class=anchor href=#arguments-a-idargumentsa>#</a></h4><table><thead><tr><th style=text-align:left><code>$1</code> … <code>$9</code></th><th style=text-align:left>Parameter 1 &mldr; 9</th></tr></thead><tbody><tr><td style=text-align:left><code>$0</code></td><td style=text-align:left>Name of the script itself</td></tr><tr><td style=text-align:left><code>$1</code></td><td style=text-align:left>First argument</td></tr><tr><td style=text-align:left><code>${10}</code></td><td style=text-align:left>Positional parameter 10</td></tr><tr><td style=text-align:left><code>$#</code></td><td style=text-align:left>Number of arguments</td></tr><tr><td style=text-align:left><code>$$</code></td><td style=text-align:left>Process id of the shell</td></tr><tr><td style=text-align:left><code>$*</code></td><td style=text-align:left>All arguments</td></tr><tr><td style=text-align:left><code>$@</code></td><td style=text-align:left>All arguments, starting from first</td></tr><tr><td style=text-align:left><code>$-</code></td><td style=text-align:left>Current options</td></tr><tr><td style=text-align:left><code>$_</code></td><td style=text-align:left>Last argument of the previous command</td></tr></tbody></table><p>See: <a href=http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables>Special parameters</a>.</p><h4 id=functions-a-idfunctionsa>Functions
+<a class=anchor href=#functions-a-idfunctionsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>get_name() {
+</span></span><span style=display:flex><span>    echo &#34;John&#34;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo &#34;You are $(get_name)&#34;
+</span></span></code></pre></div><p>See: <a href=https://quickref.me/bash#functions-2>Functions</a></p><h4 id=conditionals-a-idconditionalsa>Conditionals
+<a class=anchor href=#conditionals-a-idconditionalsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if [[ -z &#34;$string&#34; ]]; then
+</span></span><span style=display:flex><span>    echo &#34;String is empty&#34;
+</span></span><span style=display:flex><span>elif [[ -n &#34;$string&#34; ]]; then
+</span></span><span style=display:flex><span>    echo &#34;String is not empty&#34;
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><p>See: <a href=https://quickref.me/bash#conditionals-2>Conditionals</a></p><h4 id=brace-expansion-a-idbrace-expansiona>Brace expansion
+<a class=anchor href=#brace-expansion-a-idbrace-expansiona>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>echo {A,B}.js
+</span></span></code></pre></div><table><thead><tr><th style=text-align:left><code>{A,B}</code></th><th style=text-align:left>Same as <code>A B</code></th></tr></thead><tbody><tr><td style=text-align:left><code>{A,B}.js</code></td><td style=text-align:left>Same as <code>A.js B.js</code></td></tr><tr><td style=text-align:left><code>{1..5}</code></td><td style=text-align:left>Same as <code>1 2 3 4 5</code></td></tr></tbody></table><p>See: <a href=http://wiki.bash-hackers.org/syntax/expansion/brace>Brace expansion</a></p><h4 id=shell-execution-a-idshell-executiona>Shell execution
+<a class=anchor href=#shell-execution-a-idshell-executiona>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>echo &#34;I&#39;m in $(PWD)&#34;
+</span></span><span style=display:flex><span># Same
+</span></span><span style=display:flex><span>echo &#34;I&#39;m in `pwd`&#34;
+</span></span></code></pre></div><p>See: <a href=http://wiki.bash-hackers.org/syntax/expansion/cmdsubst>Command substitution</a></p><h3 id=httpsquickrefmebashparameter-expansionsparameter-expansions-a-idparameter-expansionsa><a href=https://quickref.me/bash#parameter-expansions>#</a>Parameter expansions
+<a class=anchor href=#httpsquickrefmebashparameter-expansionsparameter-expansions-a-idparameter-expansionsa>#</a></h3><h4 id=syntax-a-idsyntaxa>Syntax
+<a class=anchor href=#syntax-a-idsyntaxa>#</a></h4><table><thead><tr><th style=text-align:left><code>${FOO%suffix}</code></th><th style=text-align:left>Remove suffix</th></tr></thead><tbody><tr><td style=text-align:left><code>${FOO#prefix}</code></td><td style=text-align:left>Remove prefix</td></tr><tr><td style=text-align:left><code>${FOO%%suffix}</code></td><td style=text-align:left>Remove long suffix</td></tr><tr><td style=text-align:left><code>${FOO##prefix}</code></td><td style=text-align:left>Remove long prefix</td></tr><tr><td style=text-align:left><code>${FOO/from/to}</code></td><td style=text-align:left>Replace first match</td></tr><tr><td style=text-align:left><code>${FOO//from/to}</code></td><td style=text-align:left>Replace all</td></tr><tr><td style=text-align:left><code>${FOO/%from/to}</code></td><td style=text-align:left>Replace suffix</td></tr><tr><td style=text-align:left><code>${FOO/#from/to}</code></td><td style=text-align:left>Replace prefix</td></tr></tbody></table><p><strong>Substrings</strong></p><table><thead><tr><th style=text-align:left><code>${FOO:0:3}</code></th><th style=text-align:left>Substring <em>(position, length)</em></th></tr></thead><tbody><tr><td style=text-align:left><code>${FOO:(-3):3}</code></td><td style=text-align:left>Substring from the right</td></tr></tbody></table><p><strong>Length</strong></p><table><thead><tr><th style=text-align:left><code>${#FOO}</code></th><th style=text-align:left>Length of <code>$FOO</code></th></tr></thead></table><p><strong>Default values</strong></p><table><thead><tr><th style=text-align:left><code>${FOO:-val}</code></th><th style=text-align:left><code>$FOO</code>, or <code>val</code> if unset</th></tr></thead><tbody><tr><td style=text-align:left><code>${FOO:=val}</code></td><td style=text-align:left>Set <code>$FOO</code> to <code>val</code> if unset</td></tr><tr><td style=text-align:left><code>${FOO:+val}</code></td><td style=text-align:left><code>val</code> if <code>$FOO</code> is set</td></tr><tr><td style=text-align:left><code>${FOO:?message}</code></td><td style=text-align:left>Show message and exit if <code>$FOO</code> is unset</td></tr></tbody></table><h4 id=substitution-a-idsubstitutiona>Substitution
+<a class=anchor href=#substitution-a-idsubstitutiona>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>echo ${food:-Cake}  #=&gt; $food or &#34;Cake&#34;
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>STR=&#34;/path/to/foo.cpp&#34;
+</span></span><span style=display:flex><span>echo ${STR%.cpp}    # /path/to/foo
+</span></span><span style=display:flex><span>echo ${STR%.cpp}.o  # /path/to/foo.o
+</span></span><span style=display:flex><span>echo ${STR%/*}      # /path/to
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo ${STR##*.}     # cpp (extension)
+</span></span><span style=display:flex><span>echo ${STR##*/}     # foo.cpp (basepath)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo ${STR#*/}      # path/to/foo.cpp
+</span></span><span style=display:flex><span>echo ${STR##*/}     # foo.cpp
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo ${STR/foo/bar} # /path/to/bar.cpp
+</span></span></code></pre></div><h4 id=slicing-a-idslicinga>Slicing
+<a class=anchor href=#slicing-a-idslicinga>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>name=&#34;John&#34;
+</span></span><span style=display:flex><span>echo ${name}           # =&gt; John
+</span></span><span style=display:flex><span>echo ${name:0:2}       # =&gt; Jo
+</span></span><span style=display:flex><span>echo ${name::2}        # =&gt; Jo
+</span></span><span style=display:flex><span>echo ${name::-1}       # =&gt; Joh
+</span></span><span style=display:flex><span>echo ${name:(-1)}      # =&gt; n
+</span></span><span style=display:flex><span>echo ${name:(-2)}      # =&gt; hn
+</span></span><span style=display:flex><span>echo ${name:(-2):2}    # =&gt; hn
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>length=2
+</span></span><span style=display:flex><span>echo ${name:0:length}  # =&gt; Jo
+</span></span></code></pre></div><p>See: <a href=http://wiki.bash-hackers.org/syntax/pe>Parameter expansion</a></p><h4 id=basepath--dirpath-a-idbasepath-dirpatha>basepath & dirpath
+<a class=anchor href=#basepath--dirpath-a-idbasepath-dirpatha>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>SRC=&#34;/path/to/foo.cpp&#34;
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>BASEPATH=${SRC##*/}   
+</span></span><span style=display:flex><span>echo $BASEPATH  # =&gt; &#34;foo.cpp&#34;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>DIRPATH=${SRC%$BASEPATH}
+</span></span><span style=display:flex><span>echo $DIRPATH   # =&gt; &#34;/path/to/&#34;
+</span></span></code></pre></div><h4 id=transform-a-idtransforma>Transform
+<a class=anchor href=#transform-a-idtransforma>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>STR=&#34;HELLO WORLD!&#34;
+</span></span><span style=display:flex><span>echo ${STR,}   # =&gt; hELLO WORLD!
+</span></span><span style=display:flex><span>echo ${STR,,}  # =&gt; hello world!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>STR=&#34;hello world!&#34;
+</span></span><span style=display:flex><span>echo ${STR^}   # =&gt; Hello world!
+</span></span><span style=display:flex><span>echo ${STR^^}  # =&gt; HELLO WORLD!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ARR=(hello World)
+</span></span><span style=display:flex><span>echo &#34;${ARR[@],}&#34; # =&gt; hello world
+</span></span><span style=display:flex><span>echo &#34;${ARR[@]^}&#34; # =&gt; Hello World
+</span></span></code></pre></div><h3 id=httpsquickrefmebasharraysarrays-a-idarraysa><a href=https://quickref.me/bash#arrays>#</a>Arrays
+<a class=anchor href=#httpsquickrefmebasharraysarrays-a-idarraysa>#</a></h3><h4 id=defining-arrays-a-iddefining-arraysa>Defining arrays
+<a class=anchor href=#defining-arrays-a-iddefining-arraysa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>Fruits=(&#39;Apple&#39; &#39;Banana&#39; &#39;Orange&#39;)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Fruits[0]=&#34;Apple&#34;
+</span></span><span style=display:flex><span>Fruits[1]=&#34;Banana&#34;
+</span></span><span style=display:flex><span>Fruits[2]=&#34;Orange&#34;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ARRAY2=(foo{1..2}) # =&gt; foo1 foo2
+</span></span><span style=display:flex><span>ARRAY3=({A..D})    # =&gt; A B C D
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># declare construct
+</span></span><span style=display:flex><span>declare -a Numbers=(1 2 3 4 5 6)
+</span></span></code></pre></div><h4 id=indexing-a-idindexinga>Indexing
+<a class=anchor href=#indexing-a-idindexinga>#</a></h4><table><thead><tr><th style=text-align:left><code>${Fruits[0]}</code></th><th style=text-align:left>First element</th></tr></thead><tbody><tr><td style=text-align:left><code>${Fruits[-1]}</code></td><td style=text-align:left>Last element</td></tr><tr><td style=text-align:left><code>${Fruits[*]}</code></td><td style=text-align:left>All elements</td></tr><tr><td style=text-align:left><code>${Fruits[@]}</code></td><td style=text-align:left>All elements</td></tr><tr><td style=text-align:left><code>${#Fruits[@]}</code></td><td style=text-align:left>Number of all</td></tr><tr><td style=text-align:left><code>${#Fruits}</code></td><td style=text-align:left>Length of 1st</td></tr><tr><td style=text-align:left><code>${#Fruits[3]}</code></td><td style=text-align:left>Length of nth</td></tr><tr><td style=text-align:left><code>${Fruits[@]:3:2}</code></td><td style=text-align:left>Range</td></tr><tr><td style=text-align:left><code>${!Fruits[@]}</code></td><td style=text-align:left>Keys of all</td></tr></tbody></table><h4 id=iteration-a-iditerationa>Iteration
+<a class=anchor href=#iteration-a-iditerationa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>Fruits=(&#39;Apple&#39; &#39;Banana&#39; &#39;Orange&#39;)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>for e in &#34;${Fruits[@]}&#34;; do
+</span></span><span style=display:flex><span>    echo $e
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><p><strong>With index</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for i in &#34;${!Fruits[@]}&#34;; do
+</span></span><span style=display:flex><span>  printf &#34;%s\t%s\n&#34; &#34;$i&#34; &#34;${Fruits[$i]}&#34;
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=operations-a-idoperationsa>Operations
+<a class=anchor href=#operations-a-idoperationsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>Fruits=(&#34;${Fruits[@]}&#34; &#34;Watermelon&#34;)     # Push
+</span></span><span style=display:flex><span>Fruits+=(&#39;Watermelon&#39;)                   # Also Push
+</span></span><span style=display:flex><span>Fruits=( ${Fruits[@]/Ap*/} )             # Remove by regex match
+</span></span><span style=display:flex><span>unset Fruits[2]                          # Remove one item
+</span></span><span style=display:flex><span>Fruits=(&#34;${Fruits[@]}&#34;)                  # Duplicate
+</span></span><span style=display:flex><span>Fruits=(&#34;${Fruits[@]}&#34; &#34;${Veggies[@]}&#34;)  # Concatenate
+</span></span><span style=display:flex><span>lines=(`cat &#34;logfile&#34;`)                  # Read from file
+</span></span></code></pre></div><h4 id=arrays-as-arguments-a-idarrays-as-argumentsa>Arrays as arguments
+<a class=anchor href=#arrays-as-arguments-a-idarrays-as-argumentsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>function extract()
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    local -n myarray=$1
+</span></span><span style=display:flex><span>    local idx=$2
+</span></span><span style=display:flex><span>    echo &#34;${myarray[$idx]}&#34;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>Fruits=(&#39;Apple&#39; &#39;Banana&#39; &#39;Orange&#39;)
+</span></span><span style=display:flex><span>extract Fruits 2     # =&gt; Orangle
+</span></span></code></pre></div><h3 id=httpsquickrefmebashdictionariesdictionaries-a-iddictionariesa><a href=https://quickref.me/bash#dictionaries>#</a>Dictionaries
+<a class=anchor href=#httpsquickrefmebashdictionariesdictionaries-a-iddictionariesa>#</a></h3><h4 id=defining-a-iddefininga>Defining
+<a class=anchor href=#defining-a-iddefininga>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>declare -A sounds
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>sounds[dog]=&#34;bark&#34;
+</span></span><span style=display:flex><span>sounds[cow]=&#34;moo&#34;
+</span></span><span style=display:flex><span>sounds[bird]=&#34;tweet&#34;
+</span></span><span style=display:flex><span>sounds[wolf]=&#34;howl&#34;
+</span></span></code></pre></div><h4 id=working-with-dictionaries-a-idworking-with-dictionariesa>Working with dictionaries
+<a class=anchor href=#working-with-dictionaries-a-idworking-with-dictionariesa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>echo ${sounds[dog]} # Dog&#39;s sound
+</span></span><span style=display:flex><span>echo ${sounds[@]}   # All values
+</span></span><span style=display:flex><span>echo ${!sounds[@]}  # All keys
+</span></span><span style=display:flex><span>echo ${#sounds[@]}  # Number of elements
+</span></span><span style=display:flex><span>unset sounds[dog]   # Delete dog
+</span></span></code></pre></div><h4 id=iteration-a-iditeration-2a>Iteration
+<a class=anchor href=#iteration-a-iditeration-2a>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for val in &#34;${sounds[@]}&#34;; do
+</span></span><span style=display:flex><span>    echo $val
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for key in &#34;${!sounds[@]}&#34;; do
+</span></span><span style=display:flex><span>    echo $key
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h3 id=httpsquickrefmebashconditionals-2conditionals-a-idconditionals-2a><a href=https://quickref.me/bash#conditionals-2>#</a>Conditionals
+<a class=anchor href=#httpsquickrefmebashconditionals-2conditionals-a-idconditionals-2a>#</a></h3><h4 id=integer-conditions-a-idinteger-conditionsa>Integer conditions
+<a class=anchor href=#integer-conditions-a-idinteger-conditionsa>#</a></h4><table><thead><tr><th style=text-align:left><code>[[ NUM -eq NUM ]]</code></th><th style=text-align:left>Equal</th></tr></thead><tbody><tr><td style=text-align:left><code>[[ NUM -ne NUM ]]</code></td><td style=text-align:left>Not equal</td></tr><tr><td style=text-align:left><code>[[ NUM -lt NUM ]]</code></td><td style=text-align:left>Less than</td></tr><tr><td style=text-align:left><code>[[ NUM -le NUM ]]</code></td><td style=text-align:left>Less than or equal</td></tr><tr><td style=text-align:left><code>[[ NUM -gt NUM ]]</code></td><td style=text-align:left>Greater than</td></tr><tr><td style=text-align:left><code>[[ NUM -ge NUM ]]</code></td><td style=text-align:left>Greater than or equal</td></tr><tr><td style=text-align:left><code>(( NUM &lt; NUM ))</code></td><td style=text-align:left>Less than</td></tr><tr><td style=text-align:left><code>(( NUM &lt;= NUM ))</code></td><td style=text-align:left>Less than or equal</td></tr><tr><td style=text-align:left><code>(( NUM > NUM ))</code></td><td style=text-align:left>Greater than</td></tr><tr><td style=text-align:left><code>(( NUM >= NUM ))</code></td><td style=text-align:left>Greater than or equal</td></tr></tbody></table><h4 id=string-conditions-a-idstring-conditionsa>String conditions
+<a class=anchor href=#string-conditions-a-idstring-conditionsa>#</a></h4><table><thead><tr><th style=text-align:left><code>[[ -z STR ]]</code></th><th style=text-align:left>Empty string</th></tr></thead><tbody><tr><td style=text-align:left><code>[[ -n STR ]]</code></td><td style=text-align:left>Not empty string</td></tr><tr><td style=text-align:left><code>[[ STR == STR ]]</code></td><td style=text-align:left>Equal</td></tr><tr><td style=text-align:left><code>[[ STR = STR ]]</code></td><td style=text-align:left>Equal (Same above)</td></tr><tr><td style=text-align:left><code>[[ STR &lt; STR ]]</code></td><td style=text-align:left>Less than <em>(ASCII)</em></td></tr><tr><td style=text-align:left><code>[[ STR > STR ]]</code></td><td style=text-align:left>Greater than <em>(ASCII)</em></td></tr><tr><td style=text-align:left><code>[[ STR != STR ]]</code></td><td style=text-align:left>Not Equal</td></tr><tr><td style=text-align:left><code>[[ STR =~ STR ]]</code></td><td style=text-align:left>Regexp</td></tr></tbody></table><h4 id=example-a-idexamplea>Example
+<a class=anchor href=#example-a-idexamplea>#</a></h4><p><strong>String</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if [[ -z &#34;$string&#34; ]]; then
+</span></span><span style=display:flex><span>    echo &#34;String is empty&#34;
+</span></span><span style=display:flex><span>elif [[ -n &#34;$string&#34; ]]; then
+</span></span><span style=display:flex><span>    echo &#34;String is not empty&#34;
+</span></span><span style=display:flex><span>else
+</span></span><span style=display:flex><span>    echo &#34;This never happens&#34;
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><p><strong>Combinations</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if [[ X &amp;&amp; Y ]]; then
+</span></span><span style=display:flex><span>    ...
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><p><strong>Equal</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if [[ &#34;$A&#34; == &#34;$B&#34; ]]; then
+</span></span><span style=display:flex><span>    ...
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><p><strong>Regex</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if [[ &#39;1. abc&#39; =~ ([a-z]+) ]]; then
+</span></span><span style=display:flex><span>    echo ${BASH_REMATCH[1]}
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><p><strong>Smaller</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if (( $a &lt; $b )); then
+</span></span><span style=display:flex><span>   echo &#34;$a is smaller than $b&#34;
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><p><strong>Exists</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if [[ -e &#34;file.txt&#34; ]]; then
+</span></span><span style=display:flex><span>    echo &#34;file exists&#34;
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><h4 id=file-conditions-a-idfile-conditionsa>File conditions
+<a class=anchor href=#file-conditions-a-idfile-conditionsa>#</a></h4><table><thead><tr><th style=text-align:left><code>[[ -e FILE ]]</code></th><th style=text-align:left>Exists</th></tr></thead><tbody><tr><td style=text-align:left><code>[[ -d FILE ]]</code></td><td style=text-align:left>Directory</td></tr><tr><td style=text-align:left><code>[[ -f FILE ]]</code></td><td style=text-align:left>File</td></tr><tr><td style=text-align:left><code>[[ -h FILE ]]</code></td><td style=text-align:left>Symlink</td></tr><tr><td style=text-align:left><code>[[ -s FILE ]]</code></td><td style=text-align:left>Size is > 0 bytes</td></tr><tr><td style=text-align:left><code>[[ -r FILE ]]</code></td><td style=text-align:left>Readable</td></tr><tr><td style=text-align:left><code>[[ -w FILE ]]</code></td><td style=text-align:left>Writable</td></tr><tr><td style=text-align:left><code>[[ -x FILE ]]</code></td><td style=text-align:left>Executable</td></tr><tr><td style=text-align:left><code>[[ f1 -nt f2 ]]</code></td><td style=text-align:left>f1 newer than f2</td></tr><tr><td style=text-align:left><code>[[ f1 -ot f2 ]]</code></td><td style=text-align:left>f2 older than f1</td></tr><tr><td style=text-align:left><code>[[ f1 -ef f2 ]]</code></td><td style=text-align:left>Same files</td></tr></tbody></table><h4 id=more-conditions-a-idmore-conditionsa>More conditions
+<a class=anchor href=#more-conditions-a-idmore-conditionsa>#</a></h4><table><thead><tr><th style=text-align:left><code>[[ -o noclobber ]]</code></th><th style=text-align:left>If OPTION is enabled</th></tr></thead><tbody><tr><td style=text-align:left><code>[[ ! EXPR ]]</code></td><td style=text-align:left>Not</td></tr><tr><td style=text-align:left><code>[[ X && Y ]]</code></td><td style=text-align:left>And</td></tr><tr><td style=text-align:left>`[[ X</td><td style=text-align:left></td></tr></tbody></table><h4 id=logical-and-or-a-idlogical-and-ora>logical and, or
+<a class=anchor href=#logical-and-or-a-idlogical-and-ora>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if [ &#34;$1&#34; = &#39;y&#39; -a $2 -gt 0 ]; then
+</span></span><span style=display:flex><span>    echo &#34;yes&#34;
+</span></span><span style=display:flex><span>fi
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>if [ &#34;$1&#34; = &#39;n&#39; -o $2 -lt 0 ]; then
+</span></span><span style=display:flex><span>    echo &#34;no&#34;
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><h3 id=httpsquickrefmebashloopsloops-a-idloopsa><a href=https://quickref.me/bash#loops>#</a>Loops
+<a class=anchor href=#httpsquickrefmebashloopsloops-a-idloopsa>#</a></h3><h4 id=basic-for-loop-a-idbasic-for-loopa>Basic for loop
+<a class=anchor href=#basic-for-loop-a-idbasic-for-loopa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for i in /etc/rc.*; do
+</span></span><span style=display:flex><span>    echo $i
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=c-like-for-loop-a-idc-like-for-loopa>C-like for loop
+<a class=anchor href=#c-like-for-loop-a-idc-like-for-loopa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for ((i = 0 ; i &lt; 100 ; i++)); do
+</span></span><span style=display:flex><span>    echo $i
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=ranges-a-idrangesa>Ranges
+<a class=anchor href=#ranges-a-idrangesa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for i in {1..5}; do
+</span></span><span style=display:flex><span>    echo &#34;Welcome $i&#34;
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><p><strong>With step size</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for i in {5..50..5}; do
+</span></span><span style=display:flex><span>    echo &#34;Welcome $i&#34;
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=auto-increment-a-idauto-incrementa>Auto increment
+<a class=anchor href=#auto-increment-a-idauto-incrementa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>i=1
+</span></span><span style=display:flex><span>while [[ $i -lt 4 ]]; do
+</span></span><span style=display:flex><span>    echo &#34;Number: $i&#34;
+</span></span><span style=display:flex><span>    ((i++))
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=auto-decrement-a-idauto-decrementa>Auto decrement
+<a class=anchor href=#auto-decrement-a-idauto-decrementa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>i=3
+</span></span><span style=display:flex><span>while [[ $i -gt 0 ]]; do
+</span></span><span style=display:flex><span>    echo &#34;Number: $i&#34;
+</span></span><span style=display:flex><span>    ((i--))
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=continue-a-idcontinuea>Continue
+<a class=anchor href=#continue-a-idcontinuea>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for number in $(seq 1 3); do
+</span></span><span style=display:flex><span>    if [[ $number == 2 ]]; then
+</span></span><span style=display:flex><span>        continue;
+</span></span><span style=display:flex><span>    fi
+</span></span><span style=display:flex><span>    echo &#34;$number&#34;
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=break-a-idbreaka>Break
+<a class=anchor href=#break-a-idbreaka>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>for number in $(seq 1 3); do
+</span></span><span style=display:flex><span>    if [[ $number == 2 ]]; then
+</span></span><span style=display:flex><span>        # Skip entire rest of loop.
+</span></span><span style=display:flex><span>        break;
+</span></span><span style=display:flex><span>    fi
+</span></span><span style=display:flex><span>    # This will only print 1
+</span></span><span style=display:flex><span>    echo &#34;$number&#34;
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=until-a-iduntila>Until
+<a class=anchor href=#until-a-iduntila>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>count=0
+</span></span><span style=display:flex><span>until [ $count -gt 10 ]; do
+</span></span><span style=display:flex><span>    echo &#34;$count&#34;
+</span></span><span style=display:flex><span>    ((count++))
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=forever-a-idforevera>Forever
+<a class=anchor href=#forever-a-idforevera>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>while true; do
+</span></span><span style=display:flex><span>    # here is some code.
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=forever-shorthand-a-idforever-shorthanda>Forever (shorthand)
+<a class=anchor href=#forever-shorthand-a-idforever-shorthanda>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>while :; do
+</span></span><span style=display:flex><span>    # here is some code.
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h4 id=reading-lines-a-idreading-linesa>Reading lines
+<a class=anchor href=#reading-lines-a-idreading-linesa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>cat file.txt | while read line; do
+</span></span><span style=display:flex><span>    echo $line
+</span></span><span style=display:flex><span>done
+</span></span></code></pre></div><h3 id=httpsquickrefmebashfunctions-2functions-a-idfunctions-2a><a href=https://quickref.me/bash#functions-2>#</a>Functions
+<a class=anchor href=#httpsquickrefmebashfunctions-2functions-a-idfunctions-2a>#</a></h3><h4 id=defining-functions-a-iddefining-functionsa>Defining functions
+<a class=anchor href=#defining-functions-a-iddefining-functionsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>myfunc() {
+</span></span><span style=display:flex><span>    echo &#34;hello $1&#34;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span># Same as above (alternate syntax)
+</span></span><span style=display:flex><span>function myfunc() {
+</span></span><span style=display:flex><span>    echo &#34;hello $1&#34;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>myfunc &#34;John&#34;
+</span></span></code></pre></div><h4 id=returning-values-a-idreturning-valuesa>Returning values
+<a class=anchor href=#returning-values-a-idreturning-valuesa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>myfunc() {
+</span></span><span style=display:flex><span>    local myresult=&#39;some value&#39;
+</span></span><span style=display:flex><span>    echo $myresult
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>result=&#34;$(myfunc)&#34;
+</span></span></code></pre></div><h4 id=raising-errors-a-idraising-errorsa>Raising errors
+<a class=anchor href=#raising-errors-a-idraising-errorsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>myfunc() {
+</span></span><span style=display:flex><span>    return 1
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if myfunc; then
+</span></span><span style=display:flex><span>    echo &#34;success&#34;
+</span></span><span style=display:flex><span>else
+</span></span><span style=display:flex><span>    echo &#34;failure&#34;
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><h3 id=httpsquickrefmebashoptionsoptions-a-idoptionsa><a href=https://quickref.me/bash#options>#</a>Options
+<a class=anchor href=#httpsquickrefmebashoptionsoptions-a-idoptionsa>#</a></h3><h4 id=options-a-idoptions-2a>Options
+<a class=anchor href=#options-a-idoptions-2a>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span># Avoid overlay files
+</span></span><span style=display:flex><span># (echo &#34;hi&#34; &gt; foo)
+</span></span><span style=display:flex><span>set -o noclobber
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Used to exit upon error
+</span></span><span style=display:flex><span># avoiding cascading errors
+</span></span><span style=display:flex><span>set -o errexit   
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Unveils hidden failures
+</span></span><span style=display:flex><span>set -o pipefail  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Exposes unset variables
+</span></span><span style=display:flex><span>set -o nounset
+</span></span></code></pre></div><h4 id=glob-options-a-idglob-optionsa>Glob options
+<a class=anchor href=#glob-options-a-idglob-optionsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span># Non-matching globs are removed  
+</span></span><span style=display:flex><span># (&#39;*.foo&#39; =&gt; &#39;&#39;)
+</span></span><span style=display:flex><span>shopt -s nullglob   
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Non-matching globs throw errors
+</span></span><span style=display:flex><span>shopt -s failglob  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Case insensitive globs
+</span></span><span style=display:flex><span>shopt -s nocaseglob 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Wildcards match dotfiles 
+</span></span><span style=display:flex><span># (&#34;*.sh&#34; =&gt; &#34;.foo.sh&#34;)
+</span></span><span style=display:flex><span>shopt -s dotglob    
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Allow ** for recursive matches 
+</span></span><span style=display:flex><span># (&#39;lib/**/*.rb&#39; =&gt; &#39;lib/a/b/c.rb&#39;)
+</span></span><span style=display:flex><span>shopt -s globstar   
+</span></span></code></pre></div><h3 id=httpsquickrefmebashhistoryhistory-a-idhistorya><a href=https://quickref.me/bash#history>#</a>History
+<a class=anchor href=#httpsquickrefmebashhistoryhistory-a-idhistorya>#</a></h3><h4 id=commands-a-idcommandsa>Commands
+<a class=anchor href=#commands-a-idcommandsa>#</a></h4><table><thead><tr><th style=text-align:left><code>history</code></th><th style=text-align:left>Show history</th></tr></thead><tbody><tr><td style=text-align:left><code>shopt -s histverify</code></td><td style=text-align:left>Don&rsquo;t execute expanded result immediately</td></tr></tbody></table><h4 id=expansions-a-idexpansionsa>Expansions
+<a class=anchor href=#expansions-a-idexpansionsa>#</a></h4><table><thead><tr><th style=text-align:left><code>!$</code></th><th style=text-align:left>Expand last parameter of most recent command</th></tr></thead><tbody><tr><td style=text-align:left><code>!*</code></td><td style=text-align:left>Expand all parameters of most recent command</td></tr><tr><td style=text-align:left><code>!-n</code></td><td style=text-align:left>Expand <code>n</code>th most recent command</td></tr><tr><td style=text-align:left><code>!n</code></td><td style=text-align:left>Expand <code>n</code>th command in history</td></tr><tr><td style=text-align:left><code>!&lt;command></code></td><td style=text-align:left>Expand most recent invocation of command <code>&lt;command></code></td></tr></tbody></table><h4 id=operations-a-idoperations-2a>Operations
+<a class=anchor href=#operations-a-idoperations-2a>#</a></h4><table><thead><tr><th style=text-align:left><code>!!</code></th><th style=text-align:left>Execute last command again</th></tr></thead><tbody><tr><td style=text-align:left><code>!!:s/&lt;FROM>/&lt;TO>/</code></td><td style=text-align:left>Replace first occurrence of <code>&lt;FROM></code> to <code>&lt;TO></code> in most recent command</td></tr><tr><td style=text-align:left><code>!!:gs/&lt;FROM>/&lt;TO>/</code></td><td style=text-align:left>Replace all occurrences of <code>&lt;FROM></code> to <code>&lt;TO></code> in most recent command</td></tr><tr><td style=text-align:left><code>!$:t</code></td><td style=text-align:left>Expand only basename from last parameter of most recent command</td></tr><tr><td style=text-align:left><code>!$:h</code></td><td style=text-align:left>Expand only directory from last parameter of most recent command</td></tr></tbody></table><p><code>!!</code> and <code>!$</code> can be replaced with any valid expansion.</p><h4 id=slices-a-idslicesa>Slices
+<a class=anchor href=#slices-a-idslicesa>#</a></h4><table><thead><tr><th style=text-align:left><code>!!:n</code></th><th style=text-align:left>Expand only <code>n</code>th token from most recent command (command is <code>0</code>; first argument is <code>1</code>)</th></tr></thead><tbody><tr><td style=text-align:left><code>!^</code></td><td style=text-align:left>Expand first argument from most recent command</td></tr><tr><td style=text-align:left><code>!$</code></td><td style=text-align:left>Expand last token from most recent command</td></tr><tr><td style=text-align:left><code>!!:n-m</code></td><td style=text-align:left>Expand range of tokens from most recent command</td></tr><tr><td style=text-align:left><code>!!:n-$</code></td><td style=text-align:left>Expand <code>n</code>th token to last from most recent command</td></tr></tbody></table><p><code>!!</code> can be replaced with any valid expansion i.e. <code>!cat</code>, <code>!-2</code>, <code>!42</code>, etc.</p><h3 id=httpsquickrefmebashmiscellaneousmiscellaneous-a-idmiscellaneousa><a href=https://quickref.me/bash#miscellaneous>#</a>Miscellaneous
+<a class=anchor href=#httpsquickrefmebashmiscellaneousmiscellaneous-a-idmiscellaneousa>#</a></h3><h4 id=numeric-calculations-a-idnumeric-calculationsa>Numeric calculations
+<a class=anchor href=#numeric-calculations-a-idnumeric-calculationsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>$((a + 200))      # Add 200 to $a
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>$(($RANDOM%200))  # Random number 0..199
+</span></span></code></pre></div><h4 id=subshells-a-idsubshellsa>Subshells
+<a class=anchor href=#subshells-a-idsubshellsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>(cd somedir; echo &#34;I&#39;m now in $PWD&#34;)
+</span></span><span style=display:flex><span>pwd # still in first directory
+</span></span></code></pre></div><h4 id=inspecting-commands-a-idinspecting-commandsa>Inspecting commands
+<a class=anchor href=#inspecting-commands-a-idinspecting-commandsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>command -V cd
+</span></span><span style=display:flex><span>#=&gt; &#34;cd is a function/alias/whatever&#34;
+</span></span></code></pre></div><h4 id=redirection-a-idredirectiona>Redirection
+<a class=anchor href=#redirection-a-idredirectiona>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>python hello.py &gt; output.txt   # stdout to (file)
+</span></span><span style=display:flex><span>python hello.py &gt;&gt; output.txt  # stdout to (file), append
+</span></span><span style=display:flex><span>python hello.py 2&gt; error.log   # stderr to (file)
+</span></span><span style=display:flex><span>python hello.py 2&gt;&amp;1           # stderr to stdout
+</span></span><span style=display:flex><span>python hello.py 2&gt;/dev/null    # stderr to (null)
+</span></span><span style=display:flex><span>python hello.py &amp;&gt;/dev/null    # stdout and stderr to (null)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>python hello.py &lt; foo.txt      # feed foo.txt to stdin for python
+</span></span></code></pre></div><h4 id=source-relative-a-idsource-relativea>Source relative
+<a class=anchor href=#source-relative-a-idsource-relativea>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>source &#34;${0%/*}/../share/foo.sh&#34;
+</span></span></code></pre></div><h4 id=directory-of-script-a-iddirectory-of-scripta>Directory of script
+<a class=anchor href=#directory-of-script-a-iddirectory-of-scripta>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>DIR=&#34;${0%/*}&#34;
+</span></span></code></pre></div><h4 id=caseswitch-a-idcase-switcha>Case/switch
+<a class=anchor href=#caseswitch-a-idcase-switcha>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>case &#34;$1&#34; in
+</span></span><span style=display:flex><span>    start | up)
+</span></span><span style=display:flex><span>    vagrant up
+</span></span><span style=display:flex><span>    ;;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    *)
+</span></span><span style=display:flex><span>    echo &#34;Usage: $0 {start|stop|ssh}&#34;
+</span></span><span style=display:flex><span>    ;;
+</span></span><span style=display:flex><span>esac
+</span></span></code></pre></div><h4 id=trap-errors-a-idtrap-errorsa>Trap errors
+<a class=anchor href=#trap-errors-a-idtrap-errorsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>trap &#39;echo Error at about $LINENO&#39; ERR
+</span></span></code></pre></div><p>or</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>traperr() {
+</span></span><span style=display:flex><span>    echo &#34;ERROR: ${BASH_SOURCE[1]} at about ${BASH_LINENO[0]}&#34;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>set -o errtrace
+</span></span><span style=display:flex><span>trap traperr ERR
+</span></span></code></pre></div><h4 id=printf-a-idprintfa>printf
+<a class=anchor href=#printf-a-idprintfa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>printf &#34;Hello %s, I&#39;m %s&#34; Sven Olga
+</span></span><span style=display:flex><span>#=&gt; &#34;Hello Sven, I&#39;m Olga
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>printf &#34;1 + 1 = %d&#34; 2
+</span></span><span style=display:flex><span>#=&gt; &#34;1 + 1 = 2&#34;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>printf &#34;Print a float: %f&#34; 2
+</span></span><span style=display:flex><span>#=&gt; &#34;Print a float: 2.000000&#34;
+</span></span></code></pre></div><h4 id=getting-options-a-idgetting-optionsa>Getting options
+<a class=anchor href=#getting-options-a-idgetting-optionsa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>while [[ &#34;$1&#34; =~ ^- &amp;&amp; ! &#34;$1&#34; == &#34;--&#34; ]]; do case $1 in
+</span></span><span style=display:flex><span>    -V | --version )
+</span></span><span style=display:flex><span>    echo $version
+</span></span><span style=display:flex><span>    exit
+</span></span><span style=display:flex><span>    ;;
+</span></span><span style=display:flex><span>    -s | --string )
+</span></span><span style=display:flex><span>    shift; string=$1
+</span></span><span style=display:flex><span>    ;;
+</span></span><span style=display:flex><span>    -f | --flag )
+</span></span><span style=display:flex><span>    flag=1
+</span></span><span style=display:flex><span>    ;;
+</span></span><span style=display:flex><span>esac; shift; done
+</span></span><span style=display:flex><span>if [[ &#34;$1&#34; == &#39;--&#39; ]]; then shift; fi
+</span></span></code></pre></div><h4 id=check-for-commands-result-a-idcheck-for-command-s-resulta>Check for command&rsquo;s result
+<a class=anchor href=#check-for-commands-result-a-idcheck-for-command-s-resulta>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if ping -c 1 google.com; then
+</span></span><span style=display:flex><span>    echo &#34;It appears you have a working internet connection&#34;
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><h4 id=special-variables-a-idspecial-variablesa>Special variables
+<a class=anchor href=#special-variables-a-idspecial-variablesa>#</a></h4><table><thead><tr><th style=text-align:left><code>$?</code></th><th style=text-align:left>Exit status of last task</th></tr></thead><tbody><tr><td style=text-align:left><code>$!</code></td><td style=text-align:left>PID of last background task</td></tr><tr><td style=text-align:left><code>$$</code></td><td style=text-align:left>PID of shell</td></tr><tr><td style=text-align:left><code>$0</code></td><td style=text-align:left>Filename of the shell script</td></tr></tbody></table><p>See <a href=http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables>Special parameters</a>.</p><h4 id=grep-check-a-idgrep-checka>Grep check
+<a class=anchor href=#grep-check-a-idgrep-checka>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>if grep -q &#39;foo&#39; ~/.bash_history; then
+</span></span><span style=display:flex><span>    echo &#34;You appear to have typed &#39;foo&#39; in the past&#34;
+</span></span><span style=display:flex><span>fi
+</span></span></code></pre></div><h4 id=backslash-escapes-a-idbackslash-escapesa>Backslash escapes
+<a class=anchor href=#backslash-escapes-a-idbackslash-escapesa>#</a></h4><ul><li><ul><li>!</li></ul></li><li>"</li><li>#</li><li>&</li><li>'</li><li>(</li><li>)</li><li>,</li><li>;</li><li>&lt;</li><li>></li><li>[</li><li>|</li><li>\</li><li>]</li><li>^</li><li>{</li><li>}</li><li>`</li><li>$</li><li>*</li><li>?</li></ul><p>Escape these special characters with <code>\</code></p><h4 id=heredoc-a-idheredoca>Heredoc
+<a class=anchor href=#heredoc-a-idheredoca>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>cat &lt;&lt;END
+</span></span><span style=display:flex><span>hello world
+</span></span><span style=display:flex><span>END
+</span></span></code></pre></div><h4 id=go-to-previous-directory-a-idgo-to-previous-directorya>Go to previous directory
+<a class=anchor href=#go-to-previous-directory-a-idgo-to-previous-directorya>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>pwd # /home/user/foo
+</span></span><span style=display:flex><span>cd bar/
+</span></span><span style=display:flex><span>pwd # /home/user/foo/bar
+</span></span><span style=display:flex><span>cd -
+</span></span><span style=display:flex><span>pwd # /home/user/foo
+</span></span></code></pre></div><h4 id=reading-input-a-idreading-inputa>Reading input
+<a class=anchor href=#reading-input-a-idreading-inputa>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>echo -n &#34;Proceed? [y/n]: &#34;
+</span></span><span style=display:flex><span>read ans
+</span></span><span style=display:flex><span>echo $ans
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>read -n 1 ans    # Just one character
+</span></span></code></pre></div><h4 id=conditional-execution-a-idconditional-executiona>Conditional execution
+<a class=anchor href=#conditional-execution-a-idconditional-executiona>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>git commit &amp;&amp; git push
+</span></span><span style=display:flex><span>git commit || echo &#34;Commit failed&#34;
+</span></span></code></pre></div><h4 id=strict-mode-a-idstrict-modea>Strict mode
+<a class=anchor href=#strict-mode-a-idstrict-modea>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>set -euo pipefail
+</span></span><span style=display:flex><span>IFS=$&#39;\n\t&#39;
+</span></span></code></pre></div><p>See: <a href=http://redsymbol.net/articles/unofficial-bash-strict-mode/>Unofficial bash strict mode</a></p></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#httpsquickrefmebashgetting-startedgetting-started-a-idgetting-starteda><a href=https://quickref.me/bash#getting-started>#</a>Getting started</a></li><li><a href=#httpsquickrefmebashparameter-expansionsparameter-expansions-a-idparameter-expansionsa><a href=https://quickref.me/bash#parameter-expansions>#</a>Parameter expansions</a></li><li><a href=#httpsquickrefmebasharraysarrays-a-idarraysa><a href=https://quickref.me/bash#arrays>#</a>Arrays</a></li><li><a href=#httpsquickrefmebashdictionariesdictionaries-a-iddictionariesa><a href=https://quickref.me/bash#dictionaries>#</a>Dictionaries</a></li><li><a href=#httpsquickrefmebashconditionals-2conditionals-a-idconditionals-2a><a href=https://quickref.me/bash#conditionals-2>#</a>Conditionals</a></li><li><a href=#httpsquickrefmebashloopsloops-a-idloopsa><a href=https://quickref.me/bash#loops>#</a>Loops</a></li><li><a href=#httpsquickrefmebashfunctions-2functions-a-idfunctions-2a><a href=https://quickref.me/bash#functions-2>#</a>Functions</a></li><li><a href=#httpsquickrefmebashoptionsoptions-a-idoptionsa><a href=https://quickref.me/bash#options>#</a>Options</a></li><li><a href=#httpsquickrefmebashhistoryhistory-a-idhistorya><a href=https://quickref.me/bash#history>#</a>History</a></li><li><a href=#httpsquickrefmebashmiscellaneousmiscellaneous-a-idmiscellaneousa><a href=https://quickref.me/bash#miscellaneous>#</a>Miscellaneous</a></li></ul></li></ul></nav></div></aside></main></body></html>

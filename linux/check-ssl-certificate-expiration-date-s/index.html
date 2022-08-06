@@ -1,642 +1,323 @@
-<!doctype html><html lang=en-us dir=ltr>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Check SSL certificate expiration date(s) #  prepare checkssl.sh file with content bellow:
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Check SSL certificate expiration date(s) # prepare checkssl.sh file with content bellow:
 {% code title=&ldquo;checkssl.sh&rdquo; %}
-#!/bin/bash # By B Shea Dec2018 & Mar2020 # https://www.holylinux.net # Test for OpenSSL - if not installed stop here. if ! [[ -x $(which openssl) ]]; then printf &#34;\nOpenSSL not found or not executable.\nPlease install OpenSSL before proceeding.\n\n&#34; exit 1 fi ### user adjustable variables ### #openssl query timeout: openssl_timeout=&#34;timeout 10&#34; # 30 days is default on warnings - overidden on command line with '-d': days_to_warn=30 # default name for file lists sitelist=.">
-<meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Check SSL certificate expiration date(s) #  prepare checkssl.sh file with content bellow:
+#!/bin/bash # By B Shea Dec2018 & Mar2020 # https://www.holylinux.net # Test for OpenSSL - if not installed stop here. if ! [[ -x $(which openssl) ]]; then printf &#34;\nOpenSSL not found or not executable.\nPlease install OpenSSL before proceeding.\n\n&#34; exit 1 fi ### user adjustable variables ### #openssl query timeout: openssl_timeout=&#34;timeout 10&#34; # 30 days is default on warnings - overidden on command line with '-d': days_to_warn=30 # default name for file lists sitelist=."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Check SSL certificate expiration date(s) # prepare checkssl.sh file with content bellow:
 {% code title=&ldquo;checkssl.sh&rdquo; %}
-#!/bin/bash # By B Shea Dec2018 & Mar2020 # https://www.holylinux.net # Test for OpenSSL - if not installed stop here. if ! [[ -x $(which openssl) ]]; then printf &#34;\nOpenSSL not found or not executable.\nPlease install OpenSSL before proceeding.\n\n&#34; exit 1 fi ### user adjustable variables ### #openssl query timeout: openssl_timeout=&#34;timeout 10&#34; # 30 days is default on warnings - overidden on command line with '-d': days_to_warn=30 # default name for file lists sitelist=.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://docs.cuong-dev.ml/linux/check-ssl-certificate-expiration-date-s/"><meta property="article:section" content="linux">
-<meta property="article:modified_time" content="2022-02-27T15:14:21+07:00">
-<title>Check Ssl Certificate Expiration Date S | docs.cuong-dev.ml</title>
-<link rel=manifest href=/manifest.json>
-<link rel=icon href=/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
-<script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.8cc8175bcd86157af0149a8e6bbee6476f803aaa3b5d11d0f985c6dcbb562212.js integrity="sha256-jMgXW82GFXrwFJqOa77mR2+AOqo7XRHQ+YXG3LtWIhI=" crossorigin=anonymous></script>
-</head>
-<body dir=ltr>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<div class=book-menu-content>
-<nav>
-<h2 class=book-brand>
-<a class="flex align-center" href=/><span>docs.cuong-dev.ml</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<a href=/about-me/>About me</a>
-<ul>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-a07783f405300745807d39eacf150420 class=toggle>
-<label for=section-a07783f405300745807d39eacf150420 class="flex justify-between">
-<a role=button>Blogs</a>
-</label>
-<ul>
-<li>
-<a href=/posts/creating-a-new-theme/>Creating a New Theme</a>
-</li>
-<li>
-<a href=/posts/goisforlovers/>(Hu)go Template Primer</a>
-</li>
-<li>
-<a href=/posts/hugoisforlovers/>Getting Started with Hugo</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-de0ecdbdbaf98b9c0960557719ae69e4 class=toggle>
-<label for=section-de0ecdbdbaf98b9c0960557719ae69e4 class="flex justify-between">
-<a role=button>Cloud Provider</a>
-</label>
-<ul>
-<li>
-<span>Aws</span>
-<ul>
-<li>
-<a href=/cloud-provider/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a>
-</li>
-<li>
-<a href=/cloud-provider/aws/setting-swap-ec2/>Setting Swap Ec2</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Azure</span>
-<ul>
-<li>
-<a href=/cloud-provider/azure/azure-new-service-update/>Azure New Service Update</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Gcp</span>
-<ul>
-<li>
-<a href=/cloud-provider/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-72ed89028f94f588e751de2f6f0bee24 class=toggle>
-<label for=section-72ed89028f94f588e751de2f6f0bee24 class="flex justify-between">
-<a role=button>Ci Cd</a>
-</label>
-<ul>
-<li>
-<span>Argocd</span>
-<ul>
-<li>
-<a href=/ci-cd/argocd/ArgoCD-cheatsheet/>Argo Cd Cheatsheet</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Jenkins</span>
-<ul>
-<li>
-<a href=/ci-cd/jenkins/Jenkins-deploy-AWS-ECS/>Jenkins Deploy Aws Ecs</a>
-</li>
-<li>
-<a href=/ci-cd/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-db801fcabe18fdefdb1b34d275e81669 class=toggle checked>
-<label for=section-db801fcabe18fdefdb1b34d275e81669 class="flex justify-between">
-<a role=button>Linux</a>
-</label>
-<ul>
-<li>
-<a href=/linux/check-ssl-certificate-expiration-date-s/ class=active>Check Ssl Certificate Expiration Date S</a>
-</li>
-<li>
-<a href=/linux/Convert-service-account-json-to-single-line/>Convert Service Account JSON to Single Line</a>
-</li>
-<li>
-<a href=/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a>
-</li>
-<li>
-<a href=/linux/print-all-duplicated/>Print All Duplicated</a>
-</li>
-<li>
-<a href=/linux/quick-load-.env-file/>Quick Load .Env File</a>
-</li>
-<li>
-<a href=/linux/writing-bash-shell-scripts-best-practice/>Writing Bash Shell Scripts Best Practice</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-a6282ae0427584769cba6657e1b1e677 class=toggle>
-<label for=section-a6282ae0427584769cba6657e1b1e677 class="flex justify-between">
-<a role=button>Databases</a>
-</label>
-<ul>
-<li>
-<a href=/databases/General-Table-Size-Information/>General Table Size Information</a>
-</li>
-<li>
-<a href=/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a>
-</li>
-<li>
-<a href=/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class=toggle>
-<label for=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class="flex justify-between">
-<a role=button>Containers</a>
-</label>
-<ul>
-<li>
-<span>Docker</span>
-<ul>
-<li>
-<a href=/containers/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a>
-</li>
-<li>
-<a href=/containers/docker/checking-file-when-build-docker/>Checking File When Build Docker</a>
-</li>
-<li>
-<a href=/containers/docker/disstroless-docker-image/>Disstroless Docker Image</a>
-</li>
-<li>
-<a href=/containers/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a>
-</li>
-<li>
-<a href=/containers/docker/quick-install-docker/>Quick Install Docker</a>
-</li>
-<li>
-<a href=/containers/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a>
-</li>
-</ul>
-</li>
-<li>
-<span>K8s</span>
-<ul>
-<li>
-<a href=/containers/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a>
-</li>
-<li>
-<a href=/containers/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a>
-</li>
-<li>
-<a href=/containers/k8s/quick-scale-deployment-accross-namespaces/>Quick Scale Deployment Accross Namespaces</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-5afc9cafd20c13acf538598cf7e4cf3b class=toggle>
-<label for=section-5afc9cafd20c13acf538598cf7e4cf3b class="flex justify-between">
-<a role=button>Observability</a>
-</label>
-<ul>
-<li>
-<span>Monitoring</span>
-<ul>
-<li>
-<a href=/observability/monitoring/alert-manager/>Alert Manager</a>
-</li>
-<li>
-<a href=/observability/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-9f5db7fc9f15ff8a71c4cce94534a865 class=toggle>
-<label for=section-9f5db7fc9f15ff8a71c4cce94534a865 class="flex justify-between">
-<a role=button>Secret Management</a>
-</label>
-<ul>
-<li>
-<span>Vault</span>
-<ul>
-<li>
-<a href=/secret-management/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-0a911fc5dbe691768c557e6a743b35ca class=toggle>
-<label for=section-0a911fc5dbe691768c557e6a743b35ca class="flex justify-between">
-<a role=button>Cheatsheet</a>
-</label>
-<ul>
-<li>
-<a href=/cheatsheet/bash/>Bash</a>
-</li>
-<li>
-<a href=/cheatsheet/docker-cheatsheet/>Docker Cheatsheet</a>
-</li>
-<li>
-<a href=/cheatsheet/grep/>Grep</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-523e3ee5816fa44f0cea5a47adad9fb1 class=toggle>
-<label for=section-523e3ee5816fa44f0cea5a47adad9fb1 class="flex justify-between">
-<a role=button>Others</a>
-</label>
-<ul>
-<li>
-<a href=/others/alert-slack-by-hook/>Alert Slack by Hook</a>
-</li>
-<li>
-<a href=/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</div>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/svg/menu.svg class=book-icon alt=Menu>
-</label>
+#!/bin/bash # By B Shea Dec2018 & Mar2020 # https://www.holylinux.net # Test for OpenSSL - if not installed stop here. if ! [[ -x $(which openssl) ]]; then printf &#34;\nOpenSSL not found or not executable.\nPlease install OpenSSL before proceeding.\n\n&#34; exit 1 fi ### user adjustable variables ### #openssl query timeout: openssl_timeout=&#34;timeout 10&#34; # 30 days is default on warnings - overidden on command line with '-d': days_to_warn=30 # default name for file lists sitelist=."><meta property="og:type" content="article"><meta property="og:url" content="http://docs.cuong-dev.ml/linux/check-ssl-certificate-expiration-date-s/"><meta property="article:section" content="linux"><meta property="article:modified_time" content="2022-02-27T15:14:21+07:00"><title>Check Ssl Certificate Expiration Date S | docs.cuong-dev.ml</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.c33aa4c5207daffa8dc6e7a61c01e5683c5cf62fd92c7395a0e46f3a3160ce2a.js integrity="sha256-wzqkxSB9r/qNxuemHAHlaDxc9i/ZLHOVoORvOjFgzio=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>docs.cuong-dev.ml</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href=/about-me/>About me</a><ul></ul></li><li><input type=checkbox id=section-a07783f405300745807d39eacf150420 class=toggle>
+<label for=section-a07783f405300745807d39eacf150420 class="flex justify-between"><a role=button>Blogs</a></label><ul><li><a href=/posts/creating-a-new-theme/>Creating a New Theme</a></li><li><a href=/posts/goisforlovers/>(Hu)go Template Primer</a></li><li><a href=/posts/hugoisforlovers/>Getting Started with Hugo</a></li></ul></li><li><input type=checkbox id=section-de0ecdbdbaf98b9c0960557719ae69e4 class=toggle>
+<label for=section-de0ecdbdbaf98b9c0960557719ae69e4 class="flex justify-between"><a role=button>Cloud Provider</a></label><ul><li><span>Aws</span><ul><li><a href=/cloud-provider/aws/extend-the-file-system-of-ebs-volumes/>Extend the File System of Ebs Volumes</a></li><li><a href=/cloud-provider/aws/Install-docker-docker-compose-on-AWS-EC2/>Install Docker, Docker Compose on Aws Ec2</a></li><li><a href=/cloud-provider/aws/install-cert-bot-ssl-letsencrypt-on-amz-linux-2/>Install Cert Bot Ssl Letsencrypt on Amz Linux 2</a></li><li><a href=/cloud-provider/aws/mount-new-ebs-volume-to-aws-ec2/>Mount New Ebs Volume to Aws Ec2</a></li><li><a href=/cloud-provider/aws/setting-swap-ec2/>Setting Swap Ec2</a></li></ul></li><li><span>Azure</span><ul><li><a href=/cloud-provider/azure/azure-new-service-update/>Azure New Service Update</a></li></ul></li><li><span>Gcp</span><ul><li><a href=/cloud-provider/gcp/mistakes-to-avoid-when-using-google-cloud/>Mistakes to Avoid When Using Google Cloud</a></li></ul></li></ul></li><li><input type=checkbox id=section-72ed89028f94f588e751de2f6f0bee24 class=toggle>
+<label for=section-72ed89028f94f588e751de2f6f0bee24 class="flex justify-between"><a role=button>Ci Cd</a></label><ul><li><span>Argocd</span><ul><li><a href=/ci-cd/argocd/ArgoCD-cheatsheet/>Argo Cd Cheatsheet</a></li></ul></li><li><span>Jenkins</span><ul><li><a href=/ci-cd/jenkins/Jenkins-deploy-AWS-ECS/>Jenkins Deploy Aws Ecs</a></li><li><a href=/ci-cd/jenkins/jenkins-fix-report-cannot-view-on-browser/>Jenkins Fix Report Cannot View on Browser</a></li></ul></li></ul></li><li><input type=checkbox id=section-db801fcabe18fdefdb1b34d275e81669 class=toggle checked>
+<label for=section-db801fcabe18fdefdb1b34d275e81669 class="flex justify-between"><a role=button>Linux</a></label><ul><li><a href=/linux/check-ssl-certificate-expiration-date-s/ class=active>Check Ssl Certificate Expiration Date S</a></li><li><a href=/linux/Convert-service-account-json-to-single-line/>Convert Service Account JSON to Single Line</a></li><li><a href=/linux/dynamic-port-mapping-for-access-ftp-server/>Dynamic Port Mapping for Access FTP Server</a></li><li><a href=/linux/print-all-duplicated/>Print All Duplicated</a></li><li><a href=/linux/quick-load-.env-file/>Quick Load .Env File</a></li><li><a href=/linux/writing-bash-shell-scripts-best-practice/>Writing Bash Shell Scripts Best Practice</a></li></ul></li><li><input type=checkbox id=section-a6282ae0427584769cba6657e1b1e677 class=toggle>
+<label for=section-a6282ae0427584769cba6657e1b1e677 class="flex justify-between"><a role=button>Databases</a></label><ul><li><a href=/databases/General-Table-Size-Information/>General Table Size Information</a></li><li><a href=/databases/install-postgres-client-amazon-linux-1/>Install Postgres Client Amazon Linux 1</a></li><li><a href=/databases/postgres-create-user-and-grant-permistions/>Postgres Create User and Grant Permistions</a></li></ul></li><li><input type=checkbox id=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class=toggle>
+<label for=section-5b5ea5a3e4d4fc4b1d5a648e567f64dc class="flex justify-between"><a role=button>Containers</a></label><ul><li><span>Docker</span><ul><li><a href=/containers/docker/Best-practices-for-building-containers/>Best Practices for Building Containers</a></li><li><a href=/containers/docker/checking-file-when-build-docker/>Checking File When Build Docker</a></li><li><a href=/containers/docker/disstroless-docker-image/>Disstroless Docker Image</a></li><li><a href=/containers/docker/docker-how-to-cleanup-unused-resources/>Docker How to Cleanup Unused Resources</a></li><li><a href=/containers/docker/quick-install-docker/>Quick Install Docker</a></li><li><a href=/containers/docker/remove-unused-docker-resource/>Remove Unused Docker Resource</a></li></ul></li><li><span>K8s</span><ul><li><a href=/containers/k8s/kubectl-tips-and-tricks/>Kubectl Tips and Tricks</a></li><li><a href=/containers/k8s/Linkerd-Cheatsheet/>Linkerd Cheatsheet</a></li><li><a href=/containers/k8s/quick-scale-deployment-accross-namespaces/>Quick Scale Deployment Accross Namespaces</a></li></ul></li></ul></li><li><input type=checkbox id=section-5afc9cafd20c13acf538598cf7e4cf3b class=toggle>
+<label for=section-5afc9cafd20c13acf538598cf7e4cf3b class="flex justify-between"><a role=button>Observability</a></label><ul><li><span>Monitoring</span><ul><li><a href=/observability/monitoring/alert-manager/>Alert Manager</a></li><li><a href=/observability/monitoring/install-node_exporter-as-systemd/>Install Node Exporter as Systemd</a></li></ul></li></ul></li><li><input type=checkbox id=section-9f5db7fc9f15ff8a71c4cce94534a865 class=toggle>
+<label for=section-9f5db7fc9f15ff8a71c4cce94534a865 class="flex justify-between"><a role=button>Secret Management</a></label><ul><li><span>Vault</span><ul><li><a href=/secret-management/vault/Vault-import-export-secrets/>Vault Import, Export Secrets</a></li></ul></li></ul></li><li><input type=checkbox id=section-0a911fc5dbe691768c557e6a743b35ca class=toggle>
+<label for=section-0a911fc5dbe691768c557e6a743b35ca class="flex justify-between"><a role=button>Cheatsheet</a></label><ul><li><a href=/cheatsheet/bash/>Bash</a></li><li><a href=/cheatsheet/docker-cheatsheet/>Docker Cheatsheet</a></li><li><a href=/cheatsheet/grep/>Grep</a></li></ul></li><li><input type=checkbox id=section-523e3ee5816fa44f0cea5a47adad9fb1 class=toggle>
+<label for=section-523e3ee5816fa44f0cea5a47adad9fb1 class="flex justify-between"><a role=button>Others</a></label><ul><li><a href=/others/alert-slack-by-hook/>Alert Slack by Hook</a></li><li><a href=/others/install-redmine-on-centos-7/>Install Redmine on Centos 7</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Check Ssl Certificate Expiration Date S</strong>
-<label for=toc-control>
-<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents></nav>
-</aside>
-</header>
-<article class=markdown><h1 id=check-ssl-certificate-expiration-dates>
-Check SSL certificate expiration date(s)
-<a class=anchor href=#check-ssl-certificate-expiration-dates>#</a>
-</h1>
-<p>prepare checkssl.sh file with content bellow:</p>
-<p>{% code title=&ldquo;checkssl.sh&rdquo; %}</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#!/bin/bash
-</span><span style=color:#75715e></span><span style=color:#75715e>#  By B Shea  Dec2018 &amp; Mar2020</span>
-<span style=color:#75715e>#  https://www.holylinux.net</span>
-
-<span style=color:#75715e># Test for OpenSSL - if not installed stop here.</span>
-<span style=color:#66d9ef>if</span> ! <span style=color:#f92672>[[</span> -x <span style=color:#66d9ef>$(</span>which openssl<span style=color:#66d9ef>)</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-  printf <span style=color:#e6db74>&#34;\nOpenSSL not found or not executable.\nPlease install OpenSSL before proceeding.\n\n&#34;</span>
-  exit <span style=color:#ae81ff>1</span>
-<span style=color:#66d9ef>fi</span>
-
-<span style=color:#75715e>### user adjustable variables ###</span>
-<span style=color:#75715e>#openssl query timeout:</span>
-openssl_timeout<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;timeout 10&#34;</span>
-<span style=color:#75715e># 30 days is default on warnings - overidden on command line with &#39;-d&#39;:</span>
-days_to_warn<span style=color:#f92672>=</span><span style=color:#ae81ff>30</span>
-<span style=color:#75715e># default name for file lists</span>
-sitelist<span style=color:#f92672>=</span>./websites.txt
-
-<span style=color:#75715e>### Clear/list/set defaults for variables ###</span>
-epoch_day<span style=color:#f92672>=</span><span style=color:#ae81ff>86400</span>
-epoch_warning<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span>days_to_warn*epoch_day<span style=color:#66d9ef>))</span>
-regex_numbers<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;^[0-9]+$&#39;</span>
-expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
-website<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-port<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
-sTLS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-show_tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-certfilename<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-location<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-filename<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-displaysite<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-<span style=color:#75715e>#COLORS</span>
-color<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
-RED<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>tput setaf 1<span style=color:#66d9ef>)</span>    <span style=color:#75715e>#expired!!</span>
-GREEN<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>tput setaf 2<span style=color:#66d9ef>)</span>  <span style=color:#75715e>#within bounds</span>
-YELLOW<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>tput setaf 3<span style=color:#66d9ef>)</span> <span style=color:#75715e>#warning/date close!</span>
-NC<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>tput sgr0<span style=color:#66d9ef>)</span>        <span style=color:#75715e>#reset to normal</span>
-<span style=color:#75715e>#</span>
-usage<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;
-</span><span style=color:#e6db74></span><span style=color:#66d9ef>$(</span>basename <span style=color:#e6db74>&#34;</span>$0<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74> [-h] [-c] [-d DAYS] [-f FILENAME] | [-w WEBSITE] | [-s SITELIST]
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>Retrieve the expiration date(s) on SSL certificate(s) using OpenSSL.
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>Usage:
-</span><span style=color:#e6db74>    -h  Help
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    -c  Color output
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    -d  Amount of days to show warnings (default is 30 days)
-</span><span style=color:#e6db74>        Example: -d 15
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    -f  SSL date from FILENAME
-</span><span style=color:#e6db74>        Example: -f /home/user/example.pem
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    -w  SSL date from SITE(:PORT) (Port defaults to 443)
-</span><span style=color:#e6db74>        Example: -w www.example.com
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    -s  SSL date(s) from SITELIST
-</span><span style=color:#e6db74>        Example:      -s ./websites.txt
-</span><span style=color:#e6db74>        List format:  sub.domain.tld:993 (one per line - port optional)
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>Example:
-</span><span style=color:#e6db74>    </span>$<span style=color:#e6db74> </span><span style=color:#66d9ef>$(</span>basename <span style=color:#e6db74>&#34;</span>$0<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74> -c -d 14 -s ./websites.txt
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    WARNS (in color) if within 14 days of expiring on each entry in the file list.
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>&#34;</span>
-
-<span style=color:#75715e>#FUNCTIONS</span>
-
-is_integer<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>if</span> ! <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span>~ $regex_numbers <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-      printf <span style=color:#e6db74>&#34;\nError.\nNot a number. You used a parameter that requires a whole number.\n</span>$usage<span style=color:#e6db74>&#34;</span>
-      exit <span style=color:#ae81ff>1</span>
-    <span style=color:#66d9ef>fi</span>
-<span style=color:#f92672>}</span>
-menu_input<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-  echo
-  echo <span style=color:#e6db74>&#34;1: Enter file location of certificate&#34;</span>
-  echo <span style=color:#e6db74>&#34;2: Enter an Internet site in form of subdomain.domain.tld(:port)&#34;</span>
-  echo
-  read -p <span style=color:#e6db74>&#34;Enter 1 or 2 (anything else quits): &#34;</span> -n <span style=color:#ae81ff>1</span> -r
-  echo
-<span style=color:#f92672>}</span>
-get_lookup_input<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    location<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-    echo
-    read -p <span style=color:#e6db74>&#34;Please enter the </span>$lookuptype<span style=color:#e6db74> location: &#34;</span> location
-<span style=color:#f92672>}</span>
-set_format<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    set_formatting<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%-40s%-25s\n&#34;</span>
-    set_formatting_green<span style=color:#f92672>=</span>$set_formatting
-    set_formatting_yellow<span style=color:#f92672>=</span>$set_formatting
-    set_formatting_red<span style=color:#f92672>=</span>$set_formatting
-    printf <span style=color:#e6db74>&#34;\nWarning is </span>$days_to_warn<span style=color:#e6db74> days.\n&#34;</span>
-    printf <span style=color:#e6db74>&#34;Color is &#34;</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $color <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-      set_formatting_green<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$GREEN<span style=color:#e6db74>%-40s</span>$NC<span style=color:#e6db74>%-25s\n&#34;</span>
-      set_formatting_yellow<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$YELLOW<span style=color:#e6db74>%-40s</span>$NC<span style=color:#e6db74>%-25s\n&#34;</span>
-      set_formatting_red<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$RED<span style=color:#e6db74>%-40s</span>$NC<span style=color:#e6db74>%-25s\n&#34;</span>
-      printf <span style=color:#e6db74>&#34;enabled.\n\n&#34;</span>
-    <span style=color:#66d9ef>else</span>
-      printf <span style=color:#e6db74>&#34;disabled.\n\n&#34;</span>
-    <span style=color:#66d9ef>fi</span>
-    printf <span style=color:#e6db74>&#34;</span>$set_formatting<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;LOCATION&#34;</span> <span style=color:#e6db74>&#34;EXPIRATION DATE&#34;</span>
-    printf <span style=color:#e6db74>&#34;</span>$set_formatting<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;--------&#34;</span> <span style=color:#e6db74>&#34;---------------&#34;</span>
-<span style=color:#f92672>}</span>
-parse_port<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    port<span style=color:#f92672>=</span><span style=color:#ae81ff>443</span>
-    tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
-    show_tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-    parseurl<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $website | awk <span style=color:#e6db74>&#39;$1 ~ /^.*:/&#39;</span> | cut -d<span style=color:#e6db74>&#39;:&#39;</span> -f1<span style=color:#66d9ef>)</span>
-    parseport<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $website | awk <span style=color:#e6db74>&#39;$1 ~ /^.*:/&#39;</span> | cut -d<span style=color:#e6db74>&#39;:&#39;</span> -f2<span style=color:#66d9ef>)</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $parseport <span style=color:#f92672>=</span>~ $regex_numbers <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e># -&gt; port was found</span>
-      website<span style=color:#f92672>=</span>$parseurl
-      port<span style=color:#f92672>=</span>$parseport
-      <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $port <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;587&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e># Use TLS lookup and notify</span>
-        show_tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34; (TLS)&#34;</span>
-        tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;1&#34;</span>
-      <span style=color:#66d9ef>fi</span>
-    <span style=color:#66d9ef>fi</span>
-<span style=color:#f92672>}</span>
-check_expiry<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
-    <span style=color:#75715e># use epoch times for calcs/compares</span>
-    today_epoch<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>gdate +%s<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
-    sTLS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $tls <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-      sTLS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34; -starttls smtp&#34;</span>
-    <span style=color:#66d9ef>fi</span>
-
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$lookuptype<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;FILENAME&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
-      expire_date<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>openssl x509 -in $certfilename$sTLS -noout -dates 2&gt;/dev/null | <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>                  awk -F<span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;/^notAfter/ { print $2; exit }&#39;</span><span style=color:#66d9ef>)</span>
-    <span style=color:#66d9ef>else</span>
-      expire_date<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>$openssl_timeout openssl s_client -servername $website -connect $website:$port$sTLS &lt;/dev/null 2&gt;/dev/null | <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>                  openssl x509 -noout -dates 2&gt;/dev/null | <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>                  awk -F<span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;/^notAfter/ { print $2; exit }&#39;</span><span style=color:#66d9ef>)</span>
-    <span style=color:#66d9ef>fi</span>
-    <span style=color:#66d9ef>if</span> ! <span style=color:#f92672>[[</span> -z $expire_date <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e># -&gt; found date-process it:</span>
-      expire_epoch<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>gdate +%s -d <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>
-      timeleft<span style=color:#f92672>=</span><span style=color:#e6db74>`</span>expr $expire_epoch - $today_epoch<span style=color:#e6db74>`</span>
-      <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $timeleft -le $epoch_warning <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e>#WARN</span>
-        expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;1&#34;</span>
-      <span style=color:#66d9ef>fi</span>
-      <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $today_epoch -ge $expire_epoch <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e>#EXPIRE</span>
-        expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;2&#34;</span>
-      <span style=color:#66d9ef>fi</span>
-    <span style=color:#66d9ef>else</span>
-      expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;3&#34;</span>
-      expire_date<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;N/A                     &#34;</span>
-    <span style=color:#66d9ef>fi</span>
-<span style=color:#f92672>}</span>
-output_site<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    parse_port
-    check_expiry
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$lookuptype<span style=color:#e6db74>&#34;</span> !<span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;FILENAME&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
-      display_site<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$website<span style=color:#e6db74>:</span>$port$show_tls<span style=color:#e6db74>&#34;</span>
-    <span style=color:#66d9ef>else</span>
-      display_site<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$filename$show_tls<span style=color:#e6db74>&#34;</span>
-    <span style=color:#66d9ef>fi</span>
-    <span style=color:#66d9ef>if</span>   <span style=color:#f92672>[[</span> $expire <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-      printf <span style=color:#e6db74>&#34;</span>$set_formatting_yellow<span style=color:#e6db74>&#34;</span>  <span style=color:#e6db74>&#34;</span>$display_site<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74> !&#34;</span>  <span style=color:#75715e># YELLOW OUTPUT - warning</span>
-    <span style=color:#66d9ef>elif</span> <span style=color:#f92672>[[</span> $expire <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-      printf <span style=color:#e6db74>&#34;</span>$set_formatting_red<span style=color:#e6db74>&#34;</span>     <span style=color:#e6db74>&#34;</span>$display_site<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74> !!&#34;</span> <span style=color:#75715e># RED OUTPUT - expired</span>
-    <span style=color:#66d9ef>elif</span> <span style=color:#f92672>[[</span> $expire <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;3&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-      printf <span style=color:#e6db74>&#34;</span>$set_formatting<span style=color:#e6db74>&#34;</span>         <span style=color:#e6db74>&#34;</span>$display_site<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74> !!!&#34;</span> <span style=color:#75715e># NO COLOR - NOT FOUND</span>
-    <span style=color:#66d9ef>else</span>
-      printf <span style=color:#e6db74>&#34;</span>$set_formatting_green<span style=color:#e6db74>&#34;</span>   <span style=color:#e6db74>&#34;</span>$display_site<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74>&#34;</span>    <span style=color:#75715e># GREEN OUTPUT</span>
-    <span style=color:#66d9ef>fi</span>
-<span style=color:#f92672>}</span>
-
-<span style=color:#75715e>#</span>
-
-client_lookup<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;WEBSITE&#34;</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -z $website <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e>#loop lookup - ask for input</span>
-      get_lookup_input
-      website<span style=color:#f92672>=</span>$location
-    <span style=color:#66d9ef>fi</span>
-    set_format
-    output_site
-    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-    website<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-    echo
-<span style=color:#f92672>}</span>
-file_lookup<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;FILENAME&#34;</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -z $certfilename <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e>#loop lookup - ask for input</span>
-      get_lookup_input
-      certfilename<span style=color:#f92672>=</span>$location
-    <span style=color:#66d9ef>fi</span>
-    filename<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>basename -- <span style=color:#e6db74>&#34;</span>$certfilename<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>
-    set_format
-    output_site
-    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-    filename<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-    echo
-<span style=color:#f92672>}</span>
-list_lookup<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;FILELIST&#34;</span>
-    file_contents<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>&lt;$sitelist<span style=color:#66d9ef>)</span>
-    set_format
-    <span style=color:#66d9ef>while</span> IFS<span style=color:#f92672>=</span> read -r website; <span style=color:#66d9ef>do</span>
-      <span style=color:#66d9ef>if</span> ! <span style=color:#f92672>[[</span> -z $website <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-        output_site
-      <span style=color:#66d9ef>fi</span>
-    <span style=color:#66d9ef>done</span> <span style=color:#f92672>&lt;&lt;&lt;</span><span style=color:#e6db74>&#34;</span>$file_contents<span style=color:#e6db74>&#34;</span>
-    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-    echo
-<span style=color:#f92672>}</span>
-
-<span style=color:#75715e>#HANDLE ARGUMENTS</span>
-
-<span style=color:#66d9ef>while</span> getopts <span style=color:#e6db74>&#39;:hcd:f:s:w:&#39;</span> option; <span style=color:#66d9ef>do</span>
-  <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#34;</span>$option<span style=color:#e6db74>&#34;</span> in
-    h<span style=color:#f92672>)</span> printf <span style=color:#e6db74>&#34;</span>$usage<span style=color:#e6db74>&#34;</span>
-       exit <span style=color:#ae81ff>0</span>
-       ;;
-    c<span style=color:#f92672>)</span> color<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;1&#34;</span>
-       ;;
-    d<span style=color:#f92672>)</span> is_integer <span style=color:#e6db74>&#34;</span>$OPTARG<span style=color:#e6db74>&#34;</span>
-       <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$OPTARG<span style=color:#e6db74>&#34;</span> -ge <span style=color:#ae81ff>1</span> -a <span style=color:#e6db74>&#34;</span>$OPTARG<span style=color:#e6db74>&#34;</span> -le <span style=color:#ae81ff>365</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
-         days_to_warn<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$OPTARG<span style=color:#e6db74>&#34;</span>
-         epoch_warning<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span>days_to_warn*epoch_day<span style=color:#66d9ef>))</span>
-       <span style=color:#66d9ef>else</span>
-         printf <span style=color:#e6db74>&#34;\nDays must be between 1 and 365\n</span>$usage<span style=color:#e6db74>&#34;</span>
-         exit <span style=color:#ae81ff>1</span>
-       <span style=color:#66d9ef>fi</span>
-       ;;
-    f<span style=color:#f92672>)</span> certfilename<span style=color:#f92672>=</span>$OPTARG
-       <span style=color:#f92672>[[</span> -r $certfilename <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> file_lookup <span style=color:#f92672>||</span> printf <span style=color:#e6db74>&#34;\nFile not found/not readable. Permissions?\n\n&#34;</span>; exit 1;
-       exit <span style=color:#ae81ff>0</span>
-       ;;
-    s<span style=color:#f92672>)</span> sitelist<span style=color:#f92672>=</span>$OPTARG
-       <span style=color:#f92672>[[</span> -r $sitelist <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> list_lookup <span style=color:#f92672>||</span> printf <span style=color:#e6db74>&#34;\nFile not found/not readable. Permissions?\n\n&#34;</span>; exit 1;
-       exit <span style=color:#ae81ff>0</span>
-       ;;
-    w<span style=color:#f92672>)</span> website<span style=color:#f92672>=</span>$OPTARG
-       client_lookup
-       exit <span style=color:#ae81ff>0</span>
-       ;;
-    :<span style=color:#f92672>)</span> printf <span style=color:#e6db74>&#34;\nYou specified a flag that needs an argument.\n</span>$usage<span style=color:#e6db74>&#34;</span> 1&gt;&amp;<span style=color:#ae81ff>2</span>
-       exit <span style=color:#ae81ff>1</span>
-       ;;
-    *<span style=color:#f92672>)</span> printf <span style=color:#e6db74>&#34;\nI do not understand &#39;&#34;</span>$1<span style=color:#e6db74>&#34; &#34;</span>$2<span style=color:#e6db74>&#34;&#39;.\n</span>$usage<span style=color:#e6db74>&#34;</span> 1&gt;&amp;<span style=color:#ae81ff>2</span>
-       exit <span style=color:#ae81ff>1</span>
-       ;;
-  <span style=color:#66d9ef>esac</span>
-<span style=color:#66d9ef>done</span>
-shift <span style=color:#66d9ef>$((</span>OPTIND <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span><span style=color:#66d9ef>))</span>
-
-<span style=color:#75715e>#LOOP RUN (default if no flags)</span>
-
-<span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> $# -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e># no command line arguments/flags found</span>
-printf <span style=color:#e6db74>&#34;\nNo flags used or available. Interactive mode.\n&#34;</span>
-  <span style=color:#66d9ef>while</span> :
-  <span style=color:#66d9ef>do</span>
-    menu_input
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $REPLY <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#f92672>]]</span>
-    <span style=color:#66d9ef>then</span>
-      file_lookup
-    <span style=color:#66d9ef>elif</span> <span style=color:#f92672>[[</span> $REPLY <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#f92672>]]</span>
-    <span style=color:#66d9ef>then</span>
-      client_lookup
-    <span style=color:#66d9ef>else</span> <span style=color:#75715e># exit</span>
-      <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span>$0<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;</span>$BASH_SOURCE<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> exit <span style=color:#ae81ff>1</span> <span style=color:#f92672>||</span> <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
-    <span style=color:#66d9ef>fi</span>
-  echo
-  <span style=color:#66d9ef>done</span>
-<span style=color:#66d9ef>fi</span>%
-</code></pre></div><p>{% endcode %}</p>
-<p>prepare website list to check with example format:</p>
-<p>{% code title=&ldquo;websites.txt&rdquo; %}</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>www.abc.com
-zxc.com
-</code></pre></div><p>{% endcode %}</p>
-<p>check your ssl expired date:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>./checkssl.sh -c -d 45 -s websites.txt
-</code></pre></div><p>{% hint style=&ldquo;info&rdquo; %}
-some advande usages:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>checkssl [-h] [-c] [-d DAYS] [-f FILENAME] | [-w WEBSITE] | [-s SITELIST]
-
-Retrieve the expiration date(s) on SSL certificate(s) using OpenSSL.
-
-Usage:
-    -h  Help
-
-    -c  Color output
-
-    -d  Amount of days to show warnings (default is 30 days)
-        Example: -d 15
-
-    -f  SSL date from FILENAME
-        Example: -f /home/user/example.pem
-
-    -w  SSL date from SITE(:PORT) (Port defaults to 443)
-        Example: -w www.example.com
-
-    -s  SSL date(s) from SITELIST
-        Example:      -s ./websites.txt
-        List format:  sub.domain.tld:993 (one per line - port optional)
-
-Example:
-    $ checkssl -c -d 14 -s ./websites.txt
-
-    WARNS (in color) if within 14 days of expiring on each entry in the file list.
-</code></pre></div><p>{% endhint %}</p>
-<p><strong>Eg output:</strong></p>
-<p><img src=../.gitbook/assets/image.png alt></p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-</div>
-<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<div class=book-toc-content>
-<nav id=TableOfContents></nav>
-</div>
-</aside>
-</main>
-</body>
-</html>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents></nav></aside></header><article class=markdown><h1 id=check-ssl-certificate-expiration-dates>Check SSL certificate expiration date(s)
+<a class=anchor href=#check-ssl-certificate-expiration-dates>#</a></h1><p>prepare checkssl.sh file with content bellow:</p><p>{% code title=&ldquo;checkssl.sh&rdquo; %}</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#  By B Shea  Dec2018 &amp; Mar2020</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#  https://www.holylinux.net</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test for OpenSSL - if not installed stop here.</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> ! <span style=color:#f92672>[[</span> -x <span style=color:#66d9ef>$(</span>which openssl<span style=color:#66d9ef>)</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>  printf <span style=color:#e6db74>&#34;\nOpenSSL not found or not executable.\nPlease install OpenSSL before proceeding.\n\n&#34;</span>
+</span></span><span style=display:flex><span>  exit <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>### user adjustable variables ###</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#openssl query timeout:</span>
+</span></span><span style=display:flex><span>openssl_timeout<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;timeout 10&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 30 days is default on warnings - overidden on command line with &#39;-d&#39;:</span>
+</span></span><span style=display:flex><span>days_to_warn<span style=color:#f92672>=</span><span style=color:#ae81ff>30</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># default name for file lists</span>
+</span></span><span style=display:flex><span>sitelist<span style=color:#f92672>=</span>./websites.txt
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>### Clear/list/set defaults for variables ###</span>
+</span></span><span style=display:flex><span>epoch_day<span style=color:#f92672>=</span><span style=color:#ae81ff>86400</span>
+</span></span><span style=display:flex><span>epoch_warning<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span>days_to_warn*epoch_day<span style=color:#66d9ef>))</span>
+</span></span><span style=display:flex><span>regex_numbers<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;^[0-9]+$&#39;</span>
+</span></span><span style=display:flex><span>expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
+</span></span><span style=display:flex><span>website<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>port<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
+</span></span><span style=display:flex><span>sTLS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>show_tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>certfilename<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>location<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>filename<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>displaysite<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#COLORS</span>
+</span></span><span style=display:flex><span>color<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
+</span></span><span style=display:flex><span>RED<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>tput setaf 1<span style=color:#66d9ef>)</span>    <span style=color:#75715e>#expired!!</span>
+</span></span><span style=display:flex><span>GREEN<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>tput setaf 2<span style=color:#66d9ef>)</span>  <span style=color:#75715e>#within bounds</span>
+</span></span><span style=display:flex><span>YELLOW<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>tput setaf 3<span style=color:#66d9ef>)</span> <span style=color:#75715e>#warning/date close!</span>
+</span></span><span style=display:flex><span>NC<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>tput sgr0<span style=color:#66d9ef>)</span>        <span style=color:#75715e>#reset to normal</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>usage<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#66d9ef>$(</span>basename <span style=color:#e6db74>&#34;</span>$0<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74> [-h] [-c] [-d DAYS] [-f FILENAME] | [-w WEBSITE] | [-s SITELIST]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>Retrieve the expiration date(s) on SSL certificate(s) using OpenSSL.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>Usage:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    -h  Help
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    -c  Color output
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    -d  Amount of days to show warnings (default is 30 days)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        Example: -d 15
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    -f  SSL date from FILENAME
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        Example: -f /home/user/example.pem
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    -w  SSL date from SITE(:PORT) (Port defaults to 443)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        Example: -w www.example.com
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    -s  SSL date(s) from SITELIST
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        Example:      -s ./websites.txt
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        List format:  sub.domain.tld:993 (one per line - port optional)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>Example:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    </span>$<span style=color:#e6db74> </span><span style=color:#66d9ef>$(</span>basename <span style=color:#e6db74>&#34;</span>$0<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74> -c -d 14 -s ./websites.txt
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    WARNS (in color) if within 14 days of expiring on each entry in the file list.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#FUNCTIONS</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>is_integer<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> ! <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span>~ $regex_numbers <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      printf <span style=color:#e6db74>&#34;\nError.\nNot a number. You used a parameter that requires a whole number.\n</span>$usage<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>      exit <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>menu_input<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  echo
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;1: Enter file location of certificate&#34;</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;2: Enter an Internet site in form of subdomain.domain.tld(:port)&#34;</span>
+</span></span><span style=display:flex><span>  echo
+</span></span><span style=display:flex><span>  read -p <span style=color:#e6db74>&#34;Enter 1 or 2 (anything else quits): &#34;</span> -n <span style=color:#ae81ff>1</span> -r
+</span></span><span style=display:flex><span>  echo
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>get_lookup_input<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    location<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    echo
+</span></span><span style=display:flex><span>    read -p <span style=color:#e6db74>&#34;Please enter the </span>$lookuptype<span style=color:#e6db74> location: &#34;</span> location
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>set_format<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    set_formatting<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%-40s%-25s\n&#34;</span>
+</span></span><span style=display:flex><span>    set_formatting_green<span style=color:#f92672>=</span>$set_formatting
+</span></span><span style=display:flex><span>    set_formatting_yellow<span style=color:#f92672>=</span>$set_formatting
+</span></span><span style=display:flex><span>    set_formatting_red<span style=color:#f92672>=</span>$set_formatting
+</span></span><span style=display:flex><span>    printf <span style=color:#e6db74>&#34;\nWarning is </span>$days_to_warn<span style=color:#e6db74> days.\n&#34;</span>
+</span></span><span style=display:flex><span>    printf <span style=color:#e6db74>&#34;Color is &#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $color <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      set_formatting_green<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$GREEN<span style=color:#e6db74>%-40s</span>$NC<span style=color:#e6db74>%-25s\n&#34;</span>
+</span></span><span style=display:flex><span>      set_formatting_yellow<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$YELLOW<span style=color:#e6db74>%-40s</span>$NC<span style=color:#e6db74>%-25s\n&#34;</span>
+</span></span><span style=display:flex><span>      set_formatting_red<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$RED<span style=color:#e6db74>%-40s</span>$NC<span style=color:#e6db74>%-25s\n&#34;</span>
+</span></span><span style=display:flex><span>      printf <span style=color:#e6db74>&#34;enabled.\n\n&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>      printf <span style=color:#e6db74>&#34;disabled.\n\n&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    printf <span style=color:#e6db74>&#34;</span>$set_formatting<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;LOCATION&#34;</span> <span style=color:#e6db74>&#34;EXPIRATION DATE&#34;</span>
+</span></span><span style=display:flex><span>    printf <span style=color:#e6db74>&#34;</span>$set_formatting<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;--------&#34;</span> <span style=color:#e6db74>&#34;---------------&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>parse_port<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    port<span style=color:#f92672>=</span><span style=color:#ae81ff>443</span>
+</span></span><span style=display:flex><span>    tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
+</span></span><span style=display:flex><span>    show_tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    parseurl<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $website | awk <span style=color:#e6db74>&#39;$1 ~ /^.*:/&#39;</span> | cut -d<span style=color:#e6db74>&#39;:&#39;</span> -f1<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    parseport<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $website | awk <span style=color:#e6db74>&#39;$1 ~ /^.*:/&#39;</span> | cut -d<span style=color:#e6db74>&#39;:&#39;</span> -f2<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $parseport <span style=color:#f92672>=</span>~ $regex_numbers <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e># -&gt; port was found</span>
+</span></span><span style=display:flex><span>      website<span style=color:#f92672>=</span>$parseurl
+</span></span><span style=display:flex><span>      port<span style=color:#f92672>=</span>$parseport
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $port <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;587&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e># Use TLS lookup and notify</span>
+</span></span><span style=display:flex><span>        show_tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34; (TLS)&#34;</span>
+</span></span><span style=display:flex><span>        tls<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;1&#34;</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>check_expiry<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># use epoch times for calcs/compares</span>
+</span></span><span style=display:flex><span>    today_epoch<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>gdate +%s<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    sTLS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $tls <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      sTLS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34; -starttls smtp&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$lookuptype<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;FILENAME&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      expire_date<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>openssl x509 -in $certfilename$sTLS -noout -dates 2&gt;/dev/null | <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                  awk -F<span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;/^notAfter/ { print $2; exit }&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>      expire_date<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>$openssl_timeout openssl s_client -servername $website -connect $website:$port$sTLS &lt;/dev/null 2&gt;/dev/null | <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                  openssl x509 -noout -dates 2&gt;/dev/null | <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                  awk -F<span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;/^notAfter/ { print $2; exit }&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> ! <span style=color:#f92672>[[</span> -z $expire_date <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e># -&gt; found date-process it:</span>
+</span></span><span style=display:flex><span>      expire_epoch<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>gdate +%s -d <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>      timeleft<span style=color:#f92672>=</span><span style=color:#e6db74>`</span>expr $expire_epoch - $today_epoch<span style=color:#e6db74>`</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $timeleft -le $epoch_warning <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e>#WARN</span>
+</span></span><span style=display:flex><span>        expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;1&#34;</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $today_epoch -ge $expire_epoch <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e>#EXPIRE</span>
+</span></span><span style=display:flex><span>        expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;2&#34;</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>      expire<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;3&#34;</span>
+</span></span><span style=display:flex><span>      expire_date<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;N/A                     &#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>output_site<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    parse_port
+</span></span><span style=display:flex><span>    check_expiry
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$lookuptype<span style=color:#e6db74>&#34;</span> !<span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;FILENAME&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      display_site<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$website<span style=color:#e6db74>:</span>$port$show_tls<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>      display_site<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$filename$show_tls<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>   <span style=color:#f92672>[[</span> $expire <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      printf <span style=color:#e6db74>&#34;</span>$set_formatting_yellow<span style=color:#e6db74>&#34;</span>  <span style=color:#e6db74>&#34;</span>$display_site<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74> !&#34;</span>  <span style=color:#75715e># YELLOW OUTPUT - warning</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>elif</span> <span style=color:#f92672>[[</span> $expire <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      printf <span style=color:#e6db74>&#34;</span>$set_formatting_red<span style=color:#e6db74>&#34;</span>     <span style=color:#e6db74>&#34;</span>$display_site<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74> !!&#34;</span> <span style=color:#75715e># RED OUTPUT - expired</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>elif</span> <span style=color:#f92672>[[</span> $expire <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;3&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      printf <span style=color:#e6db74>&#34;</span>$set_formatting<span style=color:#e6db74>&#34;</span>         <span style=color:#e6db74>&#34;</span>$display_site<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74> !!!&#34;</span> <span style=color:#75715e># NO COLOR - NOT FOUND</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>      printf <span style=color:#e6db74>&#34;</span>$set_formatting_green<span style=color:#e6db74>&#34;</span>   <span style=color:#e6db74>&#34;</span>$display_site<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$expire_date<span style=color:#e6db74>&#34;</span>    <span style=color:#75715e># GREEN OUTPUT</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>client_lookup<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;WEBSITE&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -z $website <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e>#loop lookup - ask for input</span>
+</span></span><span style=display:flex><span>      get_lookup_input
+</span></span><span style=display:flex><span>      website<span style=color:#f92672>=</span>$location
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    set_format
+</span></span><span style=display:flex><span>    output_site
+</span></span><span style=display:flex><span>    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    website<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    echo
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>file_lookup<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;FILENAME&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -z $certfilename <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e>#loop lookup - ask for input</span>
+</span></span><span style=display:flex><span>      get_lookup_input
+</span></span><span style=display:flex><span>      certfilename<span style=color:#f92672>=</span>$location
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    filename<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>basename -- <span style=color:#e6db74>&#34;</span>$certfilename<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    set_format
+</span></span><span style=display:flex><span>    output_site
+</span></span><span style=display:flex><span>    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    filename<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    echo
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>list_lookup<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;FILELIST&#34;</span>
+</span></span><span style=display:flex><span>    file_contents<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>&lt;$sitelist<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    set_format
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> IFS<span style=color:#f92672>=</span> read -r website; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> ! <span style=color:#f92672>[[</span> -z $website <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        output_site
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>done</span> <span style=color:#f92672>&lt;&lt;&lt;</span><span style=color:#e6db74>&#34;</span>$file_contents<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    lookuptype<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    echo
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#HANDLE ARGUMENTS</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> getopts <span style=color:#e6db74>&#39;:hcd:f:s:w:&#39;</span> option; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#34;</span>$option<span style=color:#e6db74>&#34;</span> in
+</span></span><span style=display:flex><span>    h<span style=color:#f92672>)</span> printf <span style=color:#e6db74>&#34;</span>$usage<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>       exit <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>       ;;
+</span></span><span style=display:flex><span>    c<span style=color:#f92672>)</span> color<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;1&#34;</span>
+</span></span><span style=display:flex><span>       ;;
+</span></span><span style=display:flex><span>    d<span style=color:#f92672>)</span> is_integer <span style=color:#e6db74>&#34;</span>$OPTARG<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>       <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$OPTARG<span style=color:#e6db74>&#34;</span> -ge <span style=color:#ae81ff>1</span> -a <span style=color:#e6db74>&#34;</span>$OPTARG<span style=color:#e6db74>&#34;</span> -le <span style=color:#ae81ff>365</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>         days_to_warn<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$OPTARG<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>         epoch_warning<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span>days_to_warn*epoch_day<span style=color:#66d9ef>))</span>
+</span></span><span style=display:flex><span>       <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>         printf <span style=color:#e6db74>&#34;\nDays must be between 1 and 365\n</span>$usage<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>         exit <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>       <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>       ;;
+</span></span><span style=display:flex><span>    f<span style=color:#f92672>)</span> certfilename<span style=color:#f92672>=</span>$OPTARG
+</span></span><span style=display:flex><span>       <span style=color:#f92672>[[</span> -r $certfilename <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> file_lookup <span style=color:#f92672>||</span> printf <span style=color:#e6db74>&#34;\nFile not found/not readable. Permissions?\n\n&#34;</span>; exit 1;
+</span></span><span style=display:flex><span>       exit <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>       ;;
+</span></span><span style=display:flex><span>    s<span style=color:#f92672>)</span> sitelist<span style=color:#f92672>=</span>$OPTARG
+</span></span><span style=display:flex><span>       <span style=color:#f92672>[[</span> -r $sitelist <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> list_lookup <span style=color:#f92672>||</span> printf <span style=color:#e6db74>&#34;\nFile not found/not readable. Permissions?\n\n&#34;</span>; exit 1;
+</span></span><span style=display:flex><span>       exit <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>       ;;
+</span></span><span style=display:flex><span>    w<span style=color:#f92672>)</span> website<span style=color:#f92672>=</span>$OPTARG
+</span></span><span style=display:flex><span>       client_lookup
+</span></span><span style=display:flex><span>       exit <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>       ;;
+</span></span><span style=display:flex><span>    :<span style=color:#f92672>)</span> printf <span style=color:#e6db74>&#34;\nYou specified a flag that needs an argument.\n</span>$usage<span style=color:#e6db74>&#34;</span> 1&gt;&amp;<span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>       exit <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>       ;;
+</span></span><span style=display:flex><span>    *<span style=color:#f92672>)</span> printf <span style=color:#e6db74>&#34;\nI do not understand &#39;&#34;</span>$1<span style=color:#e6db74>&#34; &#34;</span>$2<span style=color:#e6db74>&#34;&#39;.\n</span>$usage<span style=color:#e6db74>&#34;</span> 1&gt;&amp;<span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>       exit <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>       ;;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>esac</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>shift <span style=color:#66d9ef>$((</span>OPTIND <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span><span style=color:#66d9ef>))</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#LOOP RUN (default if no flags)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> $# -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span> <span style=color:#75715e># no command line arguments/flags found</span>
+</span></span><span style=display:flex><span>printf <span style=color:#e6db74>&#34;\nNo flags used or available. Interactive mode.\n&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>while</span> :
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    menu_input
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $REPLY <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#f92672>]]</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      file_lookup
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>elif</span> <span style=color:#f92672>[[</span> $REPLY <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#f92672>]]</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>      client_lookup
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span> <span style=color:#75715e># exit</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span>$0<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;</span>$BASH_SOURCE<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> exit <span style=color:#ae81ff>1</span> <span style=color:#f92672>||</span> <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>  echo
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>%
+</span></span></code></pre></div><p>{% endcode %}</p><p>prepare website list to check with example format:</p><p>{% code title=&ldquo;websites.txt&rdquo; %}</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>www.abc.com
+</span></span><span style=display:flex><span>zxc.com
+</span></span></code></pre></div><p>{% endcode %}</p><p>check your ssl expired date:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>./checkssl.sh -c -d 45 -s websites.txt
+</span></span></code></pre></div><p>{% hint style=&ldquo;info&rdquo; %}
+some advande usages:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>checkssl [-h] [-c] [-d DAYS] [-f FILENAME] | [-w WEBSITE] | [-s SITELIST]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Retrieve the expiration date(s) on SSL certificate(s) using OpenSSL.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Usage:
+</span></span><span style=display:flex><span>    -h  Help
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    -c  Color output
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    -d  Amount of days to show warnings (default is 30 days)
+</span></span><span style=display:flex><span>        Example: -d 15
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    -f  SSL date from FILENAME
+</span></span><span style=display:flex><span>        Example: -f /home/user/example.pem
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    -w  SSL date from SITE(:PORT) (Port defaults to 443)
+</span></span><span style=display:flex><span>        Example: -w www.example.com
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    -s  SSL date(s) from SITELIST
+</span></span><span style=display:flex><span>        Example:      -s ./websites.txt
+</span></span><span style=display:flex><span>        List format:  sub.domain.tld:993 (one per line - port optional)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Example:
+</span></span><span style=display:flex><span>    $ checkssl -c -d 14 -s ./websites.txt
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    WARNS (in color) if within 14 days of expiring on each entry in the file list.
+</span></span></code></pre></div><p>{% endhint %}</p><p><strong>Eg output:</strong></p><p><img src=../.gitbook/assets/image.png alt></p></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents></nav></div></aside></main></body></html>
